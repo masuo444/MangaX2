@@ -508,7 +508,7 @@ const DetailModal = ({ series, chapters, isOpen, onClose, onRead, t }) => {
         <div className="jump-container">
           <header className="jump-header">
             <button onClick={onClose} className="jump-back-btn"><ChevronLeft size={28} /></button>
-            <div className="jump-header-title">{series.title}</div>
+            <div className="jump-header-title"></div>
           </header>
           <div className="jump-hero"><img src={series.heroUrl || series.coverUrl} /><div className="jump-hero-gradient"></div></div>
           <div className="jump-info">
