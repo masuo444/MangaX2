@@ -66,6 +66,41 @@ body {
 .animate-slide-up { animation: slideUp 0.3s ease-out; }
 .animate-spin { animation: spin 1s linear infinite; }
 
+.service-section {
+  margin: 3rem 4% 5rem;
+  padding: 2rem;
+  border-radius: 16px;
+  background: radial-gradient(circle at 20% 20%, rgba(229,9,20,0.08), transparent 40%), radial-gradient(circle at 80% 0%, rgba(0,255,200,0.08), transparent 40%), #0f0f0f;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  color: #fff;
+}
+.service-grid { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.service-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 1rem;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.service-cta {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #e50914, #ff6b6b);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.4rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(229,9,20,0.35);
+}
+
 .app-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   padding: 0 4%; height: var(--header-height);
@@ -412,6 +447,42 @@ const NewEpisodeCard = ({ episode, onClick }) => (
   </div>
 );
 
+const ServicePitch = () => (
+  <section className="service-section">
+    <div style={{ display: "flex", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+      <div>
+        <div style={{ fontSize: "0.95rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>NOVEL → MANGA</div>
+        <h2 style={{ fontSize: "2rem", margin: "0.2rem 0 0.6rem", fontWeight: 900 }}>小説を漫画にするサービス</h2>
+        <p style={{ maxWidth: 760, color: "#d7d7d7", lineHeight: 1.6 }}>
+          プロの作画チームとAIワークフローで、原稿・プロット・シナリオから商業品質の漫画を制作します。
+          企画設計、キャラクターデザイン、ネーム〜仕上げまでワンストップで対応。短納期・定額プランもご用意。
+        </p>
+      </div>
+      <button className="service-cta" onClick={() => window.open("mailto:contact@example.com?subject=漫画制作相談")}>
+        <Sparkles size={18} /> 制作相談する
+      </button>
+    </div>
+    <div className="service-grid" style={{ marginTop: "1rem" }}>
+      <div className="service-card">
+        <strong>01. 企画・演出</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>原作の魅力を漫画向けに再構成。ページ配分と演出を設計します。</p>
+      </div>
+      <div className="service-card">
+        <strong>02. キャラ設定</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>ラフ〜カラー立ち絵まで制作。世界観に合う衣装・表情差分も対応。</p>
+      </div>
+      <div className="service-card">
+        <strong>03. ネーム & 作画</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>ページ単位で確認しながら進行。背景・仕上げ・効果線まで一括管理。</p>
+      </div>
+      <div className="service-card">
+        <strong>04. 翻訳・多言語展開</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>Geminiベースの自動翻訳＋校正で多言語版を同時展開。</p>
+      </div>
+    </div>
+  </section>
+);
+
 const ContinueCard = ({ historyItem, series, onClick }) => (
   <div onClick={() => onClick(series)} className="continue-card">
     <div className="continue-image-wrapper">
@@ -615,8 +686,6 @@ export default function App() {
     );
   }
 
-  if (view === "admin") return <><style>{STYLES}</style><AdminView onBack={() => navigate("mypage")} t={t} /></>;
-
   const historyItems = getHistory();
   const featuredSeries = db.series[0];
 
@@ -663,6 +732,7 @@ export default function App() {
               renderItem={(ep) => <NewEpisodeCard episode={ep} onClick={openDetail} />}
             />
             <SectionRow title={t.section_trending} items={[...db.series].reverse()} renderItem={(s) => <PosterCard series={s} onClick={openDetail} t={t} />} />
+            <ServicePitch />
           </div>
         </div>
       )}
@@ -670,7 +740,6 @@ export default function App() {
       {view === "mypage" && (
         <div className="bg-black min-h-screen pt-20 px-4 text-white">
           <h1>{t.guest_name}</h1>
-          <button onClick={() => navigate("admin")} className="btn btn-gray mt-4">{t.admin_title}</button>
         </div>
       )}
 
