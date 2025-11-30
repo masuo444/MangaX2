@@ -1,0 +1,24 @@
+{
+  "series": [
+    {
+      "id": "kuku",
+      "title": "KUKU ―黎明の木神―",
+      "author": "Author Name",
+      "coverUrl": "https://placehold.co/400x600/1a1a1a/FFF?text=KUKU",
+      "heroUrl": "https://placehold.co/1200x600/1a1a1a/FFF?text=KUKU+HERO",
+      "description": "世界樹が枯れ果てた世界で、一人の少年が「神」となるまでの物語。圧倒的画力で描くダークファンタジー巨編。",
+      "totalLikes": 12400,
+      "isNew": true,
+      "status": "approved",
+      "direction": "rtl",
+      "language": "ja",
+      "tags": ["Dark Fantasy", "Action"],
+      "match": 98
+    }
+  ],
+  "chapters": [
+    { "id": "c1", "seriesId": "kuku", "number": 1, "title": "第1話 黎明の始まり", "publishDate": "2025/11/01", "likes": 1200, "status": "published", "thumbUrl": "https://placehold.co/300x169/222/FFF?text=Ep1", "pageCount": 21 },
+    { "id": "c2", "seriesId": "kuku", "number": 2, "title": "第2話 邂逅", "publishDate": "2025/11/08", "likes": 980, "status": "published", "thumbUrl": "https://placehold.co/300x169/333/FFF?text=Ep2", "pageCount": 23 },
+    { "id": "c3", "seriesId": "kuku", "number": 3, "title": "第3話 (制作中)", "status": "in_production", "sponsorGoal": 5, "sponsors": 2, "thumbUrl": "https://placehold.co/300x169/555/FFF?text=Production" }
+  ]
+}
