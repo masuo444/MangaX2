@@ -223,8 +223,8 @@ const DEFAULT_DB = {
   ],
   chapters: [
     { id: "c1", seriesId: "kuku", number: 1, title: "第1話 黎明の始まり", publishDate: "2025/11/01", likes: 1200, status: "published", thumbUrl: "https://placehold.co/300x169/222/FFF?text=Ep1", pageCount: 21 },
-    { id: "c2", seriesId: "kuku", number: 2, title: "第2話 邂逅", publishDate: "2025/11/08", likes: 980, status: "published", thumbUrl: "https://placehold.co/300x169/333/FFF?text=Ep2", pageCount: 23 },
-    { id: "c3", seriesId: "kuku", number: 3, title: "第3話 (制作中)", status: "in_production", sponsorGoal: 5, sponsors: 2, thumbUrl: "https://placehold.co/300x169/555/FFF?text=Production" },
+    { id: "c2", seriesId: "kuku", number: 2, title: "第2話 邂逅", publishDate: "2025/11/08", likes: 980, status: "published", thumbUrl: "/assets/kuku-ep2.jpg", pageCount: 23 },
+    { id: "c3", seriesId: "kuku", number: 3, title: "第3話 (制作中)", status: "in_production", sponsorGoal: 5, sponsors: 2, thumbUrl: "/assets/kuku-ep3.jpg" },
   ],
 };
 
@@ -396,6 +396,19 @@ const PosterCard = ({ series, onClick, t }) => (
     <img src={series.coverUrl} className="poster-image" loading="lazy" />
     <div className="absolute top-1 left-1 text-red-600 font-bold text-xs" style={{ color: "var(--primary-red)", textShadow: "0 1px 2px black" }}>N</div>
     {series.isNew && <div className="absolute bottom-0 width-full bg-red-600/90 text-white text-[9px] font-bold text-center py-0.5 w-full">{t.new_badge}</div>}
+  </div>
+);
+
+const NewEpisodeCard = ({ episode, onClick }) => (
+  <div onClick={() => onClick(episode.series)} className="continue-card">
+    <div className="continue-image-wrapper">
+      <img src={episode.thumbUrl} className="continue-image" loading="lazy" />
+      <div className="play-overlay"><div className="play-circle"><Play size={20} className="text-white ml-1" /></div></div>
+    </div>
+    <div className="continue-info">
+      <div className="text-sm font-bold text-white truncate w-36">{episode.series?.title} #{episode.number}</div>
+      <Info size={20} />
+    </div>
   </div>
 );
 
@@ -641,7 +654,14 @@ export default function App() {
                 renderItem={(item) => <ContinueCard historyItem={item} series={item} onClick={openDetail} />}
               />
             )}
-            <SectionRow title={t.section_new} items={db.series} renderItem={(s) => <PosterCard series={s} onClick={openDetail} t={t} />} />
+            <SectionRow
+              title={t.section_new}
+              items={db.chapters
+                .filter((c) => c.status === "published")
+                .map((c) => ({ ...c, series: db.series.find((s) => s.id === c.seriesId) }))
+                .filter((c) => c.series)}
+              renderItem={(ep) => <NewEpisodeCard episode={ep} onClick={openDetail} />}
+            />
             <SectionRow title={t.section_trending} items={[...db.series].reverse()} renderItem={(s) => <PosterCard series={s} onClick={openDetail} t={t} />} />
           </div>
         </div>
