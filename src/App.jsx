@@ -257,9 +257,9 @@ const DEFAULT_DB = {
     },
   ],
   chapters: [
-    { id: "c1", seriesId: "kuku", number: 1, title: "", publishDate: "2025/11/01", likes: 1200, status: "published", thumbUrl: "/assets/kuku-ep1.jpg", pageCount: 21 },
-    { id: "c2", seriesId: "kuku", number: 2, title: "", publishDate: "2025/11/08", likes: 980, status: "published", thumbUrl: "/assets/kuku-ep2.jpg", pageCount: 23 },
-    { id: "c3", seriesId: "kuku", number: 3, title: "", publishDate: "2025/11/15", likes: 720, status: "published", thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
+    { id: "c1", seriesId: "kuku", number: 1, title: "1話", publishDate: "2025/11/01", likes: 1200, status: "published", thumbUrl: "/assets/kuku-ep1.jpg", pageCount: 21 },
+    { id: "c2", seriesId: "kuku", number: 2, title: "2話", publishDate: "2025/11/08", likes: 980, status: "published", thumbUrl: "/assets/kuku-ep2.jpg", pageCount: 23 },
+    { id: "c3", seriesId: "kuku", number: 3, title: "3話", publishDate: "2025/11/15", likes: 720, status: "published", thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
     { id: "c4", seriesId: "kuku", number: 4, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
     { id: "c5", seriesId: "kuku", number: 5, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
     { id: "c6", seriesId: "kuku", number: 6, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
@@ -438,7 +438,7 @@ const PosterCard = ({ series, onClick, t }) => (
 );
 
 const NewEpisodeCard = ({ episode, onClick }) => (
-  <div onClick={() => onClick(episode.series)} className="continue-card">
+  <div onClick={() => onClick(episode)} className="continue-card">
     <div className="continue-image-wrapper">
       <img src={episode.thumbUrl} className="continue-image" loading="lazy" />
       <div className="play-overlay"><div className="play-circle"><Play size={20} className="text-white ml-1" /></div></div>
@@ -732,7 +732,17 @@ export default function App() {
                 .filter((c) => c.status === "published")
                 .map((c) => ({ ...c, series: db.series.find((s) => s.id === c.seriesId) }))
                 .filter((c) => c.series)}
-              renderItem={(ep) => <NewEpisodeCard episode={ep} onClick={openDetail} />}
+              renderItem={(ep) => (
+                <NewEpisodeCard
+                  episode={ep}
+                  onClick={(episode) => {
+                    const series = db.series.find((s) => s.id === episode.seriesId);
+                    if (series) {
+                      openReader(episode, series);
+                    }
+                  }}
+                />
+              )}
             />
             <SectionRow title={t.section_trending} items={[...db.series].reverse()} renderItem={(s) => <PosterCard series={s} onClick={openDetail} t={t} />} />
             <ServicePitch />

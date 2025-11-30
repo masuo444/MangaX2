@@ -17,9 +17,9 @@
     }
   ],
   "chapters": [
-    { "id": "c1", "seriesId": "kuku", "number": 1, "title": "", "publishDate": "2025/11/01", "likes": 1200, "status": "published", "thumbUrl": "/assets/kuku-ep1.jpg", "pageCount": 21 },
-    { "id": "c2", "seriesId": "kuku", "number": 2, "title": "", "publishDate": "2025/11/08", "likes": 980, "status": "published", "thumbUrl": "/assets/kuku-ep2.jpg", "pageCount": 23 },
-    { "id": "c3", "seriesId": "kuku", "number": 3, "title": "", "publishDate": "2025/11/15", "likes": 720, "status": "published", "thumbUrl": "/assets/kuku-ep3.jpg", "pageCount": 22 },
+    { "id": "c1", "seriesId": "kuku", "number": 1, "title": "1話", "publishDate": "2025/11/01", "likes": 1200, "status": "published", "thumbUrl": "/assets/kuku-ep1.jpg", "pageCount": 21 },
+    { "id": "c2", "seriesId": "kuku", "number": 2, "title": "2話", "publishDate": "2025/11/08", "likes": 980, "status": "published", "thumbUrl": "/assets/kuku-ep2.jpg", "pageCount": 23 },
+    { "id": "c3", "seriesId": "kuku", "number": 3, "title": "3話", "publishDate": "2025/11/15", "likes": 720, "status": "published", "thumbUrl": "/assets/kuku-ep3.jpg", "pageCount": 22 },
     { "id": "c4", "seriesId": "kuku", "number": 4, "title": "", "status": "in_production", "sponsorGoal": 1, "sponsors": 0, "thumbUrl": "/assets/kuku-ep3.jpg", "pageCount": 22 },
     { "id": "c5", "seriesId": "kuku", "number": 5, "title": "", "status": "in_production", "sponsorGoal": 1, "sponsors": 0, "thumbUrl": "/assets/kuku-ep3.jpg", "pageCount": 22 },
     { "id": "c6", "seriesId": "kuku", "number": 6, "title": "", "status": "in_production", "sponsorGoal": 1, "sponsors": 0, "thumbUrl": "/assets/kuku-ep3.jpg", "pageCount": 22 }
