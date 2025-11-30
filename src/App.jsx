@@ -377,9 +377,6 @@ const HeroSection = ({ series, onRead, onMyList, t }) => {
             <button onClick={onMyList} className="btn btn-gray"><Plus size={24} /> {t.my_list}</button>
           </div>
         </div>
-        <div className="hero-poster-area">
-          <img src={series.coverUrl} className="hero-poster-img" alt="Poster" />
-        </div>
       </div>
     </div>
   );
