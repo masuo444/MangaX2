@@ -257,9 +257,12 @@ const DEFAULT_DB = {
     },
   ],
   chapters: [
-    { id: "c1", seriesId: "kuku", number: 1, title: "第1話 黎明の始まり", publishDate: "2025/11/01", likes: 1200, status: "published", thumbUrl: "https://placehold.co/300x169/222/FFF?text=Ep1", pageCount: 21 },
-    { id: "c2", seriesId: "kuku", number: 2, title: "第2話 邂逅", publishDate: "2025/11/08", likes: 980, status: "published", thumbUrl: "/assets/kuku-ep2.jpg", pageCount: 23 },
-    { id: "c3", seriesId: "kuku", number: 3, title: "第3話 (制作中)", publishDate: "2025/11/15", likes: 720, status: "published", sponsorGoal: 5, sponsors: 2, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
+    { id: "c1", seriesId: "kuku", number: 1, title: "", publishDate: "2025/11/01", likes: 1200, status: "published", thumbUrl: "/assets/kuku-ep1.jpg", pageCount: 21 },
+    { id: "c2", seriesId: "kuku", number: 2, title: "", publishDate: "2025/11/08", likes: 980, status: "published", thumbUrl: "/assets/kuku-ep2.jpg", pageCount: 23 },
+    { id: "c3", seriesId: "kuku", number: 3, title: "", publishDate: "2025/11/15", likes: 720, status: "published", thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
+    { id: "c4", seriesId: "kuku", number: 4, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
+    { id: "c5", seriesId: "kuku", number: 5, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
+    { id: "c6", seriesId: "kuku", number: 6, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
   ],
 };
 
