@@ -4,7 +4,7 @@ import {
   X, Heart, Share2, Crown, Globe, Settings, Upload, Wand2, DollarSign,
   Briefcase, Smile, Link as LinkIcon, AlertCircle, FileText, Palette,
   FileCheck, Mail, Languages, Lock, Sparkles, Check, Trophy, Handshake, Building,
-  ThumbsUp, MessageCircle, Gift, Clock, Bell, Download,
+  ThumbsUp, MessageCircle, Gift, Clock, Bell, Download, Loader2,
 } from "lucide-react";
 
 // ==========================================
@@ -61,8 +61,10 @@ body {
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .animate-fade-in { animation: fadeIn 0.4s ease-out; }
 .animate-slide-up { animation: slideUp 0.3s ease-out; }
+.animate-spin { animation: spin 1s linear infinite; }
 
 .app-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
@@ -189,6 +191,14 @@ body {
 .admin-container { padding: 2rem; background: #f3f4f6; min-height: 100vh; color: #333; padding-bottom: 6rem;}
 .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1rem; }
 `;
+
+const TRANSLATE_LANGS = [
+  { code: "ja", label: "日本語" },
+  { code: "en", label: "English" },
+  { code: "ko", label: "한국어" },
+  { code: "zh", label: "中文" },
+  { code: "es", label: "Español" },
+];
 
 // ==========================================
 // データ
@@ -454,10 +464,46 @@ const DetailModal = ({ series, chapters, isOpen, onClose, onRead, t }) => {
   );
 };
 
-const Reader = ({ chapter, series, onClose }) => {
+const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslationLang }) => {
   const [showUI, setShowUI] = useState(true);
+  const [translations, setTranslations] = useState({});
+  const [activePage, setActivePage] = useState(null);
+  const [isTranslating, setIsTranslating] = useState(false);
+  const [translateError, setTranslateError] = useState(null);
+
   const pageCount = chapter.pageCount || 20;
   const pages = Array.from({ length: pageCount }, (_, i) => i + 1);
+
+  const handleTranslate = async (page) => {
+    try {
+      setIsTranslating(true);
+      setActivePage(page);
+      setTranslateError(null);
+
+      const imgEl = document.getElementById(`reader-img-${page}`);
+      const imageUrl = imgEl?.currentSrc || `/manga/${series.id}/ch${chapter.number}/${page}.png`;
+
+      const res = await fetch("/api/translate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ imageUrl, targetLang: translationLang }),
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || "Translation failed");
+      }
+
+      const data = await res.json();
+      const translatedText = data.translation || data.raw?.translated_text || "";
+      setTranslations((prev) => ({ ...prev, [page]: translatedText || "翻訳結果がありませんでした。" }));
+    } catch (err) {
+      console.error(err);
+      setTranslateError(err.message || "翻訳に失敗しました");
+    } finally {
+      setIsTranslating(false);
+    }
+  };
 
   return (
     <div className="reader-container">
@@ -469,7 +515,27 @@ const Reader = ({ chapter, series, onClose }) => {
       <div className="reader-content" onClick={() => setShowUI(!showUI)} dir={series.direction === "ltr" ? "ltr" : "rtl"}>
         {pages.map((p) => (
           <div key={p} className="reader-page" style={{ background: "#111" }}>
+            <div style={{ position: "absolute", top: 12, right: 12, display: "flex", gap: "0.5rem", alignItems: "center", zIndex: 5, background: "rgba(0,0,0,0.55)", padding: "0.35rem 0.6rem", borderRadius: 10 }}>
+              <select
+                value={translationLang}
+                onChange={(e) => onChangeTranslationLang(e.target.value)}
+                style={{ background: "#1f1f1f", color: "#fff", border: "1px solid #333", borderRadius: 8, padding: "0.35rem 0.45rem" }}
+              >
+                {TRANSLATE_LANGS.map((lang) => (
+                  <option key={lang.code} value={lang.code}>{lang.label}</option>
+                ))}
+              </select>
+              <button
+                onClick={(e) => { e.stopPropagation(); handleTranslate(p); }}
+                disabled={isTranslating && activePage === p}
+                style={{ display: "flex", alignItems: "center", gap: 6, background: "#e50914", color: "white", border: "none", borderRadius: 8, padding: "0.4rem 0.75rem", cursor: "pointer", fontWeight: 700 }}
+              >
+                {isTranslating && activePage === p ? <Loader2 size={16} className="animate-spin" /> : <Globe size={16} />}
+                翻訳
+              </button>
+            </div>
             <img
+              id={`reader-img-${p}`}
               src={`/manga/${series.id}/ch${chapter.number}/${p}.png`}
               onError={(e) => {
                 if (!e.target.dataset.fallback) {
@@ -483,6 +549,16 @@ const Reader = ({ chapter, series, onClose }) => {
               alt={`Page ${p}`}
               loading="lazy"
             />
+            {translations[p] && (
+              <div style={{ position: "absolute", left: "50%", bottom: 18, transform: "translateX(-50%)", maxWidth: "90%", background: "rgba(0,0,0,0.7)", color: "#fff", padding: "0.75rem 1rem", borderRadius: 12, backdropFilter: "blur(6px)", fontSize: "0.95rem", lineHeight: 1.5 }}>
+                {translations[p]}
+              </div>
+            )}
+            {translateError && activePage === p && (
+              <div style={{ position: "absolute", left: "50%", bottom: 18, transform: "translateX(-50%)", maxWidth: "90%", background: "rgba(229,9,20,0.85)", color: "#fff", padding: "0.65rem 0.9rem", borderRadius: 12, fontSize: "0.9rem" }}>
+                {translateError}
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -499,6 +575,7 @@ const AdminView = ({ onBack, t }) => (
 
 export default function App() {
   const [lang, setLang] = useState("ja");
+  const [translationLang, setTranslationLang] = useState("en");
   const [scrolled, setScrolled] = useState(false);
   const { view, navigate, selectedSeries, openDetail, closeDetail, readingChapter, openReader, closeReader } = useAppNavigation("home");
   const db = useData();
@@ -517,7 +594,13 @@ export default function App() {
     return (
       <>
         <style>{STYLES}</style>
-        <Reader chapter={readingChapter.chapter} series={readingChapter.series} onClose={closeReader} />
+        <Reader
+          chapter={readingChapter.chapter}
+          series={readingChapter.series}
+          onClose={closeReader}
+          translationLang={translationLang}
+          onChangeTranslationLang={setTranslationLang}
+        />
       </>
     );
   }
