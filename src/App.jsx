@@ -655,10 +655,8 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
 
   return (
     <div className="reader-container">
-      <div className={`reader-header ${showUI ? "" : "hidden"}`}>
+      <div className={`reader-header ${showUI ? "" : "hidden"}`} style={{ justifyContent: "flex-start", gap: "0.75rem" }}>
         <button onClick={onClose} style={{ background: "none", border: "none", color: "white" }}><ChevronLeft size={24} /></button>
-        <span className="font-bold">{series.title} #{chapter.number}</span>
-        <div style={{ width: 24 }}></div>
       </div>
       <div
         className="reader-content"
