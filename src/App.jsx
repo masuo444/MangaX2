@@ -575,6 +575,7 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
   const [translateError, setTranslateError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const scrollRaf = React.useRef(null);
+  const readerRef = React.useRef(null);
 
   const pageCount = chapter.pageCount || 20;
   const pages = Array.from({ length: pageCount }, (_, i) => i + 1);
@@ -586,13 +587,22 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
     setActivePage(null);
   }, [chapter.id]);
 
-  const handleScroll = (e) => {
-    const { scrollLeft, clientWidth } = e.target;
-    const page = Math.round(scrollLeft / clientWidth) + 1;
+  const handleScroll = () => {
+    const el = readerRef.current;
+    if (!el) return;
+    const { scrollLeft, clientWidth, scrollWidth } = el;
+    // RTLはscrollLeftが負値や末尾起点になるブラウザがあるため補正
+    const isRTL = series.direction !== "ltr";
+    const offset = isRTL ? scrollWidth - clientWidth - scrollLeft : scrollLeft;
+    const page = Math.round(offset / clientWidth) + 1;
     const clamped = Math.min(pageCount, Math.max(1, page));
     if (scrollRaf.current) cancelAnimationFrame(scrollRaf.current);
     scrollRaf.current = requestAnimationFrame(() => setCurrentPage(clamped));
   };
+
+  useEffect(() => {
+    handleScroll();
+  }, [series.id, chapter.id]);
 
   const handleTranslate = async (page) => {
     try {
@@ -636,6 +646,7 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
         className="reader-content"
         onClick={() => setShowUI(!showUI)}
         onScroll={handleScroll}
+        ref={readerRef}
         dir={series.direction === "ltr" ? "ltr" : "rtl"}
       >
         {pages.map((p) => (
@@ -693,7 +704,14 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
           <span>{currentPage} / {pageCount}</span>
         </div>
         <div className="page-progress-bar">
-          <div className="page-progress-fill" style={{ width: `${(currentPage / pageCount) * 100}%` }} />
+          <div
+            className="page-progress-fill"
+            style={{
+              width: `${(currentPage / pageCount) * 100}%`,
+              marginLeft: series.direction === "ltr" ? 0 : "auto",
+              marginRight: series.direction === "ltr" ? "auto" : 0,
+            }}
+          />
         </div>
       </div>
     </div>
