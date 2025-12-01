@@ -450,20 +450,48 @@ const NewEpisodeCard = ({ episode, onClick }) => (
   </div>
 );
 
-const ServicePitch = () => (
-  <section className="service-section">
-    <div style={{ display: "flex", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-      <div>
-        <div style={{ fontSize: "0.95rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>NOVEL → MANGA</div>
-        <h2 style={{ fontSize: "2rem", margin: "0.2rem 0 0.6rem", fontWeight: 900 }}>小説を漫画にするサービス</h2>
-        <p style={{ maxWidth: 760, color: "#d7d7d7", lineHeight: 1.6 }}>
-          プロの作画チームとAIワークフローで、原稿・プロット・シナリオから商業品質の漫画を制作します。
-          企画設計、キャラクターデザイン、ネーム〜仕上げまでワンストップで対応。短納期・定額プランもご用意。
-        </p>
+const ServicePitch = () => {
+  const scrollToFlow = () => {
+    const el = document.getElementById("production-flow");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  return (
+    <section className="service-section">
+      <div style={{ display: "flex", justifyContent: "space-between", gap: "1.5rem", flexWrap: "wrap", alignItems: "center" }}>
+        <div style={{ maxWidth: 820 }}>
+          <div style={{ fontSize: "0.95rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>STORY → COMIC</div>
+          <h2 style={{ fontSize: "2.4rem", margin: "0.3rem 0 0.8rem", fontWeight: 900, lineHeight: 1.15 }}>あなたの物語を漫画にしませんか？</h2>
+          <p style={{ maxWidth: 760, color: "#d7d7d7", lineHeight: 1.6 }}>
+            企画の種から長編まで、AIワークフローとプロの作画チームが商業品質の漫画に仕立てます。
+            1話から連載、短納期案件まで柔軟に対応。制作体制・料金プランもご提案します。
+          </p>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", minWidth: 220 }}>
+          <button className="service-cta" onClick={scrollToFlow} style={{ justifyContent: "center" }}>
+            <Info size={18} /> 詳しくはこちら
+          </button>
+          <button
+            className="service-cta"
+            onClick={() => window.open("mailto:contact@example.com?subject=漫画制作相談")}
+            style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.35)", boxShadow: "none" }}
+          >
+            <Sparkles size={18} /> 制作相談する
+          </button>
+        </div>
       </div>
-      <button className="service-cta" onClick={() => window.open("mailto:contact@example.com?subject=漫画制作相談")}>
-        <Sparkles size={18} /> 制作相談する
-      </button>
+    </section>
+  );
+};
+
+const ProductionFlow = () => (
+  <section className="service-section" id="production-flow" style={{ marginTop: "1.5rem" }}>
+    <div style={{ marginBottom: "1rem" }}>
+      <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>PRODUCTION FLOW</div>
+      <h3 style={{ fontSize: "1.6rem", margin: "0.3rem 0 0.4rem", fontWeight: 800 }}>制作の進め方</h3>
+      <p style={{ maxWidth: 780, color: "#cfcfcf", lineHeight: 1.6 }}>
+        企画・キャラ設計からネーム、仕上げ、翻訳までワンストップで担当します。ステップごとに確認しながら進行し、最短ルートで公開まで伴走します。
+      </p>
     </div>
     <div className="service-grid" style={{ marginTop: "1rem" }}>
       <div className="service-card">
@@ -935,6 +963,7 @@ export default function App() {
             />
             <SectionRow title={t.section_trending} items={[...db.series].reverse()} renderItem={(s) => <PosterCard series={s} onClick={openDetail} t={t} />} />
             <ServicePitch />
+            <ProductionFlow />
           </div>
         </div>
       )}
