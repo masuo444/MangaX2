@@ -65,6 +65,25 @@ body {
 .animate-fade-in { animation: fadeIn 0.4s ease-out; }
 .animate-slide-up { animation: slideUp 0.3s ease-out; }
 .animate-spin { animation: spin 1s linear infinite; }
+.page-indicator {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+  background: rgba(0,0,0,0.65);
+  padding: 10px 14px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  z-index: 120;
+  color: white;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+.page-progress-bar { height: 6px; background: rgba(255,255,255,0.2); border-radius: 999px; overflow: hidden; }
+.page-progress-fill { height: 100%; background: linear-gradient(90deg, #e50914, #ff6b6b); }
 
 .service-section {
   margin: 3rem 4% 5rem;
@@ -258,7 +277,7 @@ const DEFAULT_DB = {
   ],
   chapters: [
     { id: "c1", seriesId: "kuku", number: 1, title: "1話", publishDate: "2025/11/01", likes: 1200, status: "published", thumbUrl: "/assets/kuku-ep1.jpg", pageCount: 21 },
-    { id: "c2", seriesId: "kuku", number: 2, title: "2話", publishDate: "2025/11/08", likes: 980, status: "published", thumbUrl: "/assets/kuku-ep2.jpg", pageCount: 23 },
+    { id: "c2", seriesId: "kuku", number: 2, title: "2話", publishDate: "2025/11/08", likes: 980, status: "published", thumbUrl: "/assets/kuku-ep2.jpg", pageCount: 22 },
     { id: "c3", seriesId: "kuku", number: 3, title: "3話", publishDate: "2025/11/15", likes: 720, status: "published", thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
     { id: "c4", seriesId: "kuku", number: 4, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
     { id: "c5", seriesId: "kuku", number: 5, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
@@ -554,9 +573,26 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
   const [activePage, setActivePage] = useState(null);
   const [isTranslating, setIsTranslating] = useState(false);
   const [translateError, setTranslateError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const scrollRaf = React.useRef(null);
 
   const pageCount = chapter.pageCount || 20;
   const pages = Array.from({ length: pageCount }, (_, i) => i + 1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+    setTranslations({});
+    setTranslateError(null);
+    setActivePage(null);
+  }, [chapter.id]);
+
+  const handleScroll = (e) => {
+    const { scrollLeft, clientWidth } = e.target;
+    const page = Math.round(scrollLeft / clientWidth) + 1;
+    const clamped = Math.min(pageCount, Math.max(1, page));
+    if (scrollRaf.current) cancelAnimationFrame(scrollRaf.current);
+    scrollRaf.current = requestAnimationFrame(() => setCurrentPage(clamped));
+  };
 
   const handleTranslate = async (page) => {
     try {
@@ -596,7 +632,12 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
         <span className="font-bold">{series.title} #{chapter.number}</span>
         <div style={{ width: 24 }}></div>
       </div>
-      <div className="reader-content" onClick={() => setShowUI(!showUI)} dir={series.direction === "ltr" ? "ltr" : "rtl"}>
+      <div
+        className="reader-content"
+        onClick={() => setShowUI(!showUI)}
+        onScroll={handleScroll}
+        dir={series.direction === "ltr" ? "ltr" : "rtl"}
+      >
         {pages.map((p) => (
           <div key={p} className="reader-page" style={{ background: "#111" }}>
             <div style={{ position: "absolute", top: 12, right: 12, display: "flex", gap: "0.5rem", alignItems: "center", zIndex: 5, background: "rgba(0,0,0,0.55)", padding: "0.35rem 0.6rem", borderRadius: 10 }}>
@@ -645,6 +686,15 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
             )}
           </div>
         ))}
+      </div>
+      <div className="page-indicator">
+        <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 700 }}>
+          <span>Page {currentPage}</span>
+          <span>{currentPage} / {pageCount}</span>
+        </div>
+        <div className="page-progress-bar">
+          <div className="page-progress-fill" style={{ width: `${(currentPage / pageCount) * 100}%` }} />
+        </div>
       </div>
     </div>
   );
