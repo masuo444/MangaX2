@@ -569,6 +569,7 @@ const DetailModal = ({ series, chapters, isOpen, onClose, onRead, t }) => {
 
 const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslationLang, nextChapter, onNextChapter }) => {
   const [showUI, setShowUI] = useState(true);
+  const [showIndicator, setShowIndicator] = useState(false);
   const [translations, setTranslations] = useState({});
   const [activePage, setActivePage] = useState(null);
   const [isTranslating, setIsTranslating] = useState(false);
@@ -589,6 +590,7 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
     setActivePage(null);
     setPreloaded(false);
     setLoadedCount(0);
+    setShowIndicator(false);
   }, [chapter.id]);
 
   const handleScroll = () => {
@@ -676,7 +678,7 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
       </div>
       <div
         className="reader-content"
-        onClick={() => setShowUI(!showUI)}
+        onClick={() => { const next = !showUI; setShowUI(next); if (next) setShowIndicator(true); }}
         onScroll={handleScroll}
         ref={readerRef}
         dir={series.direction === "ltr" ? "ltr" : "rtl"}
@@ -730,44 +732,47 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
           </div>
         ))}
       </div>
-      <div className="page-indicator">
-        <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 700 }}>
-          <span>Page {currentPage}</span>
-          <span>{currentPage} / {pageCount}</span>
+      {showIndicator && (
+        <div className="page-indicator">
+          <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 700 }}>
+            <span>Page {currentPage}</span>
+            <span>{currentPage} / {pageCount}</span>
+          </div>
+          <div className="page-progress-bar">
+            <div
+              className="page-progress-fill"
+              style={{
+                width: `${(currentPage / pageCount) * 100}%`,
+                marginLeft: series.direction === "ltr" ? 0 : "auto",
+                marginRight: series.direction === "ltr" ? "auto" : 0,
+              }}
+            />
+          </div>
         </div>
-        <div className="page-progress-bar">
-          <div
-            className="page-progress-fill"
-            style={{
-              width: `${(currentPage / pageCount) * 100}%`,
-              marginLeft: series.direction === "ltr" ? 0 : "auto",
-              marginRight: series.direction === "ltr" ? "auto" : 0,
-            }}
-          />
-        </div>
-        {nextChapter && (
+      )}
+      {nextChapter && currentPage === pageCount && (
+        <div style={{ position: "fixed", bottom: 16, right: 16, left: 16, zIndex: 121, display: "flex", justifyContent: "flex-end" }}>
           <button
             onClick={() => onNextChapter(nextChapter)}
             style={{
-              marginTop: 8,
-              width: "100%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               gap: 8,
-              background: "rgba(229,9,20,0.9)",
+              background: "rgba(229,9,20,0.95)",
               border: "none",
-              borderRadius: 10,
+              borderRadius: 12,
               color: "#fff",
               fontWeight: 800,
-              padding: "0.6rem 0.8rem",
+              padding: "0.7rem 1rem",
               cursor: "pointer",
+              boxShadow: "0 10px 24px rgba(0,0,0,0.45)",
             }}
           >
             <ChevronRight size={18} /> 次のエピソードへ
           </button>
-        )}
-      </div>
+        </div>
+      )}
       {!preloaded && (
         <div
           style={{
