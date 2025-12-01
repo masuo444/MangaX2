@@ -587,10 +587,6 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
   };
 
   useEffect(() => {
-    handleScroll();
-  }, [series.id, chapter.id]);
-
-  useEffect(() => {
     if (!autoTranslate) return;
     if (!preloaded) return;
     if (isTranslating) return;
