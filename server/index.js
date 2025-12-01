@@ -12,7 +12,7 @@ app.use(express.json({ limit: "15mb" }));
 const apiKey = process.env.GEMINI_API_KEY;
 const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
 // Allow override via env; default to widely available model
-const MODEL_NAME = process.env.GEMINI_MODEL || "gemini-1.5-flash";
+const MODEL_NAME = process.env.GEMINI_MODEL || "gemini-1.5-flash-latest";
 
 app.post("/api/translate", async (req, res) => {
   try {
