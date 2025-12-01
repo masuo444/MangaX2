@@ -450,12 +450,7 @@ const NewEpisodeCard = ({ episode, onClick }) => (
   </div>
 );
 
-const ServicePitch = () => {
-  const scrollToFlow = () => {
-    const el = document.getElementById("production-flow");
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
+const ServicePitch = ({ onShowFlow }) => {
   return (
     <section className="service-section">
       <div style={{ display: "flex", justifyContent: "space-between", gap: "1.5rem", flexWrap: "wrap", alignItems: "center" }}>
@@ -468,7 +463,7 @@ const ServicePitch = () => {
           </p>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", minWidth: 220 }}>
-          <button className="service-cta" onClick={scrollToFlow} style={{ justifyContent: "center" }}>
+          <button className="service-cta" onClick={onShowFlow} style={{ justifyContent: "center" }}>
             <Info size={18} /> 詳しくはこちら
           </button>
           <button
@@ -512,6 +507,40 @@ const ProductionFlow = () => (
       </div>
     </div>
   </section>
+);
+
+const FlowPage = ({ onBack }) => (
+  <div style={{ background: "#0b0b0b", minHeight: "100vh", paddingBottom: "4rem" }}>
+    <div style={{ padding: "5rem 4% 1rem" }}>
+      <button
+        onClick={onBack}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 8,
+          padding: "0.6rem 1rem",
+          borderRadius: 999,
+          border: "1px solid rgba(255,255,255,0.15)",
+          background: "rgba(255,255,255,0.04)",
+          color: "#fff",
+          cursor: "pointer",
+        }}
+      >
+        <ChevronLeft size={18} /> トップへ戻る
+      </button>
+      <div style={{ marginTop: "1.2rem" }}>
+        <div style={{ fontSize: "0.95rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>SERVICE DETAIL</div>
+        <h1 style={{ fontSize: "2.6rem", fontWeight: 900, margin: "0.2rem 0 0.6rem", lineHeight: 1.1 }}>制作フローの全体像</h1>
+        <p style={{ maxWidth: 880, color: "#d7d7d7", lineHeight: 1.6, margin: 0 }}>
+          初回のヒアリングから納品・多言語展開まで、ワンストップで対応します。各ステップで合意形成しながら進行するので、
+          スケジュールと品質を両立させやすい進め方です。
+        </p>
+      </div>
+    </div>
+    <div style={{ padding: "0 4%" }}>
+      <ProductionFlow />
+    </div>
+  </div>
 );
 
 const ContinueCard = ({ historyItem, series, onClick }) => (
@@ -962,11 +991,12 @@ export default function App() {
               )}
             />
             <SectionRow title={t.section_trending} items={[...db.series].reverse()} renderItem={(s) => <PosterCard series={s} onClick={openDetail} t={t} />} />
-            <ServicePitch />
-            <ProductionFlow />
+            <ServicePitch onShowFlow={() => navigate("flow")} />
           </div>
         </div>
       )}
+
+      {view === "flow" && <FlowPage onBack={() => navigate("home")} />}
 
       {view === "mypage" && (
         <div className="bg-black min-h-screen pt-20 px-4 text-white">
