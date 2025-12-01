@@ -555,6 +555,8 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
   const [isTranslating, setIsTranslating] = useState(false);
   const [translateError, setTranslateError] = useState(null);
   const [autoTranslate, setAutoTranslate] = useState(true);
+  const [batchTranslating, setBatchTranslating] = useState(false);
+  const [batchProgress, setBatchProgress] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [reachedEnd, setReachedEnd] = useState(false);
   const scrollRaf = React.useRef(null);
@@ -592,6 +594,29 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
     setReachedEnd(currentPage >= pageCount);
   }, [currentPage, pageCount]);
 
+  const handleTranslateAll = async () => {
+    if (batchTranslating) return;
+    try {
+      setBatchTranslating(true);
+      setBatchProgress(0);
+      setTranslateError(null);
+      for (let idx = 0; idx < pages.length; idx++) {
+        const p = pages[idx];
+        if (!translations[p]) {
+          const translatedText = await performTranslate(p);
+          setTranslations((prev) => ({ ...prev, [p]: translatedText || "翻訳結果がありませんでした。" }));
+        }
+        setBatchProgress(Math.round(((idx + 1) / pages.length) * 100));
+      }
+    } catch (err) {
+      console.error(err);
+      setTranslateError(err.message || "翻訳に失敗しました");
+    } finally {
+      setBatchTranslating(false);
+      setBatchProgress(100);
+    }
+  };
+
   useEffect(() => {
     if (!autoTranslate) return;
     if (!preloaded) return;
@@ -628,28 +653,32 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
     };
   }, [chapter.id, series.id, pageCount]);
 
+  const performTranslate = async (page) => {
+    const imgEl = document.getElementById(`reader-img-${page}`);
+    const imageUrl = imgEl?.currentSrc || `/manga/${series.id}/ch${chapter.number}/${page}.png`;
+
+    const res = await fetch("/api/translate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ imageUrl, targetLang: translationLang }),
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(text || "Translation failed");
+    }
+
+    const data = await res.json();
+    return data.translation || data.raw?.translated_text || "";
+  };
+
   const handleTranslate = async (page) => {
     try {
       setIsTranslating(true);
       setActivePage(page);
       setTranslateError(null);
 
-      const imgEl = document.getElementById(`reader-img-${page}`);
-      const imageUrl = imgEl?.currentSrc || `/manga/${series.id}/ch${chapter.number}/${page}.png`;
-
-      const res = await fetch("/api/translate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ imageUrl, targetLang: translationLang }),
-      });
-
-      if (!res.ok) {
-        const text = await res.text();
-        throw new Error(text || "Translation failed");
-      }
-
-      const data = await res.json();
-      const translatedText = data.translation || data.raw?.translated_text || "";
+      const translatedText = await performTranslate(page);
       setTranslations((prev) => ({ ...prev, [page]: translatedText || "翻訳結果がありませんでした。" }));
     } catch (err) {
       console.error(err);
@@ -688,6 +717,14 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
                 style={{ background: autoTranslate ? "#198754" : "#2a2a2a", color: "white", border: "none", borderRadius: 8, padding: "0.35rem 0.55rem", cursor: "pointer", fontWeight: 700 }}
               >
                 {autoTranslate ? "自動ON" : "自動OFF"}
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); handleTranslateAll(); }}
+                disabled={batchTranslating}
+                style={{ display: "flex", alignItems: "center", gap: 6, background: "#0f6fec", color: "white", border: "none", borderRadius: 8, padding: "0.35rem 0.7rem", cursor: "pointer", fontWeight: 700 }}
+              >
+                {batchTranslating ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}
+                全ページ翻訳
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); handleTranslate(p); }}
@@ -748,6 +785,27 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
           >
             <ChevronRight size={18} /> 次のエピソードへ
           </button>
+        </div>
+      )}
+      {batchTranslating && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: 16,
+            left: 16,
+            zIndex: 121,
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            background: "rgba(0,0,0,0.75)",
+            color: "#fff",
+            padding: "0.5rem 0.75rem",
+            borderRadius: 10,
+            fontWeight: 700,
+          }}
+        >
+          <Loader2 size={16} className="animate-spin" />
+          全ページ翻訳中... {batchProgress}%
         </div>
       )}
       {!preloaded && (
