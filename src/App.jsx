@@ -65,25 +65,6 @@ body {
 .animate-fade-in { animation: fadeIn 0.4s ease-out; }
 .animate-slide-up { animation: slideUp 0.3s ease-out; }
 .animate-spin { animation: spin 1s linear infinite; }
-.page-indicator {
-  position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 220px;
-  background: rgba(0,0,0,0.65);
-  padding: 10px 14px;
-  border-radius: 12px;
-  backdrop-filter: blur(6px);
-  z-index: 120;
-  color: white;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-}
-.page-progress-bar { height: 6px; background: rgba(255,255,255,0.2); border-radius: 999px; overflow: hidden; }
-.page-progress-fill { height: 100%; background: linear-gradient(90deg, #e50914, #ff6b6b); }
 
 .service-section {
   margin: 3rem 4% 5rem;
@@ -569,7 +550,6 @@ const DetailModal = ({ series, chapters, isOpen, onClose, onRead, t }) => {
 
 const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslationLang, nextChapter, onNextChapter }) => {
   const [showUI, setShowUI] = useState(true);
-  const [showIndicator, setShowIndicator] = useState(false);
   const [translations, setTranslations] = useState({});
   const [activePage, setActivePage] = useState(null);
   const [isTranslating, setIsTranslating] = useState(false);
@@ -590,7 +570,6 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
     setActivePage(null);
     setPreloaded(false);
     setLoadedCount(0);
-    setShowIndicator(false);
   }, [chapter.id]);
 
   const handleScroll = () => {
@@ -678,7 +657,7 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
       </div>
       <div
         className="reader-content"
-        onClick={() => { const next = !showUI; setShowUI(next); if (next) setShowIndicator(true); }}
+        onClick={() => setShowUI(!showUI)}
         onScroll={handleScroll}
         ref={readerRef}
         dir={series.direction === "ltr" ? "ltr" : "rtl"}
@@ -732,25 +711,7 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
           </div>
         ))}
       </div>
-      {showIndicator && (
-        <div className="page-indicator">
-          <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 700 }}>
-            <span>Page {currentPage}</span>
-            <span>{currentPage} / {pageCount}</span>
-          </div>
-          <div className="page-progress-bar">
-            <div
-              className="page-progress-fill"
-              style={{
-                width: `${(currentPage / pageCount) * 100}%`,
-                marginLeft: series.direction === "ltr" ? 0 : "auto",
-                marginRight: series.direction === "ltr" ? "auto" : 0,
-              }}
-            />
-          </div>
-        </div>
-      )}
-      {nextChapter && currentPage === pageCount && (
+      {nextChapter && preloaded && currentPage === pageCount && (
         <div style={{ position: "fixed", bottom: 16, right: 16, left: 16, zIndex: 121, display: "flex", justifyContent: "flex-end" }}>
           <button
             onClick={() => onNextChapter(nextChapter)}
