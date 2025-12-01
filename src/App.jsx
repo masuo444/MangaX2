@@ -576,6 +576,8 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
   const [currentPage, setCurrentPage] = useState(1);
   const scrollRaf = React.useRef(null);
   const readerRef = React.useRef(null);
+  const [preloaded, setPreloaded] = useState(false);
+  const [loadedCount, setLoadedCount] = useState(0);
 
   const pageCount = chapter.pageCount || 20;
   const pages = Array.from({ length: pageCount }, (_, i) => i + 1);
@@ -585,6 +587,8 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
     setTranslations({});
     setTranslateError(null);
     setActivePage(null);
+    setPreloaded(false);
+    setLoadedCount(0);
   }, [chapter.id]);
 
   const handleScroll = () => {
@@ -603,6 +607,34 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
   useEffect(() => {
     handleScroll();
   }, [series.id, chapter.id]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const loadImage = (url) =>
+      new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
+      });
+
+    const preload = async () => {
+      for (const p of pages) {
+        if (cancelled) return;
+        const basePng = `/manga/${series.id}/ch${chapter.number}/${p}.png`;
+        const baseJpg = `/manga/${series.id}/ch${chapter.number}/${p}.jpg`;
+        const ok = await loadImage(basePng);
+        if (!ok) await loadImage(baseJpg);
+        setLoadedCount((c) => c + 1);
+      }
+      if (!cancelled) setPreloaded(true);
+    };
+
+    preload();
+    return () => {
+      cancelled = true;
+    };
+  }, [chapter.id, series.id, pageCount]);
 
   const handleTranslate = async (page) => {
     try {
@@ -736,6 +768,26 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
           </button>
         )}
       </div>
+      {!preloaded && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.85)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#fff",
+            zIndex: 300,
+            gap: "0.8rem",
+          }}
+        >
+          <Loader2 className="animate-spin" size={32} />
+          <div style={{ fontWeight: 700 }}>ページを事前読み込み中...</div>
+          <div style={{ fontSize: 14, color: "#cfcfcf" }}>{loadedCount} / {pageCount} pages</div>
+        </div>
+      )}
     </div>
   );
 };
