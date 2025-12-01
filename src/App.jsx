@@ -554,6 +554,7 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
   const [activePage, setActivePage] = useState(null);
   const [isTranslating, setIsTranslating] = useState(false);
   const [translateError, setTranslateError] = useState(null);
+  const [autoTranslate, setAutoTranslate] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const scrollRaf = React.useRef(null);
   const readerRef = React.useRef(null);
@@ -588,6 +589,14 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
   useEffect(() => {
     handleScroll();
   }, [series.id, chapter.id]);
+
+  useEffect(() => {
+    if (!autoTranslate) return;
+    if (!preloaded) return;
+    if (isTranslating) return;
+    if (translations[currentPage]) return;
+    handleTranslate(currentPage);
+  }, [currentPage, autoTranslate, preloaded, translations, isTranslating]);
 
   useEffect(() => {
     let cancelled = false;
@@ -674,6 +683,12 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
                   <option key={lang.code} value={lang.code}>{lang.label}</option>
                 ))}
               </select>
+              <button
+                onClick={(e) => { e.stopPropagation(); setAutoTranslate((v) => !v); }}
+                style={{ background: autoTranslate ? "#198754" : "#2a2a2a", color: "white", border: "none", borderRadius: 8, padding: "0.35rem 0.55rem", cursor: "pointer", fontWeight: 700 }}
+              >
+                {autoTranslate ? "自動ON" : "自動OFF"}
+              </button>
               <button
                 onClick={(e) => { e.stopPropagation(); handleTranslate(p); }}
                 disabled={isTranslating && activePage === p}
