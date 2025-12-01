@@ -556,6 +556,7 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
   const [translateError, setTranslateError] = useState(null);
   const [autoTranslate, setAutoTranslate] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [reachedEnd, setReachedEnd] = useState(false);
   const scrollRaf = React.useRef(null);
   const readerRef = React.useRef(null);
   const [preloaded, setPreloaded] = useState(false);
@@ -571,6 +572,7 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
     setActivePage(null);
     setPreloaded(false);
     setLoadedCount(0);
+    setReachedEnd(false);
   }, [chapter.id]);
 
   const handleScroll = () => {
@@ -585,6 +587,10 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
     if (scrollRaf.current) cancelAnimationFrame(scrollRaf.current);
     scrollRaf.current = requestAnimationFrame(() => setCurrentPage(clamped));
   };
+
+  useEffect(() => {
+    setReachedEnd(currentPage >= pageCount);
+  }, [currentPage, pageCount]);
 
   useEffect(() => {
     if (!autoTranslate) return;
@@ -720,11 +726,12 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
           </div>
         ))}
       </div>
-      {nextChapter && preloaded && currentPage === pageCount && (
-        <div style={{ position: "fixed", bottom: 16, right: 16, left: 16, zIndex: 121, display: "flex", justifyContent: "flex-end" }}>
+      {nextChapter && preloaded && reachedEnd && showUI && (
+        <div style={{ position: "fixed", bottom: 16, right: 16, left: 16, zIndex: 121, display: "flex", justifyContent: "flex-end", pointerEvents: "none" }}>
           <button
             onClick={() => onNextChapter(nextChapter)}
             style={{
+              pointerEvents: "auto",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
