@@ -567,7 +567,7 @@ const DetailModal = ({ series, chapters, isOpen, onClose, onRead, t }) => {
   );
 };
 
-const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslationLang }) => {
+const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslationLang, nextChapter, onNextChapter }) => {
   const [showUI, setShowUI] = useState(true);
   const [translations, setTranslations] = useState({});
   const [activePage, setActivePage] = useState(null);
@@ -713,6 +713,28 @@ const Reader = ({ chapter, series, onClose, translationLang, onChangeTranslation
             }}
           />
         </div>
+        {nextChapter && (
+          <button
+            onClick={() => onNextChapter(nextChapter)}
+            style={{
+              marginTop: 8,
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              background: "rgba(229,9,20,0.9)",
+              border: "none",
+              borderRadius: 10,
+              color: "#fff",
+              fontWeight: 800,
+              padding: "0.6rem 0.8rem",
+              cursor: "pointer",
+            }}
+          >
+            <ChevronRight size={18} /> 次のエピソードへ
+          </button>
+        )}
       </div>
     </div>
   );
@@ -743,6 +765,11 @@ export default function App() {
   }, [selectedSeries]);
 
   if (readingChapter) {
+    const chaptersForSeries = db.chapters
+      .filter((c) => c.seriesId === readingChapter.series.id && c.status === "published")
+      .sort((a, b) => a.number - b.number);
+    const nextChapter = chaptersForSeries.find((c) => c.number > readingChapter.chapter.number) || null;
+
     return (
       <>
         <style>{STYLES}</style>
@@ -752,6 +779,8 @@ export default function App() {
           onClose={closeReader}
           translationLang={translationLang}
           onChangeTranslationLang={setTranslationLang}
+          nextChapter={nextChapter}
+          onNextChapter={(ch) => openReader(ch, readingChapter.series)}
         />
       </>
     );
