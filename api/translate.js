@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// Gemini 3 vision-capable model
-const MODEL_NAME = "gemini-3.0-flash";
+// Allow override via env; default to widely available model
+const MODEL_NAME = process.env.GEMINI_MODEL || "gemini-1.5-flash";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
