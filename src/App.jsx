@@ -782,12 +782,12 @@ const FlowPage = ({ onBack, t }) => (
         </div>
         <div className="service-grid">
           {[
-            "Corporate Branding　創業の想い、企業理念（MVV）、周年記念史をストーリー化し、ステークホルダーへの深い理解と共感を促します。",
-            "Recruitment & HR　社員の成長物語や現場を可視化し、働くイメージとカルチャーを伝達します。",
-            "Product & Service PR　開発秘話や利用シーンを漫画化。難解な商材もストーリーで直感的に理解させます。",
-            "Global Communication　英語・多言語対応コミックを制作し、展示会やWebマーケティングで活用できます。",
-            "Personal History & Gift　個人史・伝記・記念日の贈り物として、人生の節目を色褪せない作品に。",
-            "Academic & Education　研究成果や研修マニュアルを漫画化し、学習者の興味と理解度を高めます。",
+            "Corporate Branding　企業理念や歴史をストーリー化。共感を生み、ブランド力を高めます。",
+            "Recruitment & HR　職場のリアルを漫画で可視化。働くイメージと社風を直感的に伝えます。",
+            "Product & Service PR　商品やサービスの魅力を漫画に。難しい内容も分かりやすく伝わります。",
+            "Global Communication　多言語コミックを制作。海外市場へのアピールや展示会で活用できます。",
+            "Personal History & Gift　自分史や特別な贈り物に。人生の大切な節目を漫画で形に残します。",
+            "Academic & Education　研究成果やマニュアルを漫画化。興味を引きつけ、学習効果を高めます。",
           ].map((text, idx) => (
             <div key={idx} className="service-card">
               <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
