@@ -482,28 +482,28 @@ const ServicePitch = ({ onShowFlow }) => {
 const ProductionFlow = () => (
   <section className="service-section" id="production-flow" style={{ marginTop: "1.5rem" }}>
     <div style={{ marginBottom: "1rem" }}>
-      <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>PRODUCTION FLOW</div>
-      <h3 style={{ fontSize: "1.6rem", margin: "0.3rem 0 0.4rem", fontWeight: 800 }}>制作の進め方</h3>
+      <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>PROCESS</div>
+      <h3 style={{ fontSize: "1.6rem", margin: "0.3rem 0 0.4rem", fontWeight: 800 }}>制作の流れ</h3>
       <p style={{ maxWidth: 780, color: "#cfcfcf", lineHeight: 1.6 }}>
-        企画・キャラ設計からネーム、仕上げ、翻訳までワンストップで担当します。ステップごとに確認しながら進行し、最短ルートで公開まで伴走します。
+        原作の共有からヒアリング、構成・生成・編集、最終納品までワンストップで伴走します。
       </p>
     </div>
     <div className="service-grid" style={{ marginTop: "1rem" }}>
       <div className="service-card">
-        <strong>01. 企画・演出</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>原作の魅力を漫画向けに再構成。ページ配分と演出を設計します。</p>
+        <strong>01. お申し込み</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>フォームより原作（テキストやメモ）をお送りください。</p>
       </div>
       <div className="service-card">
-        <strong>02. キャラ設定</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>ラフ〜カラー立ち絵まで制作。世界観に合う衣装・表情差分も対応。</p>
+        <strong>02. オンラインヒアリング（60分）</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>担当編集者がWeb会議で物語の詳細や希望の画風を伺います。</p>
       </div>
       <div className="service-card">
-        <strong>03. ネーム & 作画</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>ページ単位で確認しながら進行。背景・仕上げ・効果線まで一括管理。</p>
+        <strong>03. 構成・制作</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>ヒアリング内容を元に構成を練り、AIで漫画を生成・編集します。</p>
       </div>
       <div className="service-card">
-        <strong>04. 翻訳・多言語展開</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>Geminiベースの自動翻訳＋校正で多言語版を同時展開。</p>
+        <strong>04. 確認・納品</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>データ確認後に納品。製本を希望される場合は印刷工程へ進みます。</p>
       </div>
     </div>
   </section>
@@ -511,33 +511,108 @@ const ProductionFlow = () => (
 
 const FlowPage = ({ onBack }) => (
   <div style={{ background: "#0b0b0b", minHeight: "100vh", paddingBottom: "4rem" }}>
-    <div style={{ padding: "5rem 4% 1rem" }}>
-      <button
-        onClick={onBack}
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 8,
-          padding: "0.6rem 1rem",
-          borderRadius: 999,
-          border: "1px solid rgba(255,255,255,0.15)",
-          background: "rgba(255,255,255,0.04)",
-          color: "#fff",
-          cursor: "pointer",
-        }}
-      >
-        <ChevronLeft size={18} /> トップへ戻る
-      </button>
-      <div style={{ marginTop: "1.2rem" }}>
-        <div style={{ fontSize: "0.95rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>SERVICE DETAIL</div>
-        <h1 style={{ fontSize: "2.6rem", fontWeight: 900, margin: "0.2rem 0 0.6rem", lineHeight: 1.1 }}>制作フローの全体像</h1>
-        <p style={{ maxWidth: 880, color: "#d7d7d7", lineHeight: 1.6, margin: 0 }}>
-          初回のヒアリングから納品・多言語展開まで、ワンストップで対応します。各ステップで合意形成しながら進行するので、
-          スケジュールと品質を両立させやすい進め方です。
+    <div style={{ padding: "5rem 4% 2rem", display: "grid", gap: "1.2rem" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+        <button
+          onClick={onBack}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "0.6rem 1rem",
+            borderRadius: 999,
+            border: "1px solid rgba(255,255,255,0.15)",
+            background: "rgba(255,255,255,0.04)",
+            color: "#fff",
+            cursor: "pointer",
+          }}
+        >
+          <ChevronLeft size={18} /> トップへ戻る
+        </button>
+        <button
+          onClick={() => window.open("mailto:contact@example.com?subject=Story-to-Comic 相談")}
+          className="service-cta"
+          style={{ justifyContent: "center", padding: "0.75rem 1.5rem" }}
+        >
+          <Sparkles size={18} /> 制作相談する
+        </button>
+      </div>
+
+      <div style={{ position: "relative", overflow: "hidden", borderRadius: 16, padding: "2.2rem 2rem", background: "linear-gradient(135deg, rgba(229,9,20,0.12), rgba(0,180,180,0.08))" }}>
+        <div style={{ fontSize: "0.95rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>STORY → COMIC STUDIO</div>
+        <h1 style={{ fontSize: "2.8rem", fontWeight: 900, margin: "0.3rem 0 0.6rem", lineHeight: 1.1 }}>その物語を、一生残る「MANGA」に。</h1>
+        <p style={{ maxWidth: 900, color: "#e8e8e8", lineHeight: 1.7, margin: 0 }}>
+          あなたの人生、ビジネス、頭の中にある小説。言葉だけでは伝わらない熱量を、最新AIテクノロジーと編集力で、世界に一つだけの漫画作品へ。
         </p>
       </div>
     </div>
-    <div style={{ padding: "0 4%" }}>
+
+    <div style={{ padding: "0 4%", display: "grid", gap: "1.2rem" }}>
+      <section className="service-section">
+        <div style={{ marginBottom: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>CONCEPT</div>
+          <h2 style={{ fontSize: "2rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>AIが描き、人が魂を吹き込む。</h2>
+          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: 0 }}>
+            FOMUS Story-to-Comic Studio は、物語の可視化を専門とするクリエイティブチームです。作画工程を最新の画像生成AIに任せることで、従来の漫画制作における「膨大な時間とコスト」を圧縮。
+            浮いたリソースを「ヒアリング」と「構成」に集中させることで、あなたの想いを深く理解し、最適なストーリー構成で漫画化します。
+          </p>
+        </div>
+      </section>
+
+      <section className="service-section">
+        <div style={{ marginBottom: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>WHY FOMUS?</div>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>選ばれる理由</h2>
+        </div>
+        <div className="service-grid">
+          <div className="service-card">
+            <strong>01. 徹底したヒアリングと構成力</strong>
+            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
+              美しい絵だけでは漫画は面白くなりません。60分間のオンラインヒアリングで想いを深掘りし、プロ編集者が「読まれるストーリー構成（ネーム）」を設計します。
+            </p>
+          </div>
+          <div className="service-card">
+            <strong>02. AIによる圧倒的な表現スピード</strong>
+            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
+              最新の生成AIを活用し、多様な画風でスピーディに作画。編集者が構図やセリフを調整・演出し、AI特有の不自然さを排除して没入できる作品に仕上げます。
+            </p>
+          </div>
+          <div className="service-card">
+            <strong>03. Webからリアルまで</strong>
+            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
+              完成漫画はデジタル納品に加え、オプションで製本も可能。Web発信はもちろん、記念品や配布資料として手元に残せます。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="service-section">
+        <div style={{ marginBottom: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>PRICING</div>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>料金プラン</h2>
+        </div>
+        <div className="service-grid">
+          <div className="service-card" style={{ border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}>
+            <strong>Basic Package（制作パック）</strong>
+            <ul style={{ color: "#cfcfcf", lineHeight: 1.6, paddingLeft: "1.2rem", margin: "0.6rem 0" }}>
+              <li>料金: 100,000円（税込）〜（漫画制作10ページ分を含む）</li>
+              <li>60分間のオンラインヒアリング付き</li>
+              <li>構成・AI作画・編集費用込み</li>
+              <li>追加ページ: 1ページ +5,000円（例: 20ページ＝15万円）</li>
+              <li>納期目安: 20ページで約2週間〜</li>
+            </ul>
+          </div>
+          <div className="service-card" style={{ border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 10px 30px rgba(0,0,0,0.25)" }}>
+            <strong>Option（オプション）</strong>
+            <ul style={{ color: "#cfcfcf", lineHeight: 1.6, paddingLeft: "1.2rem", margin: "0.6rem 0" }}>
+              <li>製本サービス: 1冊 1,000円〜（ページ数・部数で変動）</li>
+              <li>高級感のある冊子でお届け可能</li>
+              <li>結婚式の引き出物、企業案内、個人の保存用に</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <ProductionFlow />
     </div>
   </div>
