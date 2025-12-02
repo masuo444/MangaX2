@@ -550,6 +550,17 @@ const FlowPage = ({ onBack }) => (
     <div style={{ padding: "0 4%", display: "grid", gap: "1.2rem" }}>
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>CONCEPT</div>
+          <h2 style={{ fontSize: "2rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>AIが描き、人が魂を吹き込む。</h2>
+          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: 0 }}>
+            FOMUS Story-to-Comic Studio は、物語の可視化を専門とするクリエイティブチームです。作画工程を最新の画像生成AIに任せることで、従来の漫画制作における「膨大な時間とコスト」を圧縮。
+            浮いたリソースを「ヒアリング」と「構成」に集中させることで、あなたの想いを深く理解し、最適なストーリー構成で漫画化します。
+          </p>
+        </div>
+      </section>
+
+      <section className="service-section">
+        <div style={{ marginBottom: "0.8rem" }}>
           <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>サービス比較 (Why Choose FOMUS?)</div>
           <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>従来の常識を覆す、速度と価格</h2>
           <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: 0 }}>
@@ -590,6 +601,33 @@ const FlowPage = ({ onBack }) => (
               <div style={{ color: "#fff", lineHeight: 1.5 }}>{item.fomus}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="service-section">
+        <div style={{ marginBottom: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>WHY FOMUS?</div>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>選ばれる理由</h2>
+        </div>
+        <div className="service-grid">
+          <div className="service-card">
+            <strong>01. 徹底したヒアリングと構成力</strong>
+            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
+              美しい絵だけでは漫画は面白くなりません。60分間のオンラインヒアリングで想いを深掘りし、プロ編集者が「読まれるストーリー構成（ネーム）」を設計します。
+            </p>
+          </div>
+          <div className="service-card">
+            <strong>02. AIによる圧倒的な表現スピード</strong>
+            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
+              最新の生成AIを活用し、多様な画風でスピーディに作画。編集者が構図やセリフを調整・演出し、AI特有の不自然さを排除して没入できる作品に仕上げます。
+            </p>
+          </div>
+          <div className="service-card">
+            <strong>03. Webからリアルまで</strong>
+            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
+              完成漫画はデジタル納品に加え、オプションで製本も可能。Web発信はもちろん、記念品や配布資料として手元に残せます。
+            </p>
+          </div>
         </div>
       </section>
 
