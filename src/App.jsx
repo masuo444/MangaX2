@@ -482,20 +482,20 @@ const ServicePitch = ({ onShowFlow }) => {
 const ProductionFlow = () => (
   <section className="service-section" id="production-flow" style={{ marginTop: "1.5rem" }}>
     <div style={{ marginBottom: "1rem" }}>
-      <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>PROCESS</div>
+      <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>WORKFLOW</div>
       <h3 style={{ fontSize: "1.6rem", margin: "0.3rem 0 0.4rem", fontWeight: 800 }}>制作の流れ</h3>
       <p style={{ maxWidth: 780, color: "#cfcfcf", lineHeight: 1.6 }}>
-        原作の共有からヒアリング、構成・生成・編集、最終納品までワンストップで伴走します。
+        ご依頼から納品まで、あなたの負担は「ヒアリング」だけ。構成・AI作画・編集をワンストップで進行します。
       </p>
     </div>
     <div className="service-grid" style={{ marginTop: "1rem" }}>
       <div className="service-card">
-        <strong>01. お申し込み</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>フォームより原作（テキストやメモ）をお送りください。</p>
+        <strong>01. ご依頼</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>フォームよりページ数と原作（メモ書きでOK）をお送りください。</p>
       </div>
       <div className="service-card">
         <strong>02. オンラインヒアリング（60分）</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>担当編集者がWeb会議で物語の詳細や希望の画風を伺います。</p>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>担当編集者がWeb会議で想いやこだわり、希望の画風を伺います。</p>
       </div>
       <div className="service-card">
         <strong>03. 構成・制作</strong>
@@ -503,7 +503,7 @@ const ProductionFlow = () => (
       </div>
       <div className="service-card">
         <strong>04. 確認・納品</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>データ確認後に納品。製本を希望される場合は印刷工程へ進みます。</p>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>完成データをご確認の上、納品。MangaX公開や製本もこの段階で実施します。</p>
       </div>
     </div>
   </section>
@@ -550,39 +550,46 @@ const FlowPage = ({ onBack }) => (
     <div style={{ padding: "0 4%", display: "grid", gap: "1.2rem" }}>
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>CONCEPT</div>
-          <h2 style={{ fontSize: "2rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>AIが描き、人が魂を吹き込む。</h2>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>サービス比較 (Why Choose FOMUS?)</div>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>従来の常識を覆す、速度と価格</h2>
           <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: 0 }}>
-            FOMUS Story-to-Comic Studio は、物語の可視化を専門とするクリエイティブチームです。作画工程を最新の画像生成AIに任せることで、従来の漫画制作における「膨大な時間とコスト」を圧縮。
-            浮いたリソースを「ヒアリング」と「構成」に集中させることで、あなたの想いを深く理解し、最適なストーリー構成で漫画化します。
+            従来の漫画制作は「高い・遅い・面倒」。FOMUSはAIテクノロジーと独自フローで、その常識を刷新します。
           </p>
         </div>
-      </section>
-
-      <section className="service-section">
-        <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>WHY FOMUS?</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>選ばれる理由</h2>
-        </div>
-        <div className="service-grid">
-          <div className="service-card">
-            <strong>01. 徹底したヒアリングと構成力</strong>
-            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
-              美しい絵だけでは漫画は面白くなりません。60分間のオンラインヒアリングで想いを深掘りし、プロ編集者が「読まれるストーリー構成（ネーム）」を設計します。
-            </p>
-          </div>
-          <div className="service-card">
-            <strong>02. AIによる圧倒的な表現スピード</strong>
-            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
-              最新の生成AIを活用し、多様な画風でスピーディに作画。編集者が構図やセリフを調整・演出し、AI特有の不自然さを排除して没入できる作品に仕上げます。
-            </p>
-          </div>
-          <div className="service-card">
-            <strong>03. Webからリアルまで</strong>
-            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
-              完成漫画はデジタル納品に加え、オプションで製本も可能。Web発信はもちろん、記念品や配布資料として手元に残せます。
-            </p>
-          </div>
+        <div style={{ display: "grid", gap: "0.8rem" }}>
+          {[
+            {
+              title: "制作費用",
+              general: <>30万〜50万円 / 10P<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（相場：1P 3万〜5万円）</span></>,
+              fomus: <>10万円 / 10P<br /><span style={{ fontSize: "0.8em", color: "#ff4d4d", fontWeight: 700 }}>（約 1/3 の価格破壊）</span></>,
+            },
+            {
+              title: "納期",
+              general: <>1.5ヶ月 〜 2ヶ月<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（ネーム確認、下書き確認など工程が長い）</span></>,
+              fomus: <>約 2週間<br /><span style={{ fontSize: "0.8em", color: "#ff4d4d", fontWeight: 700 }}>（圧倒的なスピード納品）</span></>,
+            },
+            {
+              title: "依頼者の手間",
+              general: <>多い<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（脚本用意・細かな指示・度重なる修正確認が必要）</span></>,
+              fomus: <>最小限（60分）<br /><span style={{ fontSize: "0.8em", color: "#ff4d4d", fontWeight: 700 }}>（ヒアリングで想いを話すだけ。あとは丸投げOK）</span></>,
+            },
+            {
+              title: "クオリティ",
+              general: <>作家個人のスキルに依存</>,
+              fomus: <>安定した高品質<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（AIによる美麗作画 × プロ編集者の構成力）</span></>,
+            },
+            {
+              title: "対応範囲",
+              general: <>漫画データ納品のみ</>,
+              fomus: <>Web連載・翻訳・製本まで<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（MangaXでの世界配信も可能）</span></>,
+            },
+          ].map((item) => (
+            <div key={item.title} className="service-card" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr 1fr", gap: "0.8rem", alignItems: "center" }}>
+              <div style={{ fontWeight: 800, color: "#fff" }}>{item.title}</div>
+              <div style={{ color: "#cfcfcf", lineHeight: 1.5 }}>{item.general}</div>
+              <div style={{ color: "#fff", lineHeight: 1.5 }}>{item.fomus}</div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -593,21 +600,26 @@ const FlowPage = ({ onBack }) => (
         </div>
         <div className="service-grid">
           <div className="service-card" style={{ border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}>
-            <strong>Basic Package（制作パック）</strong>
+            <strong>■ 基本制作パック：100,000円（税込）</strong>
+            <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.6rem 0" }}>
+              「まずはここから」のスタンダードプラン。LP用漫画、創業ストーリー、ショートエピソードに最適です。
+            </p>
             <ul style={{ color: "#cfcfcf", lineHeight: 1.6, paddingLeft: "1.2rem", margin: "0.6rem 0" }}>
-              <li>料金: 100,000円（税込）〜（漫画制作10ページ分を含む）</li>
-              <li>60分間のオンラインヒアリング付き</li>
-              <li>構成・AI作画・編集費用込み</li>
-              <li>追加ページ: 1ページ +5,000円（例: 20ページ＝15万円）</li>
-              <li>納期目安: 20ページで約2週間〜</li>
+              <li>漫画制作 10ページ</li>
+              <li>60分間のオンラインヒアリング（企画・構成案出し込み）</li>
+              <li>AI作画 ＋ 編集ディレクション</li>
+              <li>納品形式: PDF / JPG / PNG</li>
             </ul>
           </div>
           <div className="service-card" style={{ border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 10px 30px rgba(0,0,0,0.25)" }}>
-            <strong>Option（オプション）</strong>
+            <strong>■ オプション</strong>
+            <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.6rem 0" }}>
+              長編制作や形に残したい方向けのオプションです。
+            </p>
             <ul style={{ color: "#cfcfcf", lineHeight: 1.6, paddingLeft: "1.2rem", margin: "0.6rem 0" }}>
-              <li>製本サービス: 1冊 1,000円〜（ページ数・部数で変動）</li>
-              <li>高級感のある冊子でお届け可能</li>
-              <li>結婚式の引き出物、企業案内、個人の保存用に</li>
+              <li>ページ追加: 1ページ +5,000円（例: 20ページ＝15万円）</li>
+              <li>製本サービス: 1冊 1,000円〜（部数・仕様で変動）</li>
+              <li>フルカラー / 無線綴じ / 上質紙にも対応</li>
             </ul>
           </div>
         </div>
