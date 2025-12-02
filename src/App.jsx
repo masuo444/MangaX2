@@ -93,14 +93,14 @@ body {
   gap: 0.6rem;
   padding: 0.9rem 1rem;
   border-radius: 12px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 .compare-row-head { background: rgba(255,255,255,0.06); font-weight: 800; }
 .compare-title { font-weight: 800; color: #fff; }
 .compare-general { color: #cfcfcf; line-height: 1.5; }
-.compare-fomus { color: #fff; line-height: 1.5; }
-.compare-note-red { color: #ff5252; font-weight: 700; }
+.compare-fomus { color: #f4f7ff; line-height: 1.5; }
+.compare-note-highlight { color: #8be5ff; font-weight: 800; }
 @media (max-width: 720px) {
   .compare-row { grid-template-columns: 1fr; }
 }
@@ -508,20 +508,20 @@ const ProductionFlow = () => (
     </div>
     <div className="service-grid" style={{ marginTop: "1rem" }}>
       <div className="service-card">
-        <strong>01. ご依頼</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>専用フォームより、制作したいページ数と原作（メモ書きや箇条書きでOK）をお送りください。</p>
+        <strong>01. Inquiry（お問い合わせ）</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>専用フォームより、制作したいページ数概算と原作（プロットやメモ等）をお送りください。</p>
       </div>
       <div className="service-card">
-        <strong>02. オンラインヒアリング（60分）</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>担当編集者とオンラインで、物語の背景やこだわり、画風の好みまで余すことなく伺います。</p>
+        <strong>02. Consultation（ヒアリング・構成）</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>担当ディレクターとオンラインで60分。目的・ターゲット・トーン＆マナーを明確化し、構成案を固めます。</p>
       </div>
       <div className="service-card">
-        <strong>03. 構成・制作</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>ヒアリング内容を元に、プロット作成・ネーム構成・AI作画・編集を一気通貫で行います。</p>
+        <strong>03. Production（制作）</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>確定した構成に基づき、AIと編集チームが連携して作画・編集を実施します。</p>
       </div>
       <div className="service-card">
-        <strong>04. 確認・納品</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>完成データをお渡しします。ご希望に応じて、製本やMangaXでの世界配信もここで実施します。</p>
+        <strong>04. Delivery & Launch（納品・展開）</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>完成データを納品。ご希望に応じてMangaXでの公開設定や製本手配も対応します。</p>
       </div>
     </div>
   </section>
@@ -558,10 +558,9 @@ const FlowPage = ({ onBack }) => (
 
       <div style={{ position: "relative", overflow: "hidden", borderRadius: 16, padding: "2.2rem 2rem", background: "linear-gradient(135deg, rgba(229,9,20,0.12), rgba(0,180,180,0.08))" }}>
         <div style={{ fontSize: "0.95rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>Story-to-Comic Studio by FOMUS</div>
-        <h1 style={{ fontSize: "2.8rem", fontWeight: 900, margin: "0.3rem 0 0.6rem", lineHeight: 1.1 }}>― あなたの物語を、世界が読む「MANGA」に。</h1>
+        <h1 style={{ fontSize: "2.8rem", fontWeight: 900, margin: "0.3rem 0 0.6rem", lineHeight: 1.1 }}>― ナラティブを、世界へ届く「ビジュアル資産」へ。</h1>
         <p style={{ maxWidth: 900, color: "#e8e8e8", lineHeight: 1.7, margin: 0 }}>
-          人生・企業・ブランド・研究。あらゆる物語を漫画として可視化。独自のヒアリング手法と最新AIテクノロジー、プロ編集力を掛け合わせ、
-          従来では考えられなかったスピードとコストで高品質な作品を届けます。
+          言葉を超えて共感を生む次世代の漫画制作ソリューション。ナラティブをグローバルスタンダードなコンテンツに昇華し、ビジネスとブランドを加速させます。
         </p>
       </div>
     </div>
@@ -569,28 +568,29 @@ const FlowPage = ({ onBack }) => (
     <div style={{ padding: "0 4%", display: "grid", gap: "1.2rem" }}>
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>CONCEPT</div>
-          <h2 style={{ fontSize: "2rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>AIが描き、人が魂を吹き込む。</h2>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>VISION</div>
+          <h2 style={{ fontSize: "2rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>言葉を超えて、共感を創る。</h2>
           <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: 0 }}>
-            FOMUS Story-to-Comic Studio は、テキスト情報の「漫画化」に特化したクリエイティブ部門です。作画工程を最新の画像生成AIに任せることで、従来の漫画制作における「膨大な時間とコスト」を圧縮。
-            浮いたリソースを「ヒアリング」と「構成」に集中させ、あなたの想いを深く理解し、最適なストーリー構成で漫画化します。
+            FOMUS Story-to-Comic Studioは、企業や個人のナラティブをグローバル基準の漫画コンテンツへ昇華するクリエイティブ・パートナーです。
+            生成AIによるプロセス革新と熟練編集者のストーリーテリングを融合し、多大なコストと期間を要した従来の制作課題を解決。
+            ビジネスやブランディングを加速させる「機動力あるクリエイティブ」を提供します。
           </p>
         </div>
       </section>
 
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>WHAT WE CREATE</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>制作メニュー</h2>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>SERVICE PORTFOLIO</div>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>制作領域</h2>
         </div>
         <div className="service-grid">
           {[
-            "Personal / Life Comic　人生の転機、家族の歴史、海外生活の記録など、個人の物語を形にします。",
-            "Novel / Content Comic　小説・脚本・IPコンテンツを漫画として再構築し、視覚的な魅力を付加します。",
-            "Corporate Comic　創業ストーリー、代表の想い、採用漫画、難解な事業説明を共感を生むストーリーへ。",
-            "Global Comic（海外向け）　英語圏向けブランドコミック、海外展示会用ストーリーPRツール。",
-            "Education Comic　研究内容、研修資料、講義内容を「わかりやすい物語」に変換します。",
-            "Gift Comic　結婚式や誕生日の贈り物として、大切な人へ物語のプレゼントを。",
+            "Corporate Branding　創業の想い、企業理念（MVV）、周年記念史をストーリー化し、ステークホルダーへの深い理解と共感を促します。",
+            "Recruitment & HR　社員の成長物語や現場を可視化し、働くイメージとカルチャーを伝達します。",
+            "Product & Service PR　開発秘話や利用シーンを漫画化。難解な商材もストーリーで直感的に理解させます。",
+            "Global Communication　英語・多言語対応コミックを制作し、展示会やWebマーケティングで活用できます。",
+            "Personal History & Gift　個人史・伝記・記念日の贈り物として、人生の節目を色褪せない作品に。",
+            "Academic & Education　研究成果や研修マニュアルを漫画化し、学習者の興味と理解度を高めます。",
           ].map((text, idx) => (
             <div key={idx} className="service-card">
               <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
@@ -616,28 +616,28 @@ const FlowPage = ({ onBack }) => (
           {[
             {
               title: "制作費用",
-              general: <>30万〜50万円 / 10P<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（相場：1P 3万〜5万円）</span></>,
-              fomus: <>10万円 / 10P<br /><span className="compare-note-red" style={{ fontSize: "0.8em" }}>（約 1/3 の価格破壊）</span></>,
+              general: <>30万〜50万円 / 10P<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（多重構造による高コスト体質）</span></>,
+              fomus: <>10万円 / 10P<br /><span className="compare-note-highlight" style={{ fontSize: "0.8em" }}>（AI活用による工程最適化・コスト圧縮）</span></>,
             },
             {
               title: "納期",
-              general: <>1.5ヶ月 〜 2ヶ月<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（ネーム確認、下書き確認など工程が長い）</span></>,
-              fomus: <>約 2週間<br /><span className="compare-note-red" style={{ fontSize: "0.8em" }}>（AI活用による圧倒的なスピード納品）</span></>,
+              general: <>1.5ヶ月 〜 2ヶ月<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（ネーム・下書き等の確認工程が長期化）</span></>,
+              fomus: <>約 2週間<br /><span className="compare-note-highlight" style={{ fontSize: "0.8em" }}>（アジャイルな制作体制による短納期）</span></>,
             },
             {
               title: "依頼者の手間",
-              general: <>多い<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（脚本用意・細かな指示・度重なる修正確認が必要）</span></>,
-              fomus: <>最小限（60分）<br /><span className="compare-note-red" style={{ fontSize: "0.8em" }}>（ヒアリングで想いを話すだけ。あとは丸投げOK）</span></>,
+              general: <>多大<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（詳細な脚本準備、度重なるディレクションが必要）</span></>,
+              fomus: <>最小限（60分）<br /><span className="compare-note-highlight" style={{ fontSize: "0.8em" }}>（ヒアリングで意図を汲み取り、構成から提案）</span></>,
             },
             {
               title: "クオリティ",
-              general: <>作家個人のスキルに依存</>,
-              fomus: <>安定した高品質<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（AIによる美麗な作画 × プロ編集者の構成力）</span></>,
+              general: <>個人のスキルに依存</>,
+              fomus: <>安定したクオリティ<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（プロ編集者監修による一貫した品質保証）</span></>,
             },
             {
               title: "展開",
               general: <>データ納品のみが一般的</>,
-              fomus: <>Web連載・翻訳・製本まで<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（MangaXでの世界配信もワンストップで対応）</span></>,
+              fomus: <>ワンストップ展開<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（多言語化、MangaX世界配信、製本まで統合支援）</span></>,
             },
           ].map((item) => (
             <div key={item.title} className="compare-row">
@@ -656,21 +656,21 @@ const FlowPage = ({ onBack }) => (
         </div>
         <div className="service-grid">
           <div className="service-card">
-            <strong>01. 世界を歩いてきた“物語抽出力”</strong>
+            <strong>01. Deep Listening & Storytelling</strong>
             <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
-              文化・人・旅・工芸を通じて多様な価値観と接してきた経験から、表面的な事実だけでなく奥底の「想い」を引き出す深いヒアリングが可能です。
+              多様な文化的背景への理解に基づくヒアリングで、表面的な情報だけでなく根底の「想い」や「文脈」を抽出し、心を動かすストーリー構成に落とし込みます。
             </p>
           </div>
           <div className="service-card">
-            <strong>02. AI × クリエイティブディレクションの高速制作</strong>
+            <strong>02. AI-Driven Creativity</strong>
             <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
-              AIを「表現の拡張」として活用し、出力素材をプロ編集者がディレクション。短納期でも感情を揺さぶる表現へ昇華させます。
+              生成AIを「表現の拡張ツール」として統合し、クリエイターの感性をAIの処理能力で増幅。高品質かつスピーディなビジュアル表現を実現します。
             </p>
           </div>
           <div className="service-card">
-            <strong>03. 世界観の統合と展開力</strong>
+            <strong>03. Cross-Media Integration</strong>
             <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
-              漫画単体で終わらせず、MangaX連載・多言語翻訳、映像やWebデザインへの展開まで。物語を軸にしたトータルプロデュースが可能です。
+              漫画制作にとどまらず、MangaXでの世界配信、多言語展開、映像化やWebデザインへの展開まで。コンテンツ価値を最大化するトータルプロデュースが可能です。
             </p>
           </div>
         </div>
@@ -683,26 +683,25 @@ const FlowPage = ({ onBack }) => (
         </div>
         <div className="service-grid">
           <div className="service-card" style={{ border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}>
-            <strong>■ 基本制作パック：100,000円（税込）</strong>
+            <strong>■ Standard Package：100,000円（税込）</strong>
             <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.6rem 0" }}>
-              「まずはここから」のスタンダードプラン。LP用漫画、創業ストーリー、ショートエピソードに最適です。
+              ビジネス利用から個人利用まで対応する、標準的なパッケージです。
             </p>
             <ul style={{ color: "#cfcfcf", lineHeight: 1.6, paddingLeft: "1.2rem", margin: "0.6rem 0" }}>
               <li>漫画制作 10ページ</li>
-              <li>60分間のオンラインヒアリング（企画・構成案出し込み）</li>
-              <li>AI作画 ＋ 編集ディレクション</li>
-              <li>納品形式: PDF / JPG / PNG</li>
+              <li>クリエイティブ・コンサルティング（60分ヒアリング・構成案作成）</li>
+              <li>AI作画・編集・レタッチ</li>
+              <li>納品形式: 高解像度デジタルデータ (PDF / JPG / PNG)</li>
             </ul>
           </div>
           <div className="service-card" style={{ border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 10px 30px rgba(0,0,0,0.25)" }}>
             <strong>■ オプション</strong>
             <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.6rem 0" }}>
-              長編制作や形に残したい方向けのオプションです。
+              プロジェクト規模や用途に合わせたカスタマイズが可能です。
             </p>
             <ul style={{ color: "#cfcfcf", lineHeight: 1.6, paddingLeft: "1.2rem", margin: "0.6rem 0" }}>
-              <li>ページ追加: 1ページ +5,000円（例: 20ページ＝15万円）</li>
-              <li>製本サービス: 1冊 1,000円〜（部数・仕様で変動）</li>
-              <li>フルカラー / 無線綴じ / 上質紙にも対応</li>
+              <li>ページ追加: 1ページ +5,000円（長編や詳細描写に）</li>
+              <li>製本サービス: 1冊 1,000円〜（仕様・部数により御見積／フルカラー・無線綴じ・上質紙対応）</li>
             </ul>
           </div>
         </div>
