@@ -86,6 +86,24 @@ body {
   flex-direction: column;
   gap: 0.6rem;
 }
+.compare-table { display: grid; gap: 0.75rem; }
+.compare-row {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr 1fr;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.compare-row-head { background: rgba(255,255,255,0.06); font-weight: 800; }
+.compare-title { font-weight: 800; color: #fff; }
+.compare-general { color: #cfcfcf; line-height: 1.5; }
+.compare-fomus { color: #fff; line-height: 1.5; }
+.compare-note-red { color: #ff5252; font-weight: 700; }
+@media (max-width: 720px) {
+  .compare-row { grid-template-columns: 1fr; }
+}
 .service-cta {
   margin-top: 1.5rem;
   display: inline-flex;
@@ -589,22 +607,27 @@ const FlowPage = ({ onBack }) => (
             従来の漫画制作は「高い・遅い・手間がかかる」。FOMUSはその常識を覆し、誰でも気軽に漫画を作れる環境を提供します。
           </p>
         </div>
-        <div style={{ display: "grid", gap: "0.8rem" }}>
+        <div className="compare-table">
+          <div className="compare-row compare-row-head">
+            <div className="compare-title">比較項目</div>
+            <div className="compare-title">一般的な漫画制作会社・プロ作家</div>
+            <div className="compare-title">FOMUS Story-to-Comic Studio</div>
+          </div>
           {[
             {
               title: "制作費用",
               general: <>30万〜50万円 / 10P<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（相場：1P 3万〜5万円）</span></>,
-              fomus: <>10万円 / 10P<br /><span style={{ fontSize: "0.8em", color: "red", fontWeight: 700 }}>（約 1/3 の価格破壊）</span></>,
+              fomus: <>10万円 / 10P<br /><span className="compare-note-red" style={{ fontSize: "0.8em" }}>（約 1/3 の価格破壊）</span></>,
             },
             {
               title: "納期",
               general: <>1.5ヶ月 〜 2ヶ月<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（ネーム確認、下書き確認など工程が長い）</span></>,
-              fomus: <>約 2週間<br /><span style={{ fontSize: "0.8em", color: "red", fontWeight: 700 }}>（AI活用による圧倒的なスピード納品）</span></>,
+              fomus: <>約 2週間<br /><span className="compare-note-red" style={{ fontSize: "0.8em" }}>（AI活用による圧倒的なスピード納品）</span></>,
             },
             {
               title: "依頼者の手間",
               general: <>多い<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（脚本用意・細かな指示・度重なる修正確認が必要）</span></>,
-              fomus: <>最小限（60分）<br /><span style={{ fontSize: "0.8em", color: "red", fontWeight: 700 }}>（ヒアリングで想いを話すだけ。あとは丸投げOK）</span></>,
+              fomus: <>最小限（60分）<br /><span className="compare-note-red" style={{ fontSize: "0.8em" }}>（ヒアリングで想いを話すだけ。あとは丸投げOK）</span></>,
             },
             {
               title: "クオリティ",
@@ -617,10 +640,10 @@ const FlowPage = ({ onBack }) => (
               fomus: <>Web連載・翻訳・製本まで<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（MangaXでの世界配信もワンストップで対応）</span></>,
             },
           ].map((item) => (
-            <div key={item.title} className="service-card" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr 1fr", gap: "0.8rem", alignItems: "center" }}>
-              <div style={{ fontWeight: 800, color: "#fff" }}>{item.title}</div>
-              <div style={{ color: "#cfcfcf", lineHeight: 1.5 }}>{item.general}</div>
-              <div style={{ color: "#fff", lineHeight: 1.5 }}>{item.fomus}</div>
+            <div key={item.title} className="compare-row">
+              <div className="compare-title">{item.title}</div>
+              <div className="compare-general">{item.general}</div>
+              <div className="compare-fomus">{item.fomus}</div>
             </div>
           ))}
         </div>
