@@ -123,6 +123,18 @@ body {
 .comp-sub-text { color: #d0d0d0; font-size: 0.95rem; line-height: 1.5; }
 .comp-badge { position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, #0f172a, #12375f); color: #8be5ff; font-weight: 800; padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 8px 18px rgba(0,0,0,0.3); }
 .comp-badge-secondary { top: 44px; }
+.flow-page { background: #0b0b0b; min-height: 100vh; padding: 5rem 6% 4rem; }
+.flow-hero-grid { display: grid; gap: 1.2rem; padding-bottom: 1rem; }
+.flow-grid { padding: 0 4%; display: grid; gap: 1.2rem; }
+@media (max-width: 768px) {
+  .flow-page { padding: 4rem 7% 4.5rem; }
+  .flow-hero-grid { gap: 1.4rem; }
+  .flow-grid { gap: 1.6rem; padding: 0; }
+  .service-section { margin: 2.2rem 0 3rem; padding: 1.6rem; }
+  .comp-section { padding: 1.4rem; }
+  .comp-container { padding: 0.8rem; }
+  .service-grid { gap: 1rem; }
+}
 .service-cta {
   margin-top: 1.5rem;
   display: inline-flex;
@@ -713,8 +725,8 @@ const ComparisonSection = ({ t }) => {
 };
 
 const FlowPage = ({ onBack, t }) => (
-  <div style={{ background: "#0b0b0b", minHeight: "100vh", paddingBottom: "4rem" }}>
-    <div style={{ padding: "5rem 4% 2rem", display: "grid", gap: "1.2rem" }}>
+  <div className="flow-page">
+    <div className="flow-hero-grid">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
         <button
           onClick={onBack}
@@ -750,7 +762,7 @@ const FlowPage = ({ onBack, t }) => (
       </div>
     </div>
 
-    <div style={{ padding: "0 4%", display: "grid", gap: "1.2rem" }}>
+    <div className="flow-grid">
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
           <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>VISION</div>
