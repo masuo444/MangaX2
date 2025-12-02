@@ -4,7 +4,8 @@ import {
   X, Heart, Share2, Crown, Globe, Settings, Upload, Wand2, DollarSign,
   Briefcase, Smile, Link as LinkIcon, AlertCircle, FileText, Palette,
   FileCheck, Mail, Languages, Lock, Sparkles, Check, Trophy, Handshake, Building,
-  ThumbsUp, MessageCircle, Gift, Clock, Bell, Download, Loader2,
+  ThumbsUp, MessageCircle, Gift, Clock, Bell, Download, Loader2, Coins, Calendar,
+  Users, PenTool, Folder, Cpu, Rocket, Coffee, CheckCircle,
 } from "lucide-react";
 
 // ==========================================
@@ -104,6 +105,22 @@ body {
 @media (max-width: 720px) {
   .compare-row { grid-template-columns: 1fr; }
 }
+.comp-section { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+.comp-header h2 { margin: 0 0 0.4rem; font-size: 1.9rem; font-weight: 850; }
+.comp-header p { margin: 0; color: #cfcfcf; line-height: 1.6; }
+.comp-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.1rem; }
+.comp-col { border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem; background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); }
+.comp-col-trad { background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); }
+.comp-col-fomus { background: linear-gradient(145deg, rgba(0,180,200,0.12), rgba(229,9,20,0.08)); border-color: rgba(255,255,255,0.18); position: relative; overflow: hidden; }
+.comp-col-title { margin: 0; font-size: 1.3rem; font-weight: 850; }
+.comp-col-sub { margin: 0.1rem 0 0.7rem; color: #cfcfcf; line-height: 1.5; }
+.comp-row { display: grid; grid-template-columns: auto 1fr; gap: 0.7rem; align-items: start; padding: 0.65rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
+.comp-row:first-of-type { border-top: none; }
+.comp-icon { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,0.06); display: inline-flex; align-items: center; justify-content: center; color: #fff; }
+.comp-main-text { font-weight: 800; color: #fff; }
+.comp-sub-text { color: #cfcfcf; font-size: 0.95rem; line-height: 1.5; }
+.comp-badge { position: absolute; top: 12px; right: 12px; background: #0f172a; color: #8be5ff; font-weight: 800; padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 8px 18px rgba(0,0,0,0.3); }
+.comp-badge-secondary { top: 44px; }
 .service-cta {
   margin-top: 1.5rem;
   display: inline-flex;
@@ -296,6 +313,49 @@ const RESOURCES = {
     support_btn: "支援する", sponsor_desc: "制作を支援して巻末に名前を掲載しよう！", sponsor_price: "一口 5,000円",
     admin_title: "クリエイター管理", tab_dashboard: "ダッシュボード", tab_works: "作品一覧",
     close: "閉じる", lang_switch: "English", guest_name: "ゲスト",
+
+    // Studio LP: サービス比較 (Comparison)
+    comp_title_trad: "伝統的な漫画制作",
+    comp_sub_trad: "(プロの技と時間)",
+    comp_title_fomus: "FOMUS Story-to-Comic",
+    comp_sub_fomus: "(AIとアジャイルによる革新)",
+
+    comp_cost_trad: "30万〜50万円 / 10P",
+    comp_cost_sub_trad: "多重構造による高コスト体質",
+    comp_time_trad: "1.5ヶ月〜2ヶ月",
+    comp_time_sub_trad: "ネーム・下書き等の確認工程が長期化",
+    comp_effort_trad: "多大",
+    comp_effort_sub_trad: "詳細な脚本準備、度重なるディレクションが必要",
+    comp_skill_trad: "個人のスキルに依存",
+    comp_skill_sub_trad: "熟練の作家による唯一無二の作品",
+    comp_deliver_trad: "データ納品のみが一般的",
+
+    comp_cost_fomus: "10万円 / 10P",
+    comp_cost_sub_fomus: "AI活用による工程最適化・コスト圧縮",
+    comp_time_fomus: "約2週間",
+    comp_time_sub_fomus: "アジャイルな制作体制による短納期",
+    comp_effort_fomus: "最小限 (60分)",
+    comp_effort_sub_fomus: "ヒアリングで意図を汲み取り、構成から提案",
+    comp_quality_fomus: "安定したクオリティ",
+    comp_quality_sub_fomus: "プロ編集者監修による一貫した品質保証",
+    comp_expand_fomus: "ワンストップ展開",
+    comp_expand_sub_fomus: "多言語化、MangaX世界配信、製本まで統合支援",
+
+    badge_fast: "爆速＆低コスト",
+    badge_easy: "クライアントに優しい",
+
+    // Studio LP: 料金プラン & ワークフロー
+    studio_title: "Story-to-Comic Studio",
+    studio_subtitle: "その物語を、一生残る「MANGA」に。",
+    studio_intro: "AIのスピードと編集者の構成力で、あなたの物語を漫画化します。",
+
+    studio_basic_plan: "基本制作パック (10P)",
+    studio_basic_price: "100,000円 (税込)",
+    studio_detail_1: "漫画制作 10ページ",
+    studio_detail_2: "60分オンラインヒアリング",
+    studio_detail_3: "AI作画 + 編集ディレクション",
+    studio_add_page: "ページ追加 (+5,000円/P)",
+    studio_book_option: "製本サービス (+1,000円/冊〜)",
   },
   en: {
     nav_home: "Home", nav_new: "New", nav_mypage: "My Page", nav_partners: "Partners",
@@ -308,6 +368,47 @@ const RESOURCES = {
     support_btn: "Support", sponsor_desc: "Support production and get credited!", sponsor_price: "$50 / Slot",
     admin_title: "Creator Studio", tab_dashboard: "Dashboard", tab_works: "Works",
     close: "Close", lang_switch: "日本語", guest_name: "Guest",
+
+    // Studio LP: Comparison
+    comp_title_trad: "Traditional Manga Production",
+    comp_sub_trad: "(Craft & Time)",
+    comp_title_fomus: "FOMUS Story-to-Comic",
+    comp_sub_fomus: "(AI & Agile Innovation)",
+
+    comp_cost_trad: "300k–500k JPY / 10P",
+    comp_cost_sub_trad: "Layered process drives higher cost",
+    comp_time_trad: "1.5–2 months",
+    comp_time_sub_trad: "Long review cycles for name & draft",
+    comp_effort_trad: "Heavy",
+    comp_effort_sub_trad: "Detailed scripts and repeated direction",
+    comp_skill_trad: "Skill-dependent",
+    comp_skill_sub_trad: "Unique craft by seasoned artists",
+    comp_deliver_trad: "Data delivery only, typically",
+
+    comp_cost_fomus: "100k JPY / 10P",
+    comp_cost_sub_fomus: "AI-optimized workflow cuts cost",
+    comp_time_fomus: "~2 weeks",
+    comp_time_sub_fomus: "Agile production enables fast turnaround",
+    comp_effort_fomus: "Minimal (60 mins)",
+    comp_effort_sub_fomus: "We capture intent via hearing and propose structure",
+    comp_quality_fomus: "Consistent quality",
+    comp_quality_sub_fomus: "Editor-led QA for cohesive output",
+    comp_expand_fomus: "One-stop expansion",
+    comp_expand_sub_fomus: "Multilingual, MangaX global publish, printing",
+
+    badge_fast: "Fast & Lean",
+    badge_easy: "Client-friendly",
+
+    studio_title: "Story-to-Comic Studio",
+    studio_subtitle: "Turn your story into a lasting manga.",
+    studio_intro: "AI speed meets editorial craft to adapt your story.",
+    studio_basic_plan: "Standard Package (10P)",
+    studio_basic_price: "100,000 JPY (tax incl.)",
+    studio_detail_1: "10 pages of manga",
+    studio_detail_2: "60-min online consultation",
+    studio_detail_3: "AI art + editorial direction",
+    studio_add_page: "Extra pages (+5,000 JPY/page)",
+    studio_book_option: "Printing option (+1,000 JPY/book~)",
   },
 };
 
@@ -527,7 +628,89 @@ const ProductionFlow = () => (
   </section>
 );
 
-const FlowPage = ({ onBack }) => (
+// --- Comparison Section Component (VISUAL UPDATE) ---
+const ComparisonSection = ({ t }) => {
+  const rows = [
+    {
+      icon: <Coins size={24} />,
+      tradMain: t.comp_cost_trad,
+      tradSub: t.comp_cost_sub_trad,
+      fomusMain: t.comp_cost_fomus,
+      fomusSub: t.comp_cost_sub_fomus,
+    },
+    {
+      icon: <Calendar size={24} />,
+      tradMain: t.comp_time_trad,
+      tradSub: t.comp_time_sub_trad,
+      fomusMain: t.comp_time_fomus,
+      fomusSub: t.comp_time_sub_fomus,
+    },
+    {
+      icon: <Users size={24} />,
+      tradMain: t.comp_effort_trad,
+      tradSub: t.comp_effort_sub_trad,
+      fomusMain: t.comp_effort_fomus,
+      fomusSub: t.comp_effort_sub_fomus,
+    },
+    {
+      icon: <PenTool size={24} />,
+      tradMain: t.comp_skill_trad,
+      tradSub: t.comp_skill_sub_trad,
+      fomusMain: t.comp_quality_fomus,
+      fomusSub: t.comp_quality_sub_fomus,
+    },
+    {
+      icon: <Folder size={24} />,
+      tradMain: t.comp_deliver_trad,
+      tradSub: "",
+      fomusMain: t.comp_expand_fomus,
+      fomusSub: t.comp_expand_sub_fomus,
+    },
+  ];
+  const fomusIcons = [Cpu, Rocket, Coffee, CheckCircle, Globe];
+
+  return (
+    <div className="comp-section">
+      <div className="comp-header">
+        <h2>従来の常識を覆す、速度と価格</h2>
+        <p>プロの漫画制作への敬意を払いながら、FOMUSが提供する革新的なスピードと価格を体験してください。</p>
+      </div>
+
+      <div className="comp-container">
+        <div className="comp-col comp-col-trad">
+          <h3 className="comp-col-title">{t.comp_title_trad}</h3>
+          <p className="comp-col-sub">{t.comp_sub_trad}</p>
+          {rows.map((row, idx) => (
+            <div key={`trad-${idx}`} className="comp-row">
+              <div className="comp-icon">{row.icon}</div>
+              <div className="comp-content">
+                <div className="comp-main-text">{row.tradMain}</div>
+                {row.tradSub && <div className="comp-sub-text">{row.tradSub}</div>}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="comp-col comp-col-fomus">
+          <div className="comp-badge">{t.badge_fast}</div>
+          <h3 className="comp-col-title">{t.comp_title_fomus}</h3>
+          <p className="comp-col-sub">{t.comp_sub_fomus}</p>
+          {rows.map((row, idx) => (
+            <div key={`fomus-${idx}`} className="comp-row">
+              <div className="comp-icon">{fomusIcons[idx] ? React.createElement(fomusIcons[idx], { size: 24 }) : row.icon}</div>
+              <div className="comp-content">
+                <div className="comp-main-text">{row.fomusMain}</div>
+                {row.fomusSub && <div className="comp-sub-text">{row.fomusSub}</div>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const FlowPage = ({ onBack, t }) => (
   <div style={{ background: "#0b0b0b", minHeight: "100vh", paddingBottom: "4rem" }}>
     <div style={{ padding: "5rem 4% 2rem", display: "grid", gap: "1.2rem" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
@@ -599,55 +782,7 @@ const FlowPage = ({ onBack }) => (
         </div>
       </section>
 
-      <section className="service-section">
-        <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>サービス比較 (Why Choose FOMUS?)</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>従来の常識を覆す、速度と価格</h2>
-          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: 0 }}>
-            従来の漫画制作は「高い・遅い・手間がかかる」。FOMUSはその常識を覆し、誰でも気軽に漫画を作れる環境を提供します。
-          </p>
-        </div>
-        <div className="compare-table">
-          <div className="compare-row compare-row-head">
-            <div className="compare-title">比較項目</div>
-            <div className="compare-title">一般的な漫画制作会社・プロ作家</div>
-            <div className="compare-title">FOMUS Story-to-Comic Studio</div>
-          </div>
-          {[
-            {
-              title: "制作費用",
-              general: <>30万〜50万円 / 10P<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（多重構造による高コスト体質）</span></>,
-              fomus: <>10万円 / 10P<br /><span className="compare-note-highlight" style={{ fontSize: "0.8em" }}>（AI活用による工程最適化・コスト圧縮）</span></>,
-            },
-            {
-              title: "納期",
-              general: <>1.5ヶ月 〜 2ヶ月<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（ネーム・下書き等の確認工程が長期化）</span></>,
-              fomus: <>約 2週間<br /><span className="compare-note-highlight" style={{ fontSize: "0.8em" }}>（アジャイルな制作体制による短納期）</span></>,
-            },
-            {
-              title: "依頼者の手間",
-              general: <>多大<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（詳細な脚本準備、度重なるディレクションが必要）</span></>,
-              fomus: <>最小限（60分）<br /><span className="compare-note-highlight" style={{ fontSize: "0.8em" }}>（ヒアリングで意図を汲み取り、構成から提案）</span></>,
-            },
-            {
-              title: "クオリティ",
-              general: <>個人のスキルに依存</>,
-              fomus: <>安定したクオリティ<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（プロ編集者監修による一貫した品質保証）</span></>,
-            },
-            {
-              title: "展開",
-              general: <>データ納品のみが一般的</>,
-              fomus: <>ワンストップ展開<br /><span style={{ fontSize: "0.8em", color: "#777" }}>（多言語化、MangaX世界配信、製本まで統合支援）</span></>,
-            },
-          ].map((item) => (
-            <div key={item.title} className="compare-row">
-              <div className="compare-title">{item.title}</div>
-              <div className="compare-general">{item.general}</div>
-              <div className="compare-fomus">{item.fomus}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <ComparisonSection t={t} />
 
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
@@ -1165,7 +1300,7 @@ export default function App() {
         </div>
       )}
 
-      {view === "flow" && <FlowPage onBack={() => navigate("home")} />}
+      {view === "flow" && <FlowPage onBack={() => navigate("home")} t={t} />}
 
       {view === "mypage" && (
         <div className="bg-black min-h-screen pt-20 px-4 text-white">
