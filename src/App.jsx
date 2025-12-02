@@ -105,21 +105,23 @@ body {
 @media (max-width: 720px) {
   .compare-row { grid-template-columns: 1fr; }
 }
-.comp-section { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
-.comp-header h2 { margin: 0 0 0.4rem; font-size: 1.9rem; font-weight: 850; }
+.comp-section { background: radial-gradient(circle at 20% 20%, rgba(255,190,120,0.08), transparent 40%), radial-gradient(circle at 80% 10%, rgba(80,200,255,0.12), transparent 45%), rgba(10,10,10,0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 1.6rem; box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+.comp-header h2 { margin: 0 0 0.4rem; font-size: 1.95rem; font-weight: 850; letter-spacing: 0.02em; }
 .comp-header p { margin: 0; color: #cfcfcf; line-height: 1.6; }
-.comp-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.1rem; }
-.comp-col { border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem; background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); }
-.comp-col-trad { background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); }
-.comp-col-fomus { background: linear-gradient(145deg, rgba(0,180,200,0.12), rgba(229,9,20,0.08)); border-color: rgba(255,255,255,0.18); position: relative; overflow: hidden; }
+.comp-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.1rem; margin-top: 1.1rem; padding: 0.6rem; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; background: linear-gradient(90deg, rgba(255,190,120,0.08), rgba(80,200,255,0.08)); }
+.comp-col { border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.1rem; position: relative; overflow: hidden; backdrop-filter: blur(4px); }
+.comp-col-trad { background: linear-gradient(160deg, rgba(58,34,12,0.9), rgba(90,56,20,0.75)); box-shadow: inset 0 0 0 1px rgba(255,205,140,0.08); }
+.comp-col-fomus { background: linear-gradient(160deg, rgba(12,32,68,0.9), rgba(10,70,110,0.78)); box-shadow: inset 0 0 0 1px rgba(120,210,255,0.1); border-color: rgba(120,210,255,0.2); }
 .comp-col-title { margin: 0; font-size: 1.3rem; font-weight: 850; }
-.comp-col-sub { margin: 0.1rem 0 0.7rem; color: #cfcfcf; line-height: 1.5; }
-.comp-row { display: grid; grid-template-columns: auto 1fr; gap: 0.7rem; align-items: start; padding: 0.65rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
+.comp-col-sub { margin: 0.1rem 0 0.7rem; color: #dcdcdc; line-height: 1.55; }
+.comp-row { display: grid; grid-template-columns: auto 1fr; gap: 0.7rem; align-items: start; padding: 0.7rem 0; border-top: 1px solid rgba(255,255,255,0.08); }
 .comp-row:first-of-type { border-top: none; }
-.comp-icon { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,0.06); display: inline-flex; align-items: center; justify-content: center; color: #fff; }
+.comp-col-trad .comp-icon { background: rgba(255,200,120,0.15); color: #ffdca8; box-shadow: 0 6px 16px rgba(0,0,0,0.35); }
+.comp-col-fomus .comp-icon { background: rgba(80,200,255,0.18); color: #b7e9ff; box-shadow: 0 6px 16px rgba(0,0,0,0.35); }
+.comp-icon { width: 42px; height: 42px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; }
 .comp-main-text { font-weight: 800; color: #fff; }
-.comp-sub-text { color: #cfcfcf; font-size: 0.95rem; line-height: 1.5; }
-.comp-badge { position: absolute; top: 12px; right: 12px; background: #0f172a; color: #8be5ff; font-weight: 800; padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 8px 18px rgba(0,0,0,0.3); }
+.comp-sub-text { color: #d0d0d0; font-size: 0.95rem; line-height: 1.5; }
+.comp-badge { position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, #0f172a, #12375f); color: #8be5ff; font-weight: 800; padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 8px 18px rgba(0,0,0,0.3); }
 .comp-badge-secondary { top: 44px; }
 .service-cta {
   margin-top: 1.5rem;
