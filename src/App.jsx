@@ -623,20 +623,28 @@ const ProductionFlow = () => (
     </div>
     <div className="service-grid" style={{ marginTop: "1rem" }}>
       <div className="service-card">
-        <strong>01. Inquiry（お問い合わせ）</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>専用フォームより、制作したいページ数概算と原作（プロットやメモ等）をお送りください。</p>
+        <strong>01. 申し込み</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>フォーム or DMでかんたん。</p>
       </div>
       <div className="service-card">
-        <strong>02. Consultation（ヒアリング・構成）</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>担当ディレクターとオンラインで60分。目的・ターゲット・トーン＆マナーを明確化し、構成案を固めます。</p>
+        <strong>02. ヒアリング（60分）</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>まっすーがあなたの物語を丁寧に聞きます。</p>
       </div>
       <div className="service-card">
-        <strong>03. Production（制作）</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>確定した構成に基づき、AIと編集チームが連携して作画・編集を実施します。</p>
+        <strong>03. 構成案（10ページ）提出</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>流れ・配役・見せ場を整理。</p>
       </div>
       <div className="service-card">
-        <strong>04. Delivery & Launch（納品・展開）</strong>
-        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>完成データを納品。ご希望に応じてMangaXでの公開設定や製本手配も対応します。</p>
+        <strong>04. 制作（AI × クリエイティブ）</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>アジャイル方式で高速に。</p>
+      </div>
+      <div className="service-card">
+        <strong>05. 納品（PDF / JPG / 冊子）</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>用途に合わせて提供。</p>
+      </div>
+      <div className="service-card">
+        <strong>06. MangaX掲載（任意）</strong>
+        <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>あなたの作品が世界に公開されます。</p>
       </div>
     </div>
   </section>
@@ -766,12 +774,34 @@ const FlowPage = ({ onBack, t }) => (
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
           <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>VISION</div>
-          <h2 style={{ fontSize: "2rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>言葉を超えて、共感を創る。</h2>
-          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: 0 }}>
-            FOMUS Story-to-Comic Studioは、企業や個人のナラティブをグローバル基準の漫画コンテンツへ昇華するクリエイティブ・パートナーです。
-            生成AIによるプロセス革新と熟練編集者のストーリーテリングを融合し、多大なコストと期間を要した従来の制作課題を解決。
-            ビジネスやブランディングを加速させる「機動力あるクリエイティブ」を提供します。
+          <h2 style={{ fontSize: "2rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>― あなたの物語、漫画になります。</h2>
+          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: "0.2rem 0" }}>
+            MangaX は“読むプラットフォーム”。Story-to-Comic Studio は“つくるスタジオ”。どんな物語でも、10ページの漫画として生まれ変わり、希望者はMangaXに無料掲載して世界へ届けられます。
           </p>
+          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: "0.2rem 0 0" }}>
+            人生・小説・会社・家族・冒険・恋愛・夢――伝えたい想いがあれば誰でも漫画家デビューできる、新しい“使える漫画”体験です。
+          </p>
+        </div>
+      </section>
+
+      <section className="service-section">
+        <div style={{ marginBottom: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>WHAT IS STORY-TO-COMIC?</div>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>ストーリーがあれば、誰でも漫画家デビュー</h2>
+        </div>
+        <div className="service-grid">
+          {[
+            "まっすーによる 60 分ヒアリング",
+            "10ページ構成の漫画化",
+            "AI × クリエイティブディレクションによる高速制作",
+            "個人、ギフト、海外、企業すべてに対応",
+            "完成後は MangaX に即掲載（任意）",
+            "「読む」から「作る」へ。人生・物語・ビジョンが読むコンテンツに。",
+          ].map((text, idx) => (
+            <div key={idx} className="service-card">
+              <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -796,32 +826,68 @@ const FlowPage = ({ onBack, t }) => (
         </div>
       </section>
 
+      <section className="service-section">
+        <div style={{ marginBottom: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>USE CASES</div>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>こんな物語が漫画になります</h2>
+        </div>
+        <div className="service-grid">
+          {[
+            { title: "個人", items: ["自己紹介マンガ", "転職・キャリアの物語", "海外ノマドの体験", "人生の章立て", "SNSプロフィール"] },
+            { title: "ギフト", items: ["家族の人生", "両親への手紙の代わりに", "結婚祝い・記念日", "子どもの成長記録"] },
+            { title: "作品（小説→漫画）", items: ["自作小説", "同人作品", "Kindle作品の漫画化"] },
+            { title: "ビジネス", items: ["代表ストーリー", "事業の誕生秘話", "採用マンガ", "サービス説明用コミック"] },
+            { title: "海外向け", items: ["英語版プロフィール", "事業説明", "グローバル展示会用マンガ"] },
+          ].map((block, idx) => (
+            <div key={idx} className="service-card">
+              <strong>{block.title}</strong>
+              <ul style={{ margin: "0.4rem 0 0", paddingLeft: "1.1rem", color: "#cfcfcf", lineHeight: 1.5 }}>
+                {block.items.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+          ))}
+          <div className="service-card">
+            <strong>ジャンル無制限</strong>
+            <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.4rem 0 0" }}>「伝えたい想い」があれば何でも漫画になります。</p>
+          </div>
+        </div>
+      </section>
+
       <ComparisonSection t={t} />
 
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
           <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>WHY FOMUS?</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>選ばれる理由</h2>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>FOMUSが作ると、なぜ圧倒的？</h2>
         </div>
         <div className="service-grid">
-          <div className="service-card">
-            <strong>01. Deep Listening & Storytelling</strong>
-            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
-              多様な文化的背景への理解に基づくヒアリングで、表面的な情報だけでなく根底の「想い」や「文脈」を抽出し、心を動かすストーリー構成に落とし込みます。
-            </p>
-          </div>
-          <div className="service-card">
-            <strong>02. AI-Driven Creativity</strong>
-            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
-              生成AIを「表現の拡張ツール」として統合し、クリエイターの感性をAIの処理能力で増幅。高品質かつスピーディなビジュアル表現を実現します。
-            </p>
-          </div>
-          <div className="service-card">
-            <strong>03. Cross-Media Integration</strong>
-            <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>
-              漫画制作にとどまらず、MangaXでの世界配信、多言語展開、映像化やWebデザインへの展開まで。コンテンツ価値を最大化するトータルプロデュースが可能です。
-            </p>
-          </div>
+          {[
+            {
+              title: "① まっすーの“引き出すヒアリング”",
+              body: "世界中を旅し数千人の物語を聞いてきた経験で、魅力や価値観、潜在ストーリーまで掘り起こします。",
+            },
+            {
+              title: "② AI × 人のハイブリッド制作",
+              body: "AIで高速生成し、まっすーが構成・世界観を調整。短納期でもプロレベルの品質へ。",
+            },
+            {
+              title: "③ MangaX に掲載できる（無料）",
+              body: "作った作品をそのまま掲載可能。読者の「いいね／コメント」で広がります。",
+            },
+            {
+              title: "④ 多言語対応で世界へ",
+              body: "翻訳アドオンで40言語以上に展開可能。海外SNSや展示会にもすぐ活用。",
+            },
+            {
+              title: "⑤ “使える漫画”として活用",
+              body: "自己紹介・営業・SNS・ギフトなど、読むだけでなく用途に合わせて使えるコンテンツに仕上げます。",
+            },
+          ].map((item, idx) => (
+            <div key={idx} className="service-card">
+              <strong>{item.title}</strong>
+              <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>{item.body}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -853,6 +919,73 @@ const FlowPage = ({ onBack, t }) => (
               <li>製本サービス: 1冊 1,000円〜（仕様・部数により御見積／フルカラー・無線綴じ・上質紙対応）</li>
             </ul>
           </div>
+        </div>
+      </section>
+
+      <section className="service-section">
+        <div style={{ marginBottom: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>LANGUAGE ADD-ON</div>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>多言語対応</h2>
+          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>
+            1言語につき 30,000円（税抜）。日本語 / 英語 / 中国語 / 韓国語 / フランス語 / スペイン語 / 他40言語に対応。海外SNS、展示会、パートナー紹介に最適。MangaXに多言語版を同時掲載可能。
+          </p>
+        </div>
+      </section>
+
+      <section className="service-section">
+        <div style={{ marginBottom: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>PUBLISHING IMAGE</div>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>掲載イメージ</h2>
+        </div>
+        <div className="service-grid">
+          {[
+            "作品一覧に並ぶ",
+            "一話まるごと読める",
+            "SNSで簡単にシェアできる",
+            "ポートフォリオとして最適",
+            "漫画は“伝わる力”が強い。だからこそビジネスにも日常にも使える。",
+          ].map((text, idx) => (
+            <div key={idx} className="service-card">
+              <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="service-section">
+        <div style={{ marginBottom: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>FAQ</div>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>よくある質問</h2>
+        </div>
+        <div className="service-grid">
+          {[
+            { q: "Q. ストーリーがまとまってなくても大丈夫？", a: "A. ヒアリングで整理するので心配不要です。" },
+            { q: "Q. 絵柄は選べますか？", a: "A. 明るい・リアル系・カートゥーンなど調整可能。" },
+            { q: "Q. 漫画を掲載したくない場合は？", a: "A. 非公開納品にも対応しています。" },
+            { q: "Q. 納期は？", a: "A. 個人は約2〜3週間。ギフトは＋数日。" },
+          ].map((item, idx) => (
+            <div key={idx} className="service-card">
+              <strong>{item.q}</strong>
+              <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="service-section">
+        <div style={{ marginBottom: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>ENTRY</div>
+          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>お申し込み</h2>
+          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.6 }}>
+            あなたの物語を、漫画という“読む体験”へ。MangaXは、世界にあなたのストーリーを届ける場所です。
+          </p>
+          <button
+            className="service-cta"
+            onClick={() => window.open("mailto:contact@example.com?subject=Story-to-Comic 申し込み")}
+            style={{ marginTop: "1rem", justifyContent: "center" }}
+          >
+            <Sparkles size={18} /> Story-to-Comic を申し込む
+          </button>
         </div>
       </section>
 
