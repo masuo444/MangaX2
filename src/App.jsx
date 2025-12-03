@@ -762,10 +762,11 @@ const FlowPage = ({ onBack, t }) => (
       </div>
 
       <div style={{ position: "relative", overflow: "hidden", borderRadius: 16, padding: "2.2rem 2rem", background: "linear-gradient(135deg, rgba(229,9,20,0.12), rgba(0,180,180,0.08))" }}>
-        <div style={{ fontSize: "0.95rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>Story-to-Comic Studio by FOMUS</div>
-        <h1 style={{ fontSize: "2.8rem", fontWeight: 900, margin: "0.3rem 0 0.6rem", lineHeight: 1.1 }}>― ナラティブを、世界へ届く「ビジュアル資産」へ。</h1>
+        <div style={{ fontSize: "0.95rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>MangaX × FOMUS Story-to-Comic Studio</div>
+        <h1 style={{ fontSize: "2.8rem", fontWeight: 900, margin: "0.3rem 0 0.6rem", lineHeight: 1.1 }}>― あなたの物語、漫画になります。</h1>
         <p style={{ maxWidth: 900, color: "#e8e8e8", lineHeight: 1.7, margin: 0 }}>
-          言葉を超えて共感を生む次世代の漫画制作ソリューション。ナラティブをグローバルスタンダードなコンテンツに昇華し、ビジネスとブランドを加速させます。
+          MangaX は“読むプラットフォーム”。Story-to-Comic Studio は“つくるスタジオ”。どんな物語でも、10ページの漫画として生まれ変わり、希望者はMangaXに無料掲載して世界へ届けられます。
+          人生・小説・会社・家族・冒険・恋愛・夢──伝えたい想いがあれば、読むだけでなく“作る”体験が待っています。
         </p>
       </div>
     </div>
@@ -848,7 +849,7 @@ const FlowPage = ({ onBack, t }) => (
           ))}
           <div className="service-card">
             <strong>ジャンル無制限</strong>
-            <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.4rem 0 0" }}>「伝えたい想い」があれば何でも漫画になります。</p>
+            <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.4rem 0 0" }}>ジャンル無制限。「伝えたい想い」があれば何でも漫画になります。</p>
           </div>
         </div>
       </section>
