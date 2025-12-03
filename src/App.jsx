@@ -795,30 +795,9 @@ const FlowPage = ({ onBack, t }) => (
             "まっすーによる 60 分ヒアリング",
             "10ページ構成の漫画化",
             "AI × クリエイティブディレクションによる高速制作",
-            "個人、ギフト、海外、企業すべてに対応",
+            "個人・ギフト・海外・企業すべてに対応",
             "完成後は MangaX に即掲載（任意）",
             "「読む」から「作る」へ。人生・物語・ビジョンが読むコンテンツに。",
-          ].map((text, idx) => (
-            <div key={idx} className="service-card">
-              <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="service-section">
-        <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>SERVICE PORTFOLIO</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>制作領域</h2>
-        </div>
-        <div className="service-grid">
-          {[
-            "Corporate Branding　企業理念や歴史をストーリー化。共感を生み、ブランド力を高めます。",
-            "Recruitment & HR　職場のリアルを漫画で可視化。働くイメージと社風を直感的に伝えます。",
-            "Product & Service PR　商品やサービスの魅力を漫画に。難しい内容も分かりやすく伝わります。",
-            "Global Communication　多言語コミックを制作。海外市場へのアピールや展示会で活用できます。",
-            "Personal History & Gift　自分史や特別な贈り物に。人生の大切な節目を漫画で形に残します。",
-            "Academic & Education　研究成果やマニュアルを漫画化。興味を引きつけ、学習効果を高めます。",
           ].map((text, idx) => (
             <div key={idx} className="service-card">
               <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
@@ -834,27 +813,27 @@ const FlowPage = ({ onBack, t }) => (
         </div>
         <div className="service-grid">
           {[
-            { title: "個人", items: ["自己紹介マンガ", "転職・キャリアの物語", "海外ノマドの体験", "人生の章立て", "SNSプロフィール"] },
-            { title: "ギフト", items: ["家族の人生", "両親への手紙の代わりに", "結婚祝い・記念日", "子どもの成長記録"] },
-            { title: "作品（小説→漫画）", items: ["自作小説", "同人作品", "Kindle作品の漫画化"] },
-            { title: "ビジネス", items: ["代表ストーリー", "事業の誕生秘話", "採用マンガ", "サービス説明用コミック"] },
-            { title: "海外向け", items: ["英語版プロフィール", "事業説明", "グローバル展示会用マンガ"] },
+            { title: "個人", tags: ["自己紹介", "転職・キャリア", "海外ノマド", "人生の章立て", "SNSプロフィール"] },
+            { title: "ギフト", tags: ["家族の人生", "両親への手紙", "結婚祝い・記念日", "子どもの成長記録"] },
+            { title: "作品（小説→漫画）", tags: ["自作小説", "同人作品", "Kindle作品の漫画化"] },
+            { title: "ビジネス", tags: ["代表ストーリー", "事業の誕生秘話", "採用マンガ", "サービス説明"] },
+            { title: "海外向け", tags: ["英語版プロフィール", "事業説明", "展示会用マンガ"] },
           ].map((block, idx) => (
             <div key={idx} className="service-card">
               <strong>{block.title}</strong>
-              <ul style={{ margin: "0.4rem 0 0", paddingLeft: "1.1rem", color: "#cfcfcf", lineHeight: 1.5 }}>
-                {block.items.map((item) => <li key={item}>{item}</li>)}
-              </ul>
+              <div style={{ marginTop: "0.5rem", display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
+                {block.tags.map((tag) => (
+                  <span key={tag} style={{ padding: "0.2rem 0.5rem", background: "rgba(255,255,255,0.08)", borderRadius: 999, fontSize: "0.9rem", color: "#dcdcdc" }}>{tag}</span>
+                ))}
+              </div>
             </div>
           ))}
           <div className="service-card">
             <strong>ジャンル無制限</strong>
-            <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.4rem 0 0" }}>ジャンル無制限。「伝えたい想い」があれば何でも漫画になります。</p>
+            <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.4rem 0 0" }}>「伝えたい想い」があれば何でも漫画になります。</p>
           </div>
         </div>
       </section>
-
-      <ComparisonSection t={t} />
 
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
@@ -863,30 +842,14 @@ const FlowPage = ({ onBack, t }) => (
         </div>
         <div className="service-grid">
           {[
-            {
-              title: "① まっすーの“引き出すヒアリング”",
-              body: "世界中を旅し数千人の物語を聞いてきた経験で、魅力や価値観、潜在ストーリーまで掘り起こします。",
-            },
-            {
-              title: "② AI × 人のハイブリッド制作",
-              body: "AIで高速生成し、まっすーが構成・世界観を調整。短納期でもプロレベルの品質へ。",
-            },
-            {
-              title: "③ MangaX に掲載できる（無料）",
-              body: "作った作品をそのまま掲載可能。読者の「いいね／コメント」で広がります。",
-            },
-            {
-              title: "④ 多言語対応で世界へ",
-              body: "翻訳アドオンで40言語以上に展開可能。海外SNSや展示会にもすぐ活用。",
-            },
-            {
-              title: "⑤ “使える漫画”として活用",
-              body: "自己紹介・営業・SNS・ギフトなど、読むだけでなく用途に合わせて使えるコンテンツに仕上げます。",
-            },
-          ].map((item, idx) => (
+            "① まっすーの“引き出すヒアリング”",
+            "② AI × 人のハイブリッド制作",
+            "③ MangaX に掲載できる（無料）",
+            "④ 多言語対応で世界へ（翻訳アドオン40言語）",
+            "⑤ 自己紹介・営業・SNS・ギフトとして“使える漫画”",
+          ].map((text, idx) => (
             <div key={idx} className="service-card">
-              <strong>{item.title}</strong>
-              <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>{item.body}</p>
+              <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
             </div>
           ))}
         </div>
@@ -932,6 +895,10 @@ const FlowPage = ({ onBack, t }) => (
           </p>
         </div>
       </section>
+
+      <ComparisonSection t={t} />
+
+      <ProductionFlow />
 
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
@@ -989,8 +956,6 @@ const FlowPage = ({ onBack, t }) => (
           </button>
         </div>
       </section>
-
-      <ProductionFlow />
     </div>
   </div>
 );
