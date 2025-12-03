@@ -136,10 +136,10 @@ body {
   .service-grid { gap: 1rem; }
 }
 
-.feature-section { background: radial-gradient(circle at 15% 20%, rgba(255,90,120,0.08), transparent 35%), radial-gradient(circle at 80% 10%, rgba(80,200,255,0.12), transparent 40%), rgba(20,20,22,0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 1.8rem; box-shadow: 0 18px 45px rgba(0,0,0,0.5); backdrop-filter: blur(6px); }
-.feature-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.feature-card { background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.1rem; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03); }
-.feature-card strong { font-size: 1.05rem; }
+.feature-section { background: none; border: none; border-radius: 0; padding: 0 0 1.5rem; box-shadow: none; }
+.feature-grid { display: grid; gap: 0.75rem 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.feature-card { background: none; border: none; border-radius: 0; padding: 0.3rem 0; box-shadow: none; }
+.feature-card strong { font-size: 1.05rem; display: inline-block; margin-bottom: 0.25rem; }
 .tag-chip { display: inline-flex; padding: 0.25rem 0.65rem; border-radius: 999px; background: rgba(255,255,255,0.1); color: #e8e8e8; font-size: 0.9rem; letter-spacing: 0.01em; }
 .accent-heading { letter-spacing: 0.08em; color: #9ae6ff; font-weight: 700; font-size: 0.95rem; }
 .section-title-hero { font-size: 1.9rem; font-weight: 850; margin: 0.2rem 0 0.4rem; }
