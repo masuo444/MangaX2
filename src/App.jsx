@@ -774,19 +774,6 @@ const FlowPage = ({ onBack, t }) => (
     <div className="flow-grid">
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>INTRO</div>
-          <h2 style={{ fontSize: "2rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>― あなたの物語、漫画になります。</h2>
-          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: "0.2rem 0" }}>
-            MangaX は“読むプラットフォーム”。Story-to-Comic Studio は“つくるスタジオ”。どんな物語でも、10ページの漫画として生まれ変わり、希望者はMangaXに無料掲載して世界へ届けられます。
-          </p>
-          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: "0.2rem 0 0" }}>
-            人生・小説・会社・家族・冒険・恋愛・夢――伝えたい想いがあれば誰でも漫画家デビューできる、新しい“使える漫画”体験です。
-          </p>
-        </div>
-      </section>
-
-      <section className="service-section">
-        <div style={{ marginBottom: "0.8rem" }}>
           <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>WHAT IS STORY-TO-COMIC?</div>
           <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>ストーリーがあれば、誰でも漫画家デビュー</h2>
         </div>
