@@ -135,6 +135,14 @@ body {
   .comp-container { padding: 0.8rem; }
   .service-grid { gap: 1rem; }
 }
+
+.feature-section { background: radial-gradient(circle at 15% 20%, rgba(255,90,120,0.08), transparent 35%), radial-gradient(circle at 80% 10%, rgba(80,200,255,0.12), transparent 40%), rgba(20,20,22,0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 1.8rem; box-shadow: 0 18px 45px rgba(0,0,0,0.5); backdrop-filter: blur(6px); }
+.feature-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.feature-card { background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.1rem; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03); }
+.feature-card strong { font-size: 1.05rem; }
+.tag-chip { display: inline-flex; padding: 0.25rem 0.65rem; border-radius: 999px; background: rgba(255,255,255,0.1); color: #e8e8e8; font-size: 0.9rem; letter-spacing: 0.01em; }
+.accent-heading { letter-spacing: 0.08em; color: #9ae6ff; font-weight: 700; font-size: 0.95rem; }
+.section-title-hero { font-size: 1.9rem; font-weight: 850; margin: 0.2rem 0 0.4rem; }
 .service-cta {
   margin-top: 1.5rem;
   display: inline-flex;
@@ -613,7 +621,7 @@ const ServicePitch = ({ onShowFlow }) => {
 };
 
 const ProductionFlow = () => (
-  <section className="service-section" id="production-flow" style={{ marginTop: "1.5rem" }}>
+  <section className="feature-section" id="production-flow" style={{ marginTop: "1.5rem" }}>
     <div style={{ marginBottom: "1rem" }}>
       <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>WORKFLOW</div>
       <h3 style={{ fontSize: "1.6rem", margin: "0.3rem 0 0.4rem", fontWeight: 800 }}>制作の流れ</h3>
@@ -621,28 +629,28 @@ const ProductionFlow = () => (
         ご依頼から納品まで、あなたの負担は「ヒアリング」だけ。構成・AI作画・編集をワンストップで進行します。
       </p>
     </div>
-    <div className="service-grid" style={{ marginTop: "1rem" }}>
-      <div className="service-card">
+    <div className="feature-grid" style={{ marginTop: "1rem" }}>
+      <div className="feature-card">
         <strong>01. 申し込み</strong>
         <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>フォーム or DMでかんたん。</p>
       </div>
-      <div className="service-card">
+      <div className="feature-card">
         <strong>02. ヒアリング（60分）</strong>
         <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>まっすーがあなたの物語を丁寧に聞きます。</p>
       </div>
-      <div className="service-card">
+      <div className="feature-card">
         <strong>03. 構成案（10ページ）提出</strong>
         <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>流れ・配役・見せ場を整理。</p>
       </div>
-      <div className="service-card">
+      <div className="feature-card">
         <strong>04. 制作（AI × クリエイティブ）</strong>
         <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>アジャイル方式で高速に。</p>
       </div>
-      <div className="service-card">
+      <div className="feature-card">
         <strong>05. 納品（PDF / JPG / 冊子）</strong>
         <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>用途に合わせて提供。</p>
       </div>
-      <div className="service-card">
+      <div className="feature-card">
         <strong>06. MangaX掲載（任意）</strong>
         <p style={{ color: "#cfcfcf", lineHeight: 1.5 }}>あなたの作品が世界に公開されます。</p>
       </div>
@@ -772,12 +780,12 @@ const FlowPage = ({ onBack, t }) => (
     </div>
 
     <div className="flow-grid">
-      <section className="service-section">
+      <section className="feature-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>WHAT IS STORY-TO-COMIC?</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>ストーリーがあれば、誰でも漫画家デビュー</h2>
+          <div className="accent-heading">WHAT IS STORY-TO-COMIC?</div>
+          <h2 className="section-title-hero">ストーリーがあれば、誰でも漫画家デビュー</h2>
         </div>
-        <div className="service-grid">
+        <div className="feature-grid">
           {[
             "まっすーによる 60 分ヒアリング",
             "10ページ構成の漫画化",
@@ -786,19 +794,19 @@ const FlowPage = ({ onBack, t }) => (
             "完成後は MangaX に即掲載（任意）",
             "「読む」から「作る」へ。人生・物語・ビジョンが読むコンテンツに。",
           ].map((text, idx) => (
-            <div key={idx} className="service-card">
+            <div key={idx} className="feature-card">
               <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="service-section">
+      <section className="feature-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>USE CASES</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>こんな物語が漫画になります</h2>
+          <div className="accent-heading">USE CASES</div>
+          <h2 className="section-title-hero">こんな物語が漫画になります</h2>
         </div>
-        <div className="service-grid">
+        <div className="feature-grid">
           {[
             { title: "個人", tags: ["自己紹介", "転職・キャリア", "海外ノマド", "人生の章立て", "SNSプロフィール"] },
             { title: "ギフト", tags: ["家族の人生", "両親への手紙", "結婚祝い・記念日", "子どもの成長記録"] },
@@ -806,28 +814,28 @@ const FlowPage = ({ onBack, t }) => (
             { title: "ビジネス", tags: ["代表ストーリー", "事業の誕生秘話", "採用マンガ", "サービス説明"] },
             { title: "海外向け", tags: ["英語版プロフィール", "事業説明", "展示会用マンガ"] },
           ].map((block, idx) => (
-            <div key={idx} className="service-card">
+            <div key={idx} className="feature-card">
               <strong>{block.title}</strong>
               <div style={{ marginTop: "0.5rem", display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
                 {block.tags.map((tag) => (
-                  <span key={tag} style={{ padding: "0.2rem 0.5rem", background: "rgba(255,255,255,0.08)", borderRadius: 999, fontSize: "0.9rem", color: "#dcdcdc" }}>{tag}</span>
+                  <span key={tag} className="tag-chip">{tag}</span>
                 ))}
               </div>
             </div>
           ))}
-          <div className="service-card">
+          <div className="feature-card">
             <strong>ジャンル無制限</strong>
             <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.4rem 0 0" }}>「伝えたい想い」があれば何でも漫画になります。</p>
           </div>
         </div>
       </section>
 
-      <section className="service-section">
+      <section className="feature-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>WHY FOMUS?</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>FOMUSが作ると、なぜ圧倒的？</h2>
+          <div className="accent-heading" style={{ color: "#ffb3b3" }}>WHY FOMUS?</div>
+          <h2 className="section-title-hero">FOMUSが作ると、なぜ圧倒的？</h2>
         </div>
-        <div className="service-grid">
+        <div className="feature-grid">
           {[
             "① まっすーの“引き出すヒアリング”",
             "② AI × 人のハイブリッド制作",
@@ -835,7 +843,7 @@ const FlowPage = ({ onBack, t }) => (
             "④ 多言語対応で世界へ（翻訳アドオン40言語）",
             "⑤ 自己紹介・営業・SNS・ギフトとして“使える漫画”",
           ].map((text, idx) => (
-            <div key={idx} className="service-card">
+            <div key={idx} className="feature-card">
               <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
             </div>
           ))}
@@ -873,10 +881,10 @@ const FlowPage = ({ onBack, t }) => (
         </div>
       </section>
 
-      <section className="service-section">
+      <section className="feature-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>LANGUAGE ADD-ON</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>多言語対応</h2>
+          <div className="accent-heading">LANGUAGE ADD-ON</div>
+          <h2 className="section-title-hero">多言語対応</h2>
           <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>
             1言語につき 30,000円（税抜）。日本語 / 英語 / 中国語 / 韓国語 / フランス語 / スペイン語 / 他40言語に対応。海外SNS、展示会、パートナー紹介に最適。MangaXに多言語版を同時掲載可能。
           </p>
@@ -887,12 +895,12 @@ const FlowPage = ({ onBack, t }) => (
 
       <ProductionFlow />
 
-      <section className="service-section">
+      <section className="feature-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>PUBLISHING IMAGE</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>掲載イメージ</h2>
+          <div className="accent-heading">PUBLISHING IMAGE</div>
+          <h2 className="section-title-hero">掲載イメージ</h2>
         </div>
-        <div className="service-grid">
+        <div className="feature-grid">
           {[
             "作品一覧に並ぶ",
             "一話まるごと読める",
@@ -900,26 +908,26 @@ const FlowPage = ({ onBack, t }) => (
             "ポートフォリオとして最適",
             "漫画は“伝わる力”が強い。だからこそビジネスにも日常にも使える。",
           ].map((text, idx) => (
-            <div key={idx} className="service-card">
+            <div key={idx} className="feature-card">
               <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="service-section">
+      <section className="feature-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>FAQ</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>よくある質問</h2>
+          <div className="accent-heading">FAQ</div>
+          <h2 className="section-title-hero">よくある質問</h2>
         </div>
-        <div className="service-grid">
+        <div className="feature-grid">
           {[
             { q: "Q. ストーリーがまとまってなくても大丈夫？", a: "A. ヒアリングで整理するので心配不要です。" },
             { q: "Q. 絵柄は選べますか？", a: "A. 明るい・リアル系・カートゥーンなど調整可能。" },
             { q: "Q. 漫画を掲載したくない場合は？", a: "A. 非公開納品にも対応しています。" },
             { q: "Q. 納期は？", a: "A. 個人は約2〜3週間。ギフトは＋数日。" },
           ].map((item, idx) => (
-            <div key={idx} className="service-card">
+            <div key={idx} className="feature-card">
               <strong>{item.q}</strong>
               <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>{item.a}</p>
             </div>
@@ -927,10 +935,10 @@ const FlowPage = ({ onBack, t }) => (
         </div>
       </section>
 
-      <section className="service-section">
+      <section className="feature-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>ENTRY</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>お申し込み</h2>
+          <div className="accent-heading" style={{ color: "#ffb3b3" }}>ENTRY</div>
+          <h2 className="section-title-hero">お申し込み</h2>
           <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.6 }}>
             あなたの物語を、漫画という“読む体験”へ。MangaXは、世界にあなたのストーリーを届ける場所です。
           </p>
