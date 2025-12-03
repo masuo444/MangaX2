@@ -427,7 +427,7 @@ const RESOURCES = {
 };
 
 // --- Hooks & helpers ---
-const useAppNavigation = (initialView = "home") => {
+const useAppNavigation = (initialView = "flow") => {
   const [view, setView] = useState(initialView);
   const [historyStack, setHistoryStack] = useState([initialView]);
   const [selectedSeries, setSelectedSeries] = useState(null);
@@ -774,7 +774,7 @@ const FlowPage = ({ onBack, t }) => (
     <div className="flow-grid">
       <section className="service-section">
         <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>VISION</div>
+          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>INTRO</div>
           <h2 style={{ fontSize: "2rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>― あなたの物語、漫画になります。</h2>
           <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.7, margin: "0.2rem 0" }}>
             MangaX は“読むプラットフォーム”。Story-to-Comic Studio は“つくるスタジオ”。どんな物語でも、10ページの漫画として生まれ変わり、希望者はMangaXに無料掲載して世界へ届けられます。
