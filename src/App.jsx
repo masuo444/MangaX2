@@ -12,6 +12,8 @@ import {
 // 🎨 デザイン (CSS)
 // ==========================================
 const STYLES = `
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap');
+
 :root {
   --primary-red: #e50914;
   --bg-black: #141414;
@@ -156,6 +158,364 @@ body {
   font-weight: 800;
   cursor: pointer;
   box-shadow: 0 12px 30px rgba(229,9,20,0.35);
+}
+
+/* =========================
+   Story LP (Story-to-Comic)
+   ========================= */
+.story-lp {
+  background: #0A0A0A;
+  color: #FFFFFF;
+  min-height: 100vh;
+  padding: 0 0 120px;
+}
+.story-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.story-section {
+  margin: 0 auto 180px;
+}
+.story-hero {
+  text-align: center;
+  padding: 240px 0 220px;
+}
+.story-kicker {
+  font-family: 'Playfair Display', 'Noto Serif JP', serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: #C6A667;
+  margin-bottom: 12px;
+}
+.story-h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 56px;
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+.story-subcopy {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #B8B8B8;
+  max-width: 760px;
+  margin: 0 auto 32px;
+}
+.story-cta-group {
+  display: inline-flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.story-cta {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 16px 32px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #C6A667;
+  transition: all 0.2s ease;
+}
+.story-cta.primary {
+  background: #C6A667;
+  color: #0A0A0A;
+}
+.story-cta.primary:hover { background: #b29757; }
+.story-cta.secondary {
+  background: transparent;
+  color: #C6A667;
+}
+.story-cta.secondary:hover { background: rgba(198,166,103,0.12); }
+.story-meta {
+  margin-top: 18px;
+  color: #B8B8B8;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+.story-lang-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.story-lang-pill {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #7F7F7F;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.story-back {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #151515;
+  color: #FFFFFF;
+  border: 1px solid #2a2a2a;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+}
+
+.story-section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 36px;
+  line-height: 1.3;
+  margin: 0 0 24px;
+}
+.story-section-desc {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  color: #B8B8B8;
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 0 0 32px;
+}
+.story-value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+.story-value-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+}
+.story-value-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #151515;
+  border: 1px solid #2b2b2b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #C6A667;
+}
+.story-value-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.story-value-text {
+  margin: 0;
+  color: #B8B8B8;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.story-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: stretch;
+}
+.story-step {
+  position: relative;
+  flex: 1 1 140px;
+  min-width: 140px;
+  padding: 12px 0 0;
+}
+.story-step::after {
+  content: "";
+  position: absolute;
+  right: -9px;
+  top: 22px;
+  width: 18px;
+  height: 1px;
+  background: #7F7F7F;
+}
+.story-step:last-child::after { display: none; }
+.story-step-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.story-step-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #151515;
+  border: 1px solid #2b2b2b;
+  color: #C6A667;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.story-step-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  margin: 0;
+}
+.story-step-caption {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-size: 14px;
+  color: #B8B8B8;
+  margin: 6px 0 0;
+}
+
+.story-use-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.story-card {
+  background: #151515;
+  border-radius: 8px;
+  padding: 48px;
+  border: 1px solid #1f1f1f;
+}
+.story-card h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  margin: 0 0 12px;
+}
+.story-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.story-tag {
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.story-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+.story-compare-col {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.story-compare-trad {
+  background: #2A1E14;
+  color: #FFFFFF;
+}
+.story-compare-fomus {
+  background: linear-gradient(135deg, #0A0A0A, #151515);
+  border: 1px solid rgba(198,166,103,0.3);
+}
+.story-compare-head {
+  padding: 20px 28px 10px;
+  font-family: 'Playfair Display', 'Noto Serif JP', serif;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+}
+.story-compare-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 12px;
+  padding: 14px 28px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  align-items: center;
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+}
+.story-compare-label { color: #B8B8B8; font-size: 15px; }
+.story-compare-value { font-size: 18px; color: #FFFFFF; }
+.story-compare-value.gold { color: #C6A667; font-weight: 700; }
+
+.story-pricing {
+  background: #151515;
+  border-radius: 12px;
+  padding: 48px;
+  border: 1px solid #1f1f1f;
+}
+.story-price-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 24px;
+  margin: 0 0 12px;
+}
+.story-price-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: #C6A667;
+  margin: 0 0 18px;
+}
+.story-bullet {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  color: #B8B8B8;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 6px 0;
+}
+.story-option-list { margin-top: 14px; padding-top: 14px; border-top: 1px solid #2a2a2a; }
+
+.story-faq-list { display: flex; flex-direction: column; gap: 12px; }
+.story-faq-item {
+  background: #151515;
+  border-radius: 10px;
+  border: 1px solid #1f1f1f;
+  overflow: hidden;
+}
+.story-faq-question {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+.story-faq-answer {
+  padding: 0 18px 16px;
+  color: #B8B8B8;
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  border-top: 1px solid #7F7F7F;
+}
+
+.story-application {
+  text-align: center;
+  padding: 200px 0;
+}
+.story-footer {
+  background: #0A0A0A;
+  border-top: 1px solid #1f1f1f;
+  padding: 40px 0 60px;
+}
+.story-footer-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: #B8B8B8;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .story-hero { padding: 200px 0 180px; }
+  .story-h1 { font-size: 46px; }
+  .story-section { margin-bottom: 140px; }
+}
+@media (max-width: 640px) {
+  .story-hero { padding: 180px 0 160px; }
+  .story-h1 { font-size: 38px; }
+  .story-subcopy { font-size: 16px; }
+  .story-section-title { font-size: 28px; }
+  .story-section-desc { font-size: 16px; }
+  .story-container { padding: 0 16px; }
+  .story-step::after { display: none; }
+  .story-application { padding: 160px 0; }
 }
 
 .app-header {
@@ -740,220 +1100,227 @@ const ComparisonSection = ({ t }) => {
   );
 };
 
-const FlowPage = ({ onBack, t }) => (
-  <div className="flow-page">
-    <div className="flow-hero-grid">
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
-        <button
-          onClick={onBack}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            padding: "0.6rem 1rem",
-            borderRadius: 999,
-            border: "1px solid rgba(255,255,255,0.15)",
-            background: "rgba(255,255,255,0.04)",
-            color: "#fff",
-            cursor: "pointer",
-          }}
-        >
-          <ChevronLeft size={18} /> トップへ戻る
-        </button>
-        <button
-          onClick={() => window.open("mailto:contact@example.com?subject=Story-to-Comic 相談")}
-          className="service-cta"
-          style={{ justifyContent: "center", padding: "0.75rem 1.5rem" }}
-        >
-          <Sparkles size={18} /> 制作相談する
-        </button>
-      </div>
+const StoryCTAButton = ({ variant = "primary", children, onClick }) => (
+  <button type="button" className={`story-cta ${variant}`} onClick={onClick}>
+    {children}
+  </button>
+);
 
-      <div style={{ position: "relative", overflow: "hidden", borderRadius: 16, padding: "2.2rem 2rem", background: "linear-gradient(135deg, rgba(229,9,20,0.12), rgba(0,180,180,0.08))" }}>
-        <div style={{ fontSize: "0.95rem", letterSpacing: "0.08em", color: "#ffb3b3", fontWeight: 700 }}>MangaX × FOMUS Story-to-Comic Studio</div>
-        <h1 style={{ fontSize: "2.8rem", fontWeight: 900, margin: "0.3rem 0 0.6rem", lineHeight: 1.1 }}>― あなたの物語、漫画になります。</h1>
-        <p style={{ maxWidth: 900, color: "#e8e8e8", lineHeight: 1.7, margin: 0 }}>
-          MangaX は“読むプラットフォーム”。Story-to-Comic Studio は“つくるスタジオ”。どんな物語でも、10ページの漫画として生まれ変わり、希望者はMangaXに無料掲載して世界へ届けられます。
-          人生・小説・会社・家族・冒険・恋愛・夢──伝えたい想いがあれば、読むだけでなく“作る”体験が待っています。
-        </p>
-      </div>
+const StoryFaqItem = ({ item, isOpen, onToggle }) => (
+  <div className="story-faq-item">
+    <div className="story-faq-question" onClick={onToggle}>
+      <span>{item.q}</span>
+      <ChevronRight size={18} style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }} />
     </div>
-
-    <div className="flow-grid">
-      <section className="feature-section">
-        <div style={{ marginBottom: "0.8rem" }}>
-          <div className="accent-heading">WHAT IS STORY-TO-COMIC?</div>
-          <h2 className="section-title-hero">ストーリーがあれば、誰でも漫画家デビュー</h2>
-        </div>
-        <div className="feature-grid">
-          {[
-            "まっすーによる 60 分ヒアリング",
-            "10ページ構成の漫画化",
-            "AI × クリエイティブディレクションによる高速制作",
-            "個人・ギフト・海外・企業すべてに対応",
-            "完成後は MangaX に即掲載（任意）",
-            "「読む」から「作る」へ。人生・物語・ビジョンが読むコンテンツに。",
-          ].map((text, idx) => (
-            <div key={idx} className="feature-card">
-              <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="feature-section">
-        <div style={{ marginBottom: "0.8rem" }}>
-          <div className="accent-heading">USE CASES</div>
-          <h2 className="section-title-hero">こんな物語が漫画になります</h2>
-        </div>
-        <div className="feature-grid">
-          {[
-            { title: "個人", tags: ["自己紹介", "転職・キャリア", "海外ノマド", "人生の章立て", "SNSプロフィール"] },
-            { title: "ギフト", tags: ["家族の人生", "両親への手紙", "結婚祝い・記念日", "子どもの成長記録"] },
-            { title: "作品（小説→漫画）", tags: ["自作小説", "同人作品", "Kindle作品の漫画化"] },
-            { title: "ビジネス", tags: ["代表ストーリー", "事業の誕生秘話", "採用マンガ", "サービス説明"] },
-            { title: "海外向け", tags: ["英語版プロフィール", "事業説明", "展示会用マンガ"] },
-          ].map((block, idx) => (
-            <div key={idx} className="feature-card">
-              <strong>{block.title}</strong>
-              <div style={{ marginTop: "0.5rem", display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
-                {block.tags.map((tag) => (
-                  <span key={tag} className="tag-chip">{tag}</span>
-                ))}
-              </div>
-            </div>
-          ))}
-          <div className="feature-card">
-            <strong>ジャンル無制限</strong>
-            <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.4rem 0 0" }}>「伝えたい想い」があれば何でも漫画になります。</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="feature-section">
-        <div style={{ marginBottom: "0.8rem" }}>
-          <div className="accent-heading" style={{ color: "#ffb3b3" }}>WHY FOMUS?</div>
-          <h2 className="section-title-hero">FOMUSが作ると、なぜ圧倒的？</h2>
-        </div>
-        <div className="feature-grid">
-          {[
-            "① まっすーの“引き出すヒアリング”",
-            "② AI × 人のハイブリッド制作",
-            "③ MangaX に掲載できる（無料）",
-            "④ 多言語対応で世界へ（翻訳アドオン40言語）",
-            "⑤ 自己紹介・営業・SNS・ギフトとして“使える漫画”",
-          ].map((text, idx) => (
-            <div key={idx} className="feature-card">
-              <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="service-section">
-        <div style={{ marginBottom: "0.8rem" }}>
-          <div style={{ fontSize: "0.9rem", letterSpacing: "0.08em", color: "#9ae6ff", fontWeight: 700 }}>PRICING</div>
-          <h2 style={{ fontSize: "1.9rem", fontWeight: 850, margin: "0.3rem 0 0.5rem" }}>料金プラン</h2>
-        </div>
-        <div className="service-grid">
-          <div className="service-card" style={{ border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}>
-            <strong>■ Standard Package：100,000円（税込）</strong>
-            <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.6rem 0" }}>
-              ビジネス利用から個人利用まで対応する、標準的なパッケージです。
-            </p>
-            <ul style={{ color: "#cfcfcf", lineHeight: 1.6, paddingLeft: "1.2rem", margin: "0.6rem 0" }}>
-              <li>漫画制作 10ページ</li>
-              <li>クリエイティブ・コンサルティング（60分ヒアリング・構成案作成）</li>
-              <li>AI作画・編集・レタッチ</li>
-              <li>納品形式: 高解像度デジタルデータ (PDF / JPG / PNG)</li>
-            </ul>
-          </div>
-          <div className="service-card" style={{ border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 10px 30px rgba(0,0,0,0.25)" }}>
-            <strong>■ オプション</strong>
-            <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: "0.6rem 0" }}>
-              プロジェクト規模や用途に合わせたカスタマイズが可能です。
-            </p>
-            <ul style={{ color: "#cfcfcf", lineHeight: 1.6, paddingLeft: "1.2rem", margin: "0.6rem 0" }}>
-              <li>ページ追加: 1ページ +5,000円（長編や詳細描写に）</li>
-              <li>製本サービス: 1冊 1,000円〜（仕様・部数により御見積／フルカラー・無線綴じ・上質紙対応）</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="feature-section">
-        <div style={{ marginBottom: "0.8rem" }}>
-          <div className="accent-heading">LANGUAGE ADD-ON</div>
-          <h2 className="section-title-hero">多言語対応</h2>
-          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>
-            1言語につき 30,000円（税抜）。日本語 / 英語 / 中国語 / 韓国語 / フランス語 / スペイン語 / 他40言語に対応。海外SNS、展示会、パートナー紹介に最適。MangaXに多言語版を同時掲載可能。
-          </p>
-        </div>
-      </section>
-
-      <ComparisonSection t={t} />
-
-      <ProductionFlow />
-
-      <section className="feature-section">
-        <div style={{ marginBottom: "0.8rem" }}>
-          <div className="accent-heading">PUBLISHING IMAGE</div>
-          <h2 className="section-title-hero">掲載イメージ</h2>
-        </div>
-        <div className="feature-grid">
-          {[
-            "作品一覧に並ぶ",
-            "一話まるごと読める",
-            "SNSで簡単にシェアできる",
-            "ポートフォリオとして最適",
-            "漫画は“伝わる力”が強い。だからこそビジネスにも日常にも使える。",
-          ].map((text, idx) => (
-            <div key={idx} className="feature-card">
-              <p style={{ color: "#cfcfcf", lineHeight: 1.6, margin: 0 }}>{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="feature-section">
-        <div style={{ marginBottom: "0.8rem" }}>
-          <div className="accent-heading">FAQ</div>
-          <h2 className="section-title-hero">よくある質問</h2>
-        </div>
-        <div className="feature-grid">
-          {[
-            { q: "Q. ストーリーがまとまってなくても大丈夫？", a: "A. ヒアリングで整理するので心配不要です。" },
-            { q: "Q. 絵柄は選べますか？", a: "A. 明るい・リアル系・カートゥーンなど調整可能。" },
-            { q: "Q. 漫画を掲載したくない場合は？", a: "A. 非公開納品にも対応しています。" },
-            { q: "Q. 納期は？", a: "A. 個人は約2〜3週間。ギフトは＋数日。" },
-          ].map((item, idx) => (
-            <div key={idx} className="feature-card">
-              <strong>{item.q}</strong>
-              <p style={{ color: "#cfcfcf", lineHeight: 1.6 }}>{item.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="feature-section">
-        <div style={{ marginBottom: "0.8rem" }}>
-          <div className="accent-heading" style={{ color: "#ffb3b3" }}>ENTRY</div>
-          <h2 className="section-title-hero">お申し込み</h2>
-          <p style={{ maxWidth: 900, color: "#cfcfcf", lineHeight: 1.6 }}>
-            あなたの物語を、漫画という“読む体験”へ。MangaXは、世界にあなたのストーリーを届ける場所です。
-          </p>
-          <button
-            className="service-cta"
-            onClick={() => window.open("mailto:contact@example.com?subject=Story-to-Comic 申し込み")}
-            style={{ marginTop: "1rem", justifyContent: "center" }}
-          >
-            <Sparkles size={18} /> Story-to-Comic を申し込む
-          </button>
-        </div>
-      </section>
-    </div>
+    {isOpen && <div className="story-faq-answer">{item.a}</div>}
   </div>
 );
+
+const StoryLanding = ({ onBack }) => {
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const valueItems = [
+    {
+      icon: <Rocket size={20} />,
+      title: "プロ品質 × 圧倒的スピード",
+      text: "AI × アジャイル制作で、最短2週間の納品が可能。",
+    },
+    {
+      icon: <MessageCircle size={20} />,
+      title: "まっすーによる60分ヒアリング",
+      text: "想い・背景・目的を引き出し、構成をゼロから設計。",
+    },
+    {
+      icon: <Globe size={20} />,
+      title: "世界展開できる漫画",
+      text: "40言語展開。SNS・展示会・海外PRに最適。",
+    },
+  ];
+
+  const steps = [
+    { title: "申込み（フォーム / DM）", caption: "", icon: <Mail size={18} /> },
+    { title: "ヒアリング（60分）", caption: "", icon: <Clock size={18} /> },
+    { title: "構成案（10ページ）制作", caption: "", icon: <FileText size={18} /> },
+    { title: "AI作画 × 編集", caption: "", icon: <Wand2 size={18} /> },
+    { title: "仕上げ・レタッチ", caption: "", icon: <Sparkles size={18} /> },
+    { title: "納品 ＋ MangaX掲載（任意）", caption: "", icon: <Upload size={18} /> },
+  ];
+
+  const useCases = [
+    { title: "個人", tags: ["SNSプロフィール", "転職物語", "ノマドの記録"] },
+    { title: "ギフト", tags: ["結婚", "家族の記録", "誕生日", "記念日"] },
+    { title: "ビジネス", tags: ["代表ストーリー", "サービス説明", "採用漫画"] },
+    { title: "海外向け", tags: ["英語PR", "展示会漫画", "多言語プロモーション"] },
+  ];
+
+  const comparisonRows = [
+    { label: "価格", trad: "30〜50万円 / 10P", fomus: "10万円 / 10P" },
+    { label: "納期", trad: "1.5〜2ヶ月", fomus: "最短2週間" },
+    { label: "手間", trad: "ネーム・下書き指示が必要", fomus: "ヒアリングのみ" },
+    { label: "品質", trad: "作家によって差が大きい", fomus: "プロ編集 × AI補正で安定品質" },
+    { label: "展開", trad: "データ納品のみ", fomus: "40言語展開・SNS発信可能" },
+  ];
+
+  const faqList = [
+    { q: "ストーリーがまとまっていなくても大丈夫？", a: "はい。ヒアリングで整理します。" },
+    { q: "公開したくない場合は？", a: "非公開制作も可能です。" },
+    { q: "納期は？", a: "個人：2〜3週間前後。ギフト：＋数日。" },
+    { q: "ビジネス利用は可能？", a: "会社紹介・採用漫画・展示会PRにも対応。" },
+  ];
+
+  return (
+    <div className="story-lp">
+      <div className="story-container">
+        <section className="story-section story-hero">
+          <button className="story-back" onClick={onBack}>
+            <ChevronLeft size={16} /> トップへ戻る
+          </button>
+          <div className="story-kicker">MangaX × FOMUS</div>
+          <h1 className="story-h1">あなたの物語を、10ページの漫画に。</h1>
+          <p className="story-subcopy">
+            世界基準のAI × クリエイティブディレクションで、<br />
+            人生・ビジネス・ギフト・個人PRを“作品”へ昇華するサービス。
+          </p>
+          <div className="story-cta-group">
+            <StoryCTAButton variant="primary" onClick={() => window.open("mailto:contact@example.com?subject=Story-to-Comic 予約", "_self")}>
+              無料ヒアリングを予約する
+            </StoryCTAButton>
+            <StoryCTAButton variant="secondary" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}>
+              制作事例を見る
+            </StoryCTAButton>
+          </div>
+          <div className="story-meta">FOMUS Creative Studio</div>
+          <div className="story-lang-row">
+            {["JP", "EN", "CN", "KR", "40+"].map((lang) => (
+              <span key={lang} className="story-lang-pill">{lang}</span>
+            ))}
+          </div>
+        </section>
+
+        <section className="story-section">
+          <h2 className="story-section-title">FOMUSがつくると、 なぜ圧倒的？</h2>
+          <div className="story-value-grid">
+            {valueItems.map((item, idx) => (
+              <div key={idx} className="story-value-item">
+                <div className="story-value-icon">{item.icon}</div>
+                <div>
+                  <div className="story-value-title">{item.title}</div>
+                  <p className="story-value-text">{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="story-section">
+          <h2 className="story-section-title">制作の流れ</h2>
+          <div className="story-steps">
+            {steps.map((step, idx) => (
+              <div key={idx} className="story-step">
+                <div className="story-step-head">
+                  <div className="story-step-icon">{step.icon}</div>
+                  <div className="story-step-title">{step.title}</div>
+                </div>
+                {step.caption && <div className="story-step-caption">{step.caption}</div>}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="story-section">
+          <h2 className="story-section-title">こんな物語が漫画になります</h2>
+          <div className="story-use-grid">
+            {useCases.map((block) => (
+              <div key={block.title} className="story-card">
+                <h3>{block.title}</h3>
+                <div className="story-tags">
+                  {block.tags.map((tag) => (
+                    <span key={tag} className="story-tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="story-section">
+          <h2 className="story-section-title">従来の常識を覆す、スピードと価格</h2>
+          <div className="story-comparison-grid">
+            <div className="story-compare-col story-compare-trad">
+              <div className="story-compare-head">従来の漫画制作</div>
+              {comparisonRows.map((row) => (
+                <div key={row.label} className="story-compare-row">
+                  <div className="story-compare-label">{row.label}</div>
+                  <div className="story-compare-value">{row.trad}</div>
+                </div>
+              ))}
+            </div>
+            <div className="story-compare-col story-compare-fomus">
+              <div className="story-compare-head">MangaX Story-to-Comic</div>
+              {comparisonRows.map((row) => (
+                <div key={row.label} className="story-compare-row">
+                  <div className="story-compare-label">{row.label}</div>
+                  <div className="story-compare-value gold">{row.fomus}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="story-section">
+          <h2 className="story-section-title">料金プラン</h2>
+          <div className="story-pricing">
+            <div className="story-price-title">Standard Package</div>
+            <div className="story-price-amount">100,000円（税込）</div>
+            <div className="story-bullet">漫画10ページ制作</div>
+            <div className="story-bullet">60分ヒアリング</div>
+            <div className="story-bullet">AI作画・編集</div>
+            <div className="story-bullet">高解像度データ納品（PDF / JPG / PNG）</div>
+            <div className="story-option-list">
+              <div className="story-bullet">追加ページ：1P +5,000円</div>
+              <div className="story-bullet">多言語追加：1言語 +30,000円</div>
+              <div className="story-bullet">製本サービス：1冊1,000円〜</div>
+            </div>
+          </div>
+        </section>
+
+        <section className="story-section">
+          <h2 className="story-section-title">FAQ</h2>
+          <div className="story-faq-list">
+            {faqList.map((item, idx) => (
+              <StoryFaqItem
+                key={item.q}
+                item={item}
+                isOpen={openFaq === idx}
+                onToggle={() => setOpenFaq(openFaq === idx ? null : idx)}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section className="story-section story-application">
+          <h2 className="story-section-title">あなたの物語を、世界へ届けましょう。</h2>
+          <StoryCTAButton variant="primary" onClick={() => window.open("mailto:contact@example.com?subject=Story-to-Comic 申し込み", "_self")}>
+            Story-to-Comicを申し込む
+          </StoryCTAButton>
+        </section>
+      </div>
+
+      <footer className="story-footer">
+        <div className="story-container">
+          <div className="story-footer-links">
+            <span>MangaX</span>
+            <span>FOMUS Creative Studio</span>
+            <span>利用規約</span>
+            <span>プライバシーポリシー</span>
+            <span>お問い合わせ</span>
+            <span>EN / JP</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
 
 const ContinueCard = ({ historyItem, series, onClick }) => (
   <div onClick={() => onClick(series)} className="continue-card">
@@ -1408,7 +1775,7 @@ export default function App() {
         </div>
       )}
 
-      {view === "flow" && <FlowPage onBack={() => navigate("home")} t={t} />}
+      {view === "flow" && <StoryLanding onBack={() => navigate("home")} />}
 
       {view === "mypage" && (
         <div className="bg-black min-h-screen pt-20 px-4 text-white">
