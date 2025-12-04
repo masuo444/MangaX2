@@ -587,6 +587,59 @@ body {
   font-size: 14px;
 }
 
+/* =========================
+   KUKU Sponsor Page
+   ========================= */
+.kuku-sponsor {
+  background: radial-gradient(circle at 20% 20%, rgba(198,166,103,0.06), transparent 45%), #090909;
+  color: #fff;
+  min-height: 100vh;
+  padding: 0 0 120px;
+}
+.kuku-container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.kuku-hero { padding: 140px 0 80px; display: grid; gap: 24px; align-items: center; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.kuku-hero-card { background: linear-gradient(135deg, #111, #0d0d0d); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; position: relative; overflow: hidden; }
+.kuku-hero-accent { font-family: 'Playfair Display', serif; color: #C6A667; letter-spacing: 0.08em; font-size: 16px; margin-bottom: 10px; }
+.kuku-hero h1 { font-family: 'Noto Serif JP', serif; font-size: 38px; margin: 0 0 16px; line-height: 1.3; }
+.kuku-hero p { margin: 0 0 16px; color: #cfcfcf; line-height: 1.7; font-family: 'Noto Sans JP', sans-serif; }
+.kuku-cover { width: 100%; aspect-ratio: 3 / 4; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); background: #151515 url('/assets/kuku-cover.jpg') center/cover no-repeat; box-shadow: 0 14px 40px rgba(0,0,0,0.5); }
+.kuku-pill { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: rgba(198,166,103,0.15); color: #C6A667; font-weight: 700; font-family: 'Inter', sans-serif; font-size: 13px; }
+.kuku-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.kuku-cta {
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1px solid #C6A667;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+}
+.kuku-cta.primary { background: #C6A667; color: #0A0A0A; }
+.kuku-cta.secondary { background: transparent; color: #C6A667; }
+.kuku-section { margin: 0 0 120px; }
+.kuku-title { font-family: 'Noto Serif JP', serif; font-size: 30px; margin: 0 0 14px; }
+.kuku-desc { color: #cfcfcf; font-size: 16px; line-height: 1.7; margin: 0 0 20px; font-family: 'Noto Sans JP', sans-serif; }
+.kuku-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.kuku-card {
+  background: #101010;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+.kuku-card h3 { margin: 0 0 10px; font-family: 'Noto Serif JP', serif; font-size: 20px; }
+.kuku-list { color: #cfcfcf; font-size: 15px; line-height: 1.6; padding-left: 18px; margin: 8px 0 0; font-family: 'Noto Sans JP', sans-serif; }
+.kuku-badge { display: inline-flex; padding: 6px 10px; border-radius: 10px; background: rgba(198,166,103,0.12); color: #C6A667; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+.kuku-table { width: 100%; border-collapse: collapse; }
+.kuku-table th, .kuku-table td { padding: 12px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); font-family: 'Noto Sans JP', sans-serif; }
+.kuku-table th { color: #C6A667; font-weight: 700; }
+.kuku-highlight { color: #C6A667; font-weight: 700; }
+.kuku-footer { padding: 40px 0 80px; color: #a8a8a8; font-size: 14px; text-align: center; font-family: 'Inter', sans-serif; }
+@media (max-width: 640px) {
+  .kuku-hero { padding: 120px 0 60px; }
+  .kuku-hero h1 { font-size: 30px; }
+  .kuku-title { font-size: 24px; }
+}
+
 @media (max-width: 900px) {
   .story-hero { padding: 200px 0 180px; }
   .story-h1 { font-size: 46px; }
@@ -901,7 +954,14 @@ const useAppNavigation = (initialView = "flow") => {
       }
     };
     window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
+    const handleNavigateEvent = (e) => {
+      if (e.detail?.view) navigate(e.detail.view);
+    };
+    window.addEventListener("mx_navigate", handleNavigateEvent);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      window.removeEventListener("mx_navigate", handleNavigateEvent);
+    };
   }, [readingChapter, selectedSeries, historyStack]);
 
   const navigate = (newView) => {
@@ -1473,6 +1533,139 @@ const StoryLanding = ({ onBack }) => {
   );
 };
 
+const KukuSponsorPage = ({ onBack }) => {
+  const openMail = (subject) => window.open(`mailto:contact@example.com?subject=${encodeURIComponent(subject)}`, "_self");
+
+  return (
+    <div className="kuku-sponsor">
+      <div className="kuku-container">
+        <div style={{ paddingTop: 16 }}>
+          <button className="story-back" onClick={onBack}><ChevronLeft size={16} /> トップへ戻る</button>
+        </div>
+        <section className="kuku-hero">
+          <div className="kuku-hero-card">
+            <div className="kuku-hero-accent">KUKU ―黎明の木神―</div>
+            <h1>次号スポンサースロット 販売中</h1>
+            <p>連載中の「KUKU」次号に、ロゴ掲出・クレジット・タイアップカットを掲出できるスポンサー枠を用意しました。限定枠につき先着順です。</p>
+            <div className="kuku-pill">掲載号：第4話（次号）</div>
+            <div className="kuku-pill" style={{ marginLeft: 8 }}>募集枠：限定3枠</div>
+            <div className="kuku-cta-row">
+              <button className="kuku-cta primary" onClick={() => openMail("KUKU 次号スポンサー申し込み")}>スポンサー申込 / 問い合わせ</button>
+              <button className="kuku-cta secondary" onClick={() => openMail("KUKU スポンサー資料請求")}>資料を請求する</button>
+            </div>
+          </div>
+          <div>
+            <div className="kuku-cover" />
+          </div>
+        </section>
+
+        <section className="kuku-section">
+          <h2 className="kuku-title">提供内容</h2>
+          <p className="kuku-desc">スポンサー枠はすべて漫画本編内に表示。デジタル配信（MangaX）、SNS告知、公式サイトの次号クレジットにも掲載します。</p>
+          <div className="kuku-grid">
+            <div className="kuku-card">
+              <span className="kuku-badge">Gold（1枠）</span>
+              <h3>メインタイアップ</h3>
+              <ul className="kuku-list">
+                <li>本編内フルカット（1P相当）で商品/サービスを描写</li>
+                <li>巻末クレジット最上段ロゴ</li>
+                <li>SNS告知ポストで単独紹介</li>
+              </ul>
+            </div>
+            <div className="kuku-card">
+              <span className="kuku-badge">Silver（1枠）</span>
+              <h3>クレジット＋パネル</h3>
+              <ul className="kuku-list">
+                <li>本編内ミニパネルでロゴ/テキスト掲出</li>
+                <li>巻末クレジットにロゴ掲出</li>
+                <li>SNS告知でロゴ掲載</li>
+              </ul>
+            </div>
+            <div className="kuku-card">
+              <span className="kuku-badge">Bronze（1枠）</span>
+              <h3>巻末クレジット</h3>
+              <ul className="kuku-list">
+                <li>巻末クレジットに社名/サービス名を掲出</li>
+                <li>MangaX作品ページにクレジット表記</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="kuku-section">
+          <h2 className="kuku-title">料金・枠数</h2>
+          <table className="kuku-table">
+            <thead>
+              <tr><th>プラン</th><th>料金（税抜）</th><th>枠数</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Gold</td><td className="kuku-highlight">150,000円</td><td>1枠</td></tr>
+              <tr><td>Silver</td><td className="kuku-highlight">80,000円</td><td>1枠</td></tr>
+              <tr><td>Bronze</td><td className="kuku-highlight">30,000円</td><td>1枠</td></tr>
+            </tbody>
+          </table>
+          <p className="kuku-desc" style={{ marginTop: 12 }}>※デザイン・演出はKUKU制作チームが担当。ご提供素材（ロゴ・商品写真）がある場合はご支給ください。</p>
+        </section>
+
+        <section className="kuku-section">
+          <h2 className="kuku-title">スケジュール</h2>
+          <div className="kuku-grid">
+            <div className="kuku-card">
+              <h3>申し込み〜素材受領</h3>
+              <ul className="kuku-list">
+                <li>申し込み後、担当よりヒアリング</li>
+                <li>ロゴ・写真・紹介文を共有（2営業日以内）</li>
+              </ul>
+            </div>
+            <div className="kuku-card">
+              <h3>演出確認</h3>
+              <ul className="kuku-list">
+                <li>ラフ提出：申込から3〜4営業日</li>
+                <li>微調整1回まで対応</li>
+              </ul>
+            </div>
+            <div className="kuku-card">
+              <h3>掲載・公開</h3>
+              <ul className="kuku-list">
+                <li>次号公開時に本編・巻末クレジットへ反映</li>
+                <li>MangaX配信・SNS告知で同時露出</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="kuku-section">
+          <h2 className="kuku-title">よくある質問</h2>
+          <div className="kuku-grid">
+            <div className="kuku-card">
+              <h3>業種に制限はありますか？</h3>
+              <p className="kuku-desc">公序良俗に反しない内容であれば対応可能です。事前に確認いたします。</p>
+            </div>
+            <div className="kuku-card">
+              <h3>修正は可能ですか？</h3>
+              <p className="kuku-desc">ラフ段階で1回の微調整を承ります。大幅な追加工数は個別見積りとなります。</p>
+            </div>
+            <div className="kuku-card">
+              <h3>決済方法は？</h3>
+              <p className="kuku-desc">請求書払いに対応しています。法人/個人いずれも可能です。</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="kuku-section" style={{ textAlign: "center" }}>
+          <h2 className="kuku-title">枠数に限りがあります。まずはお問い合わせを。</h2>
+          <div className="kuku-cta-row" style={{ justifyContent: "center" }}>
+            <button className="kuku-cta primary" onClick={() => openMail("KUKU 次号スポンサー申し込み")}>スポンサー申込 / 問い合わせ</button>
+            <button className="kuku-cta secondary" onClick={onBack}>作品ページへ戻る</button>
+          </div>
+        </section>
+
+        <div className="kuku-footer">© MangaX / FOMUS</div>
+      </div>
+    </div>
+  );
+};
+
 const ContinueCard = ({ historyItem, series, onClick }) => (
   <div onClick={() => onClick(series)} className="continue-card">
     <div className="continue-image-wrapper">
@@ -1503,6 +1696,15 @@ const DetailModal = ({ series, chapters, isOpen, onClose, onRead, t }) => {
             <p className="jump-author">{series.author}</p>
             <p className="jump-description">{series.description}</p>
             {firstChapter && <button onClick={() => onRead(firstChapter)} className="jump-read-btn"><Play size={24} /> {t.read_first}</button>}
+            {series.id === "kuku" && (
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("mx_navigate", { detail: { view: "kukuSponsor" } }))}
+                className="jump-read-btn"
+                style={{ background: "#C6A667", color: "#0A0A0A" }}
+              >
+                スポンサー募集ページを見る
+              </button>
+            )}
           </div>
           <div className="jump-tabs">
             <button onClick={() => setActiveTab("episodes")} className={`jump-tab ${activeTab === "episodes" ? "active" : ""}`}>{t.episodes}</button>
@@ -1927,6 +2129,7 @@ export default function App() {
       )}
 
       {view === "flow" && <StoryLanding onBack={() => navigate("home")} />}
+      {view === "kukuSponsor" && <KukuSponsorPage onBack={() => navigate("home")} />}
 
       {view === "mypage" && (
         <div className="bg-black min-h-screen pt-20 px-4 text-white">
