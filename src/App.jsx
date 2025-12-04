@@ -1018,7 +1018,17 @@ const Header = ({ scrolled, activeTab, setActiveTab, t, toggleLang, lang }) => (
       <div className="logo" onClick={() => setActiveTab("home")}>MangaX</div>
       <div className="pc-nav">
         {["home", "new", "partners", "mypage"].map((k) => (
-          <div key={k} className={`pc-nav-link ${activeTab === k ? "active" : ""}`} onClick={() => setActiveTab(k)}>
+          <div
+            key={k}
+            className={`pc-nav-link ${activeTab === k ? "active" : ""}`}
+            onClick={() => {
+              if (k === "partners") {
+                setActiveTab("kukuSponsor");
+              } else {
+                setActiveTab(k);
+              }
+            }}
+          >
             {t[`nav_${k}`]}
           </div>
         ))}
@@ -1035,7 +1045,17 @@ const Header = ({ scrolled, activeTab, setActiveTab, t, toggleLang, lang }) => (
 const BottomNav = ({ activeTab, setActiveTab, t }) => (
   <div className="bottom-nav">
     {["home", "new", "partners", "mypage"].map((k) => (
-      <button key={k} onClick={() => setActiveTab(k)} className={`nav-item ${activeTab === k ? "active" : ""}`}>
+      <button
+        key={k}
+        onClick={() => {
+          if (k === "partners") {
+            setActiveTab("kukuSponsor");
+          } else {
+            setActiveTab(k);
+          }
+        }}
+        className={`nav-item ${activeTab === k ? "active" : ""}`}
+      >
         {k === "home" ? <Home size={24} /> : k === "new" ? <MonitorPlay size={24} /> : k === "partners" ? <Handshake size={24} /> : <User size={24} />}
         <span>{t[`nav_${k}`]}</span>
       </button>
