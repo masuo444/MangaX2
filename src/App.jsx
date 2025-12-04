@@ -1105,7 +1105,7 @@ const ProductionFlow = () => (
 );
 
 // --- Comparison Section Component (VISUAL UPDATE) ---
-const ComparisonSection = ({ t }) => {
+const ComparisonSection = ({ t, hideHeader = false }) => {
   const rows = [
     {
       icon: <Coins size={24} />,
@@ -1147,10 +1147,12 @@ const ComparisonSection = ({ t }) => {
 
   return (
     <div className="comp-section">
-      <div className="comp-header">
-        <h2>従来の常識を覆す、速度と価格</h2>
-        <p>プロの漫画制作への敬意を払いながら、FOMUSが提供する革新的なスピードと価格を体験してください。</p>
-      </div>
+      {!hideHeader && (
+        <div className="comp-header">
+          <h2>サービス比較</h2>
+          <p></p>
+        </div>
+      )}
 
       <div className="comp-container">
         <div className="comp-col comp-col-trad">
@@ -1229,7 +1231,7 @@ const StoryLanding = ({ onBack }) => {
 
   const comparisonRows = [
     { label: "価格", trad: "30〜50万円 / 10P", fomus: "10万円 / 10P" },
-    { label: "納期", trad: "1.5〜2ヶ月", fomus: "最短2週間" },
+    { label: "納期", trad: "1.5〜2ヶ月", fomus: "最短1週間" },
     { label: "手間", trad: "ネーム・下書き指示が必要", fomus: "ヒアリングのみ" },
     { label: "品質", trad: "作家によって差が大きい", fomus: "プロ編集 × AI補正で安定品質" },
     { label: "展開", trad: "データ納品のみ", fomus: "40言語展開・SNS発信可能" },
@@ -1370,7 +1372,7 @@ const StoryLanding = ({ onBack }) => {
               comp_deliver_trad: "データ納品のみが一般的",
               comp_cost_fomus: "10万円 / 10P",
               comp_cost_sub_fomus: "AI活用による工程最適化・コスト圧縮",
-              comp_time_fomus: "約2週間",
+              comp_time_fomus: "最短1週間",
               comp_time_sub_fomus: "アジャイルな制作体制による短納期",
               comp_effort_fomus: "最小限 (60分)",
               comp_effort_sub_fomus: "ヒアリングで意図を汲み取り、構成から提案",
@@ -1381,6 +1383,7 @@ const StoryLanding = ({ onBack }) => {
               badge_fast: "Fast & Lean",
               badge_easy: "Client-friendly",
             }}
+            hideHeader
           />
         </section>
 
