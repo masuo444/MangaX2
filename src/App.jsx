@@ -169,6 +169,7 @@ body {
   min-height: 100vh;
   padding: 0 0 120px;
 }
+.story-lp a { color: inherit; text-decoration: none; }
 .story-container {
   max-width: 960px;
   margin: 0 auto;
@@ -177,9 +178,54 @@ body {
 .story-section {
   margin: 0 auto 180px;
 }
+.story-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 72px;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #1f1f1f;
+  z-index: 100;
+}
+.story-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+}
+.story-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+}
+.story-nav a { color: #e5e5e5; }
+.story-lang {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #B8B8B8;
+  font-size: 14px;
+}
+.story-header-cta {
+  margin-left: 20px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid #C6A667;
+  background: #C6A667;
+  color: #0A0A0A;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+}
 .story-hero {
   text-align: center;
   padding: 240px 0 220px;
+  position: relative;
 }
 .story-kicker {
   font-family: 'Playfair Display', 'Noto Serif JP', serif;
@@ -201,6 +247,13 @@ body {
   color: #B8B8B8;
   max-width: 760px;
   margin: 0 auto 32px;
+}
+.story-hero-visual {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(198,166,103,0.12), transparent 45%), radial-gradient(circle at 80% 70%, rgba(90,120,150,0.08), transparent 45%);
+  opacity: 0.9;
+  pointer-events: none;
 }
 .story-cta-group {
   display: inline-flex;
@@ -275,6 +328,13 @@ body {
   font-size: 36px;
   line-height: 1.3;
   margin: 0 0 24px;
+}
+.story-section-sub {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-size: 18px;
+  color: #B8B8B8;
+  line-height: 1.7;
+  margin: 0 0 28px;
 }
 .story-section-desc {
   font-family: 'Noto Sans JP', 'Inter', sans-serif;
@@ -377,6 +437,24 @@ body {
   border-radius: 8px;
   padding: 48px;
   border: 1px solid #1f1f1f;
+}
+.story-thumb-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.story-thumb {
+  aspect-ratio: 3 / 2;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1b1b1b, #222);
+  border: 1px solid #1f1f1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-size: 13px;
 }
 .story-card h3 {
   font-family: 'Noto Serif JP', serif;
@@ -488,6 +566,13 @@ body {
   text-align: center;
   padding: 200px 0;
 }
+.story-floating-cta {
+  position: fixed;
+  right: 16px;
+  bottom: 20px;
+  z-index: 90;
+  display: none;
+}
 .story-footer {
   background: #0A0A0A;
   border-top: 1px solid #1f1f1f;
@@ -516,6 +601,7 @@ body {
   .story-container { padding: 0 16px; }
   .story-step::after { display: none; }
   .story-application { padding: 160px 0; }
+  .story-floating-cta { display: block; }
 }
 
 .app-header {
@@ -1120,37 +1206,25 @@ const StoryLanding = ({ onBack }) => {
   const [openFaq, setOpenFaq] = useState(null);
 
   const valueItems = [
-    {
-      icon: <Rocket size={20} />,
-      title: "プロ品質 × 圧倒的スピード",
-      text: "AI × アジャイル制作で、最短2週間の納品が可能。",
-    },
-    {
-      icon: <MessageCircle size={20} />,
-      title: "まっすーによる60分ヒアリング",
-      text: "想い・背景・目的を引き出し、構成をゼロから設計。",
-    },
-    {
-      icon: <Globe size={20} />,
-      title: "世界展開できる漫画",
-      text: "40言語展開。SNS・展示会・海外PRに最適。",
-    },
+    { icon: <Rocket size={20} />, title: "プロ品質 × 最短2週間", text: "AI × アジャイル制作で、最短2週間の納品が可能。" },
+    { icon: <MessageCircle size={20} />, title: "60分ヒアリングで構成まで丸投げOK", text: "想い・背景・目的を引き出し、構成をゼロから設計。" },
+    { icon: <Globe size={20} />, title: "40言語対応。世界で読まれる漫画へ。", text: "SNS・展示会・海外PRに最適。" },
   ];
 
   const steps = [
-    { title: "申込み（フォーム / DM）", caption: "", icon: <Mail size={18} /> },
+    { title: "申し込み（フォーム / DM）", caption: "", icon: <Mail size={18} /> },
     { title: "ヒアリング（60分）", caption: "", icon: <Clock size={18} /> },
-    { title: "構成案（10ページ）制作", caption: "", icon: <FileText size={18} /> },
+    { title: "構成案（10ページ）作成", caption: "", icon: <FileText size={18} /> },
     { title: "AI作画 × 編集", caption: "", icon: <Wand2 size={18} /> },
     { title: "仕上げ・レタッチ", caption: "", icon: <Sparkles size={18} /> },
     { title: "納品 ＋ MangaX掲載（任意）", caption: "", icon: <Upload size={18} /> },
   ];
 
   const useCases = [
-    { title: "個人", tags: ["SNSプロフィール", "転職物語", "ノマドの記録"] },
-    { title: "ギフト", tags: ["結婚", "家族の記録", "誕生日", "記念日"] },
-    { title: "ビジネス", tags: ["代表ストーリー", "サービス説明", "採用漫画"] },
-    { title: "海外向け", tags: ["英語PR", "展示会漫画", "多言語プロモーション"] },
+    { title: "個人向け", tags: ["自己紹介", "転職ストーリー", "SNSプロフィール"] },
+    { title: "ギフト", tags: ["結婚", "誕生日", "家族の記録", "友人への贈り物"] },
+    { title: "ビジネス", tags: ["代表ストーリー", "採用漫画", "サービス説明"] },
+    { title: "海外向け", tags: ["英語プロモ", "展示会PR", "国際イベント用資料"] },
   ];
 
   const comparisonRows = [
@@ -1164,28 +1238,51 @@ const StoryLanding = ({ onBack }) => {
   const faqList = [
     { q: "ストーリーがまとまっていなくても大丈夫？", a: "はい。ヒアリングで整理します。" },
     { q: "公開したくない場合は？", a: "非公開制作も可能です。" },
-    { q: "納期は？", a: "個人：2〜3週間前後。ギフト：＋数日。" },
-    { q: "ビジネス利用は可能？", a: "会社紹介・採用漫画・展示会PRにも対応。" },
+    { q: "個人／企業の納期は？", a: "個人は約2〜3週間、ギフトは＋数日。企業案件も個別相談で対応します。" },
+    { q: "ギフトとして使える？", a: "はい。結婚・誕生日・家族の記録などギフト向け構成も可能です。" },
+    { q: "海外向けにも対応できる？", a: "40言語対応で海外PRや展示会資料として活用できます。" },
+    { q: "どんなジャンルでも可能？", a: "はい。伝えたい想いがあればジャンル不問で制作します。" },
+    { q: "MangaXに掲載しなくてもいい？", a: "非公開納品にも対応します。掲載は任意です。" },
+    { q: "制作事例は見られる？", a: "ヒアリング予約の際に事例リンクを共有します。" },
+    { q: "支払い方法は？", a: "お申し込み時にご案内します。法人請求も対応します。" },
+    { q: "修正は何回まで？", a: "構成確定後の軽微な調整を含め、内容に応じてご相談のうえ対応します。" },
   ];
 
   return (
     <div className="story-lp">
+      <header className="story-header">
+        <div className="story-header-inner">
+          <div className="story-nav" style={{ gap: 14 }}>
+            <a className="logo" style={{ color: "#C62828", fontSize: 20, textShadow: "none" }} onClick={onBack}>MangaX</a>
+            <a>新着</a>
+            <a>スポンサー</a>
+            <a>マイページ</a>
+          </div>
+          <div className="story-nav" style={{ gap: 14 }}>
+            <div className="story-lang">EN / JP</div>
+            <button className="story-header-cta" onClick={() => window.open("mailto:contact@example.com?subject=Story-to-Comic 申し込み", "_self")}>申し込み</button>
+          </div>
+        </div>
+      </header>
+
       <div className="story-container">
         <section className="story-section story-hero">
+          <div className="story-hero-visual" />
           <button className="story-back" onClick={onBack}>
             <ChevronLeft size={16} /> トップへ戻る
           </button>
           <div className="story-kicker">MangaX × FOMUS</div>
           <h1 className="story-h1">あなたの物語を、10ページの漫画に。</h1>
           <p className="story-subcopy">
-            世界基準のAI × クリエイティブディレクションで、<br />
-            人生・ビジネス・ギフト・個人PRを“作品”へ昇華するサービス。
+            世界基準のAI × クリエイティブディレクション。<br />
+            人生・ビジネス・ギフト・PRストーリーを、<br />
+            短期間で“作品”として形にします。
           </p>
           <div className="story-cta-group">
             <StoryCTAButton variant="primary" onClick={() => window.open("mailto:contact@example.com?subject=Story-to-Comic 予約", "_self")}>
               無料ヒアリングを予約する
             </StoryCTAButton>
-            <StoryCTAButton variant="secondary" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}>
+            <StoryCTAButton variant="secondary" onClick={() => document.getElementById("story-portfolio")?.scrollIntoView({ behavior: "smooth" })}>
               制作事例を見る
             </StoryCTAButton>
           </div>
@@ -1198,7 +1295,7 @@ const StoryLanding = ({ onBack }) => {
         </section>
 
         <section className="story-section">
-          <h2 className="story-section-title">FOMUSがつくると、 なぜ圧倒的？</h2>
+          <h2 className="story-section-title">FOMUS品質の漫画制作を、誰でも。</h2>
           <div className="story-value-grid">
             {valueItems.map((item, idx) => (
               <div key={idx} className="story-value-item">
@@ -1213,7 +1310,34 @@ const StoryLanding = ({ onBack }) => {
         </section>
 
         <section className="story-section">
-          <h2 className="story-section-title">制作の流れ</h2>
+          <h2 className="story-section-title">こんな物語が、漫画になります。</h2>
+          <div className="story-use-grid">
+            {useCases.map((block) => (
+              <div key={block.title} className="story-card">
+                <h3>{block.title}</h3>
+                <div className="story-tags">
+                  {block.tags.map((tag) => (
+                    <span key={tag} className="story-tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="story-section-sub">制作例</div>
+          <div id="story-portfolio" className="story-thumb-row">
+            {["Sample 1", "Sample 2", "Sample 3", "Sample 4"].map((s) => (
+              <div key={s} className="story-thumb">{s}</div>
+            ))}
+          </div>
+          <div style={{ marginTop: 16 }}>
+            <StoryCTAButton variant="secondary" onClick={() => window.scrollTo({ top: document.body.clientHeight / 2, behavior: "smooth" })}>
+              詳しく見る
+            </StoryCTAButton>
+          </div>
+        </section>
+
+        <section className="story-section">
+          <h2 className="story-section-title">あなたがやるのは、“話すだけ”。</h2>
           <div className="story-steps">
             {steps.map((step, idx) => (
               <div key={idx} className="story-step">
@@ -1228,43 +1352,36 @@ const StoryLanding = ({ onBack }) => {
         </section>
 
         <section className="story-section">
-          <h2 className="story-section-title">こんな物語が漫画になります</h2>
-          <div className="story-use-grid">
-            {useCases.map((block) => (
-              <div key={block.title} className="story-card">
-                <h3>{block.title}</h3>
-                <div className="story-tags">
-                  {block.tags.map((tag) => (
-                    <span key={tag} className="story-tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="story-section">
-          <h2 className="story-section-title">従来の常識を覆す、スピードと価格</h2>
-          <div className="story-comparison-grid">
-            <div className="story-compare-col story-compare-trad">
-              <div className="story-compare-head">従来の漫画制作</div>
-              {comparisonRows.map((row) => (
-                <div key={row.label} className="story-compare-row">
-                  <div className="story-compare-label">{row.label}</div>
-                  <div className="story-compare-value">{row.trad}</div>
-                </div>
-              ))}
-            </div>
-            <div className="story-compare-col story-compare-fomus">
-              <div className="story-compare-head">MangaX Story-to-Comic</div>
-              {comparisonRows.map((row) => (
-                <div key={row.label} className="story-compare-row">
-                  <div className="story-compare-label">{row.label}</div>
-                  <div className="story-compare-value gold">{row.fomus}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <h2 className="story-section-title">従来の常識を覆す、速度と品質。</h2>
+          <ComparisonSection
+            t={{
+              comp_title_trad: "従来の漫画制作",
+              comp_sub_trad: "(プロの技と時間)",
+              comp_title_fomus: "MangaX Story-to-Comic",
+              comp_sub_fomus: "(AIとアジャイルによる革新)",
+              comp_cost_trad: "30〜50万円 / 10P",
+              comp_cost_sub_trad: "匠の技にはコストがかかります",
+              comp_time_trad: "1.5ヶ月〜2ヶ月",
+              comp_time_sub_trad: "緻密な工程と確認に時間を費やします",
+              comp_effort_trad: "多大",
+              comp_effort_sub_trad: "詳細な脚本と度重なる調整が必要",
+              comp_skill_trad: "個人のスキルに依存",
+              comp_skill_sub_trad: "熟練の作家による唯一無二の作品",
+              comp_deliver_trad: "データ納品のみが一般的",
+              comp_cost_fomus: "10万円 / 10P",
+              comp_cost_sub_fomus: "AI活用による工程最適化・コスト圧縮",
+              comp_time_fomus: "約2週間",
+              comp_time_sub_fomus: "アジャイルな制作体制による短納期",
+              comp_effort_fomus: "最小限 (60分)",
+              comp_effort_sub_fomus: "ヒアリングで意図を汲み取り、構成から提案",
+              comp_quality_fomus: "安定したクオリティ",
+              comp_quality_sub_fomus: "プロ編集者監修による一貫した品質保証",
+              comp_expand_fomus: "ワンストップ展開",
+              comp_expand_sub_fomus: "多言語化、MangaX世界配信、製本まで統合支援",
+              badge_fast: "Fast & Lean",
+              badge_easy: "Client-friendly",
+            }}
+          />
         </section>
 
         <section className="story-section">
@@ -1285,6 +1402,26 @@ const StoryLanding = ({ onBack }) => {
         </section>
 
         <section className="story-section">
+          <h2 className="story-section-title">FOMUSならではの強み</h2>
+          <div className="story-value-grid">
+            {[
+              { icon: <MessageCircle size={20} />, title: "まっすーの“引き出すヒアリング”", text: "話を聞くだけで構成ができる。" },
+              { icon: <Wand2 size={20} />, title: "AI×人のハイブリッド制作", text: "速い・高品質・安定。" },
+              { icon: <Globe size={20} />, title: "世界展開できる多言語漫画（40言語）", text: "翻訳・SNS・展示会にも対応。" },
+              { icon: <Sparkles size={20} />, title: "MangaXに掲載できる（無料）", text: "個人・ギフト・企業PRとして利用可能。" },
+            ].map((item, idx) => (
+              <div key={idx} className="story-value-item">
+                <div className="story-value-icon">{item.icon}</div>
+                <div>
+                  <div className="story-value-title">{item.title}</div>
+                  <p className="story-value-text">{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="story-section">
           <h2 className="story-section-title">FAQ</h2>
           <div className="story-faq-list">
             {faqList.map((item, idx) => (
@@ -1299,11 +1436,22 @@ const StoryLanding = ({ onBack }) => {
         </section>
 
         <section className="story-section story-application">
-          <h2 className="story-section-title">あなたの物語を、世界へ届けましょう。</h2>
+          <h2 className="story-section-title">あなたの物語を、世界にひとつの漫画へ。</h2>
           <StoryCTAButton variant="primary" onClick={() => window.open("mailto:contact@example.com?subject=Story-to-Comic 申し込み", "_self")}>
             Story-to-Comicを申し込む
           </StoryCTAButton>
+          <div style={{ marginTop: 16 }}>
+            <StoryCTAButton variant="secondary" onClick={() => window.open("mailto:contact@example.com?subject=Story-to-Comic 無料ヒアリング", "_self")}>
+              無料ヒアリングを予約
+            </StoryCTAButton>
+          </div>
         </section>
+      </div>
+
+      <div className="story-floating-cta">
+        <StoryCTAButton variant="primary" onClick={() => window.open("mailto:contact@example.com?subject=Story-to-Comic 申し込み", "_self")}>
+          Story-to-Comic を申し込む
+        </StoryCTAButton>
       </div>
 
       <footer className="story-footer">
