@@ -602,6 +602,7 @@ body {
 .kuku-hero { padding: 140px 0 80px; display: grid; gap: 24px; align-items: center; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .kuku-hero-card { background: linear-gradient(135deg, #111, #0d0d0d); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; position: relative; overflow: hidden; }
 .kuku-hero-accent { font-family: 'Playfair Display', serif; color: #C6A667; letter-spacing: 0.08em; font-size: 16px; margin-bottom: 10px; }
+.kuku-hero-brand { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 6px; }
 .kuku-hero h1 { font-family: 'Noto Serif JP', serif; font-size: 38px; margin: 0 0 16px; line-height: 1.3; }
 .kuku-hero p { margin: 0 0 16px; color: #cfcfcf; line-height: 1.7; font-family: 'Noto Sans JP', sans-serif; }
 .kuku-hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
@@ -1578,7 +1579,10 @@ const KukuSponsorPage = ({ onBack }) => {
         </div>
         <section className="kuku-hero">
           <div className="kuku-hero-card">
-            <div className="kuku-hero-accent">MangaX × FOMUS</div>
+            <div className="kuku-hero-brand">
+              <img src="/assets/fomus-logo-new.png" alt="FOMUS" className="story-logo-img-lg" />
+              <div className="kuku-hero-accent">MangaX × FOMUS</div>
+            </div>
             <h1>KUKU 次号スポンサースロット</h1>
             <p>連載中の「KUKU ―黎明の木神―」次号に、ロゴ掲出・クレジット・タイアップカットを掲出できるスポンサー枠を用意しました。限定枠につき先着順です。</p>
             <div className="kuku-hero-meta">
