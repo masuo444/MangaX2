@@ -602,6 +602,7 @@ body {
 .kuku-hero-accent { font-family: 'Playfair Display', serif; color: #C6A667; letter-spacing: 0.08em; font-size: 16px; margin-bottom: 10px; }
 .kuku-hero h1 { font-family: 'Noto Serif JP', serif; font-size: 38px; margin: 0 0 16px; line-height: 1.3; }
 .kuku-hero p { margin: 0 0 16px; color: #cfcfcf; line-height: 1.7; font-family: 'Noto Sans JP', sans-serif; }
+.kuku-hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
 .kuku-cover { width: 100%; aspect-ratio: 3 / 4; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); background: #151515 url('/assets/kuku-cover.jpg') center/cover no-repeat; box-shadow: 0 14px 40px rgba(0,0,0,0.5); }
 .kuku-pill { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: rgba(198,166,103,0.15); color: #C6A667; font-weight: 700; font-family: 'Inter', sans-serif; font-size: 13px; }
 .kuku-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
@@ -634,10 +635,21 @@ body {
 .kuku-table th { color: #C6A667; font-weight: 700; }
 .kuku-highlight { color: #C6A667; font-weight: 700; }
 .kuku-footer { padding: 40px 0 80px; color: #a8a8a8; font-size: 14px; text-align: center; font-family: 'Inter', sans-serif; }
+.kuku-sticky-cta {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  background: rgba(10,10,10,0.92);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 14px 18px calc(14px + var(--safe-area-bottom, 0px));
+  display: none;
+  z-index: 120;
+}
+.kuku-sticky-cta button { flex: 1; }
 @media (max-width: 640px) {
   .kuku-hero { padding: 120px 0 60px; }
   .kuku-hero h1 { font-size: 30px; }
   .kuku-title { font-size: 24px; }
+  .kuku-sticky-cta { display: flex; gap: 10px; }
 }
 
 @media (max-width: 900px) {
@@ -1564,11 +1576,13 @@ const KukuSponsorPage = ({ onBack }) => {
         </div>
         <section className="kuku-hero">
           <div className="kuku-hero-card">
-            <div className="kuku-hero-accent">KUKU ―黎明の木神―</div>
-            <h1>次号スポンサースロット 販売中</h1>
-            <p>連載中の「KUKU」次号に、ロゴ掲出・クレジット・タイアップカットを掲出できるスポンサー枠を用意しました。限定枠につき先着順です。</p>
-            <div className="kuku-pill">掲載号：第4話（次号）</div>
-            <div className="kuku-pill" style={{ marginLeft: 8 }}>募集枠：限定3枠</div>
+            <div className="kuku-hero-accent">MangaX × FOMUS</div>
+            <h1>KUKU 次号スポンサースロット</h1>
+            <p>連載中の「KUKU ―黎明の木神―」次号に、ロゴ掲出・クレジット・タイアップカットを掲出できるスポンサー枠を用意しました。限定枠につき先着順です。</p>
+            <div className="kuku-hero-meta">
+              <div className="kuku-pill">掲載号：第4話（次号）</div>
+              <div className="kuku-pill">募集枠：限定3枠</div>
+            </div>
             <div className="kuku-cta-row">
               <button className="kuku-cta primary" onClick={() => openMail("KUKU 次号スポンサー申し込み")}>スポンサー申込 / 問い合わせ</button>
               <button className="kuku-cta secondary" onClick={() => openMail("KUKU スポンサー資料請求")}>資料を請求する</button>
@@ -1681,6 +1695,10 @@ const KukuSponsorPage = ({ onBack }) => {
         </section>
 
         <div className="kuku-footer">© MangaX / FOMUS</div>
+      </div>
+      <div className="kuku-sticky-cta">
+        <button className="kuku-cta primary" onClick={() => openMail("KUKU 次号スポンサー申し込み")}>スポンサー申込</button>
+        <button className="kuku-cta secondary" onClick={() => openMail("KUKU スポンサー資料請求")}>資料請求</button>
       </div>
     </div>
   );
