@@ -587,6 +587,7 @@ body {
   font-size: 14px;
 }
 .story-logo-img { height: 26px; vertical-align: middle; margin-right: 6px; }
+.story-logo-img-lg { height: 34px; vertical-align: middle; margin-right: 10px; }
 
 /* =========================
    KUKU Sponsor Page
@@ -1554,7 +1555,7 @@ const StoryLanding = ({ onBack }) => {
         <div className="story-container">
           <div className="story-footer-links">
             <span>MangaX</span>
-            <span><img src="/assets/fomus-logo.png" alt="FOMUS" className="story-logo-img" />FOMUS Creative Studio</span>
+            <span><img src="/assets/FOMUSlogo_edited.png" alt="FOMUS" className="story-logo-img" />FOMUS Creative Studio</span>
             <span>利用規約</span>
             <span>プライバシーポリシー</span>
             <span>お問い合わせ</span>
@@ -1591,6 +1592,10 @@ const KukuSponsorPage = ({ onBack }) => {
           </div>
           <div>
             <div className="kuku-cover" />
+            <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 8 }}>
+              <img src="/assets/FOMUSlogo_edited.png" alt="FOMUS" className="story-logo-img-lg" />
+              <span style={{ color: "#cfcfcf", fontFamily: "'Inter','Noto Sans JP',sans-serif" }}>FOMUS Creative Studio</span>
+            </div>
           </div>
         </section>
 
@@ -1695,7 +1700,7 @@ const KukuSponsorPage = ({ onBack }) => {
           </div>
         </section>
 
-        <div className="kuku-footer">© MangaX / <img src="/assets/fomus-logo.png" alt="FOMUS" className="story-logo-img" />FOMUS</div>
+        <div className="kuku-footer">© MangaX / <img src="/assets/FOMUSlogo_edited.png" alt="FOMUS" className="story-logo-img" />FOMUS</div>
       </div>
       <div className="kuku-sticky-cta">
         <button className="kuku-cta primary" onClick={() => openMail("KUKU 次号スポンサー申し込み")}>スポンサー申込</button>
