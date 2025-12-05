@@ -655,6 +655,113 @@ body {
   .kuku-sticky-cta { display: flex; gap: 10px; }
 }
 
+/* --- New sponsor LP styles --- */
+.kuku-hero-new {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #0c0c0c;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.kuku-hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.25), #0c0c0c 65%), url('https://placehold.co/1920x900/111/fff?text=KUKU+Key+Visual') center/cover no-repeat;
+  opacity: 0.95;
+}
+.kuku-hero-inner {
+  position: relative; z-index: 2;
+  padding: 140px 24px 120px;
+  display: grid;
+  gap: 24px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.kuku-hero-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 42px;
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+.kuku-hero-copy {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 18px;
+  color: #e5e5e5;
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.kuku-hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.kuku-hero-cta .kuku-cta { font-size: 16px; padding: 14px 20px; }
+.kuku-section-new { margin: 100px auto; }
+.kuku-heading {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 32px;
+  margin: 0 0 12px;
+}
+.kuku-text {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #cfcfcf;
+  line-height: 1.7;
+  margin: 0 0 24px;
+}
+.kuku-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.kuku-gallery img { width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); }
+.kuku-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+.kuku-plan-card {
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 22px;
+  display: grid;
+  gap: 10px;
+}
+.kuku-plan-name { font-family: 'Noto Serif JP', serif; font-size: 22px; margin: 0; }
+.kuku-plan-price { color: #C6A667; font-weight: 800; font-size: 18px; font-family: 'Inter', sans-serif; }
+.kuku-plan-img { width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); }
+.kuku-list-tight { color: #cfcfcf; font-size: 15px; line-height: 1.6; padding-left: 18px; margin: 0; }
+.kuku-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 70%;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+.kuku-carousel img { width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
+.kuku-box {
+  background: #151515;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 18px;
+  color: #e5e5e5;
+  font-family: 'Noto Sans JP', sans-serif;
+  line-height: 1.7;
+}
+.kuku-box.gray { background: #1c1c1c; }
+.kuku-faq { display: grid; gap: 12px; }
+.kuku-faq-item { border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 14px; background: #0f0f0f; }
+.kuku-faq-q { font-weight: 700; margin: 0 0 6px; font-family: 'Noto Sans JP', sans-serif; }
+.kuku-faq-a { margin: 0; color: #cfcfcf; line-height: 1.6; font-size: 15px; }
+@media (max-width: 640px) {
+  .kuku-hero-inner { padding: 120px 18px 90px; }
+  .kuku-hero-title { font-size: 30px; }
+  .kuku-hero-copy { font-size: 16px; }
+  .kuku-hero-cta .kuku-cta { width: 100%; justify-content: center; }
+  .kuku-carousel { grid-auto-columns: 80%; }
+  .kuku-section-new { margin: 72px auto; }
+}
+
 @media (max-width: 900px) {
   .story-hero { padding: 200px 0 180px; }
   .story-h1 { font-size: 46px; }
@@ -1577,138 +1684,131 @@ const KukuSponsorPage = ({ onBack }) => {
         <div style={{ paddingTop: 16 }}>
           <button className="story-back" onClick={onBack}><ChevronLeft size={16} /> トップへ戻る</button>
         </div>
-        <section className="kuku-hero">
-          <div className="kuku-hero-card">
+
+        {/* Hero */}
+        <section className="kuku-hero-new">
+          <div className="kuku-hero-bg" />
+          <div className="kuku-hero-inner">
             <div className="kuku-hero-brand">
               <img src="/assets/fomus-logo-new.png" alt="FOMUS" className="story-logo-img-lg" />
               <div className="kuku-hero-accent">MangaX × FOMUS</div>
             </div>
-            <h1>KUKU 次号スポンサースロット</h1>
-            <p>連載中の「KUKU ―黎明の木神―」次号に、ロゴ掲出・クレジット・タイアップカットを掲出できるスポンサー枠を用意しました。限定枠につき先着順です。</p>
-            <div className="kuku-hero-meta">
-              <div className="kuku-pill">掲載号：第4話（次号）</div>
-              <div className="kuku-pill">募集枠：限定3枠</div>
-            </div>
-            <div className="kuku-cta-row">
-              <button className="kuku-cta primary" onClick={() => openMail("KUKU 次号スポンサー申し込み")}>スポンサー申込 / 問い合わせ</button>
-              <button className="kuku-cta secondary" onClick={() => openMail("KUKU スポンサー資料請求")}>資料を請求する</button>
-            </div>
-          </div>
-          <div>
-            <div className="kuku-cover" />
-            <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 8 }}>
-              <img src="/assets/fomus-logo-new.png" alt="FOMUS" className="story-logo-img-lg" />
-              <span style={{ color: "#cfcfcf", fontFamily: "'Inter','Noto Sans JP',sans-serif" }}>FOMUS Creative Studio</span>
+            <h1 className="kuku-hero-title">KUKU ― 一黎明の木神 ― 公式スポンサー募集</h1>
+            <p className="kuku-hero-copy">世界規模の長編ファンタジー作品を、あなたの力で支えてください。</p>
+            <div className="kuku-hero-cta">
+              <button className="kuku-cta primary" onClick={() => openMail("KUKU 1話スポンサー USD200")}>1話スポンサー（USD200）</button>
+              <button className="kuku-cta secondary" onClick={() => openMail("KUKU 全巻スポンサー USD7000")}>全巻スポンサー（USD7,000）</button>
             </div>
           </div>
         </section>
 
-        <section className="kuku-section">
-          <h2 className="kuku-title">提供内容</h2>
-          <p className="kuku-desc">スポンサー枠はすべて漫画本編内に表示。デジタル配信（MangaX）、SNS告知、公式サイトの次号クレジットにも掲載します。</p>
-          <div className="kuku-grid">
-            <div className="kuku-card">
-              <span className="kuku-badge">Gold（1枠）</span>
-              <h3>メインタイアップ</h3>
-              <ul className="kuku-list">
-                <li>本編内フルカット（1P相当）で商品/サービスを描写</li>
-                <li>巻末クレジット最上段ロゴ</li>
-                <li>SNS告知ポストで単独紹介</li>
+        {/* Intro */}
+        <section className="kuku-section-new">
+          <h2 className="kuku-heading">壮大なファンタジー作品を世界へ。</h2>
+          <p className="kuku-text">
+            『KUKU｜一黎明の木神』は、FOMUSが世界に向けて展開する長編ファンタジーシリーズです。神々、人間、森、文明が交錯する壮麗な物語は、アニメーション制作と国際展開を視野に制作されています。物語創造を共に支えていただくため、公式スポンサーを募集しています。
+          </p>
+          <div className="kuku-gallery">
+            <img src="https://placehold.co/480x320/222/fff?text=KUKU+Scene+1" alt="Scene 1" />
+            <img src="https://placehold.co/480x320/1c1c1c/fff?text=KUKU+Scene+2" alt="Scene 2" />
+          </div>
+        </section>
+
+        {/* Plans */}
+        <section className="kuku-section-new">
+          <h2 className="kuku-heading">スポンサープラン</h2>
+          <div className="kuku-plan-grid">
+            <div className="kuku-plan-card">
+              <div className="kuku-plan-name">1話スポンサー（USD 200）</div>
+              <div className="kuku-plan-price">1話単位で支援</div>
+              <img className="kuku-plan-img" src="https://placehold.co/640x420/232323/fff?text=Episode+Card" alt="Episode" />
+              <p className="kuku-text" style={{ margin: "0 0 8px" }}>
+                物語の任意のエピソードを1話単位で支援できるプランです。複数話の同時申し込みも可能です。
+              </p>
+              <ul className="kuku-list-tight">
+                <li>該当話の巻頭＋巻末にスポンサー名（ロゴ／日本語／英語）掲載</li>
+                <li>MangaX公式「スポンサー一覧」に掲載</li>
+                <li>話数選択はお申し込み後にご案内します</li>
               </ul>
+              <div className="kuku-cta-row">
+                <button className="kuku-cta primary" onClick={() => openMail("KUKU 1話スポンサー USD200")}>Stripeリンク（挿入）</button>
+              </div>
             </div>
-            <div className="kuku-card">
-              <span className="kuku-badge">Silver（1枠）</span>
-              <h3>クレジット＋パネル</h3>
-              <ul className="kuku-list">
-                <li>本編内ミニパネルでロゴ/テキスト掲出</li>
-                <li>巻末クレジットにロゴ掲出</li>
-                <li>SNS告知でロゴ掲載</li>
+            <div className="kuku-plan-card">
+              <div className="kuku-plan-name">全巻スポンサー（USD 7,000）</div>
+              <div className="kuku-plan-price">全話を一括支援</div>
+              <img className="kuku-plan-img" src="https://placehold.co/640x420/1e1e1e/fff?text=Full+Series+Image" alt="Full series" />
+              <p className="kuku-text" style={{ margin: "0 0 8px" }}>
+                全40〜45話すべてを一括で支援いただく最上位プラン。作品と長期的に関わる公式パートナーとして扱われます。
+              </p>
+              <ul className="kuku-list-tight">
+                <li>全話の巻頭＋巻末にロゴ or 表記を掲載</li>
+                <li>「スポンサー一覧」に特別枠で掲載</li>
+                <li>シリーズ全体ページ（作品トップ）にもロゴ掲載</li>
+                <li>国際プロモーション資料にも掲載（任意）</li>
               </ul>
-            </div>
-            <div className="kuku-card">
-              <span className="kuku-badge">Bronze（1枠）</span>
-              <h3>巻末クレジット</h3>
-              <ul className="kuku-list">
-                <li>巻末クレジットに社名/サービス名を掲出</li>
-                <li>MangaX作品ページにクレジット表記</li>
-              </ul>
+              <div className="kuku-cta-row">
+                <button className="kuku-cta primary" onClick={() => openMail("KUKU 全巻スポンサー USD7000")}>Stripeリンク（挿入）</button>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="kuku-section">
-          <h2 className="kuku-title">料金・枠数</h2>
-          <table className="kuku-table">
-            <thead>
-              <tr><th>プラン</th><th>料金（税抜）</th><th>枠数</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Gold</td><td className="kuku-highlight">150,000円</td><td>1枠</td></tr>
-              <tr><td>Silver</td><td className="kuku-highlight">80,000円</td><td>1枠</td></tr>
-              <tr><td>Bronze</td><td className="kuku-highlight">30,000円</td><td>1枠</td></tr>
-            </tbody>
-          </table>
-          <p className="kuku-desc" style={{ marginTop: 12 }}>※デザイン・演出はKUKU制作チームが担当。ご提供素材（ロゴ・商品写真）がある場合はご支給ください。</p>
-        </section>
-
-        <section className="kuku-section">
-          <h2 className="kuku-title">スケジュール</h2>
-          <div className="kuku-grid">
-            <div className="kuku-card">
-              <h3>申し込み〜素材受領</h3>
-              <ul className="kuku-list">
-                <li>申し込み後、担当よりヒアリング</li>
-                <li>ロゴ・写真・紹介文を共有（2営業日以内）</li>
-              </ul>
-            </div>
-            <div className="kuku-card">
-              <h3>演出確認</h3>
-              <ul className="kuku-list">
-                <li>ラフ提出：申込から3〜4営業日</li>
-                <li>微調整1回まで対応</li>
-              </ul>
-            </div>
-            <div className="kuku-card">
-              <h3>掲載・公開</h3>
-              <ul className="kuku-list">
-                <li>次号公開時に本編・巻末クレジットへ反映</li>
-                <li>MangaX配信・SNS告知で同時露出</li>
-              </ul>
-            </div>
+        {/* Visual examples */}
+        <section className="kuku-section-new">
+          <h2 className="kuku-heading">スポンサー名掲載イメージ</h2>
+          <p className="kuku-text">ロゴ・日本語表記・英語表記のいずれも対応可能です。掲載位置やサイズは作品のデザインガイドラインに沿って調整いたします。</p>
+          <div className="kuku-carousel">
+            <img src="https://placehold.co/640x360/222/fff?text=巻頭掲載例" alt="巻頭掲載例" />
+            <img src="https://placehold.co/640x360/1b1b1b/fff?text=巻末掲載例" alt="巻末掲載例" />
+            <img src="https://placehold.co/640x360/292929/fff?text=全巻特別枠" alt="全巻特別枠" />
           </div>
         </section>
 
-        <section className="kuku-section">
-          <h2 className="kuku-title">よくある質問</h2>
-          <div className="kuku-grid">
-            <div className="kuku-card">
-              <h3>業種に制限はありますか？</h3>
-              <p className="kuku-desc">公序良俗に反しない内容であれば対応可能です。事前に確認いたします。</p>
-            </div>
-            <div className="kuku-card">
-              <h3>修正は可能ですか？</h3>
-              <p className="kuku-desc">ラフ段階で1回の微調整を承ります。大幅な追加工数は個別見積りとなります。</p>
-            </div>
-            <div className="kuku-card">
-              <h3>決済方法は？</h3>
-              <p className="kuku-desc">請求書払いに対応しています。法人/個人いずれも可能です。</p>
-            </div>
+        {/* Specs */}
+        <section className="kuku-section-new">
+          <h2 className="kuku-heading">掲載仕様</h2>
+          <div className="kuku-box">
+            <ul className="kuku-list-tight">
+              <li>表記は ロゴ / 日本語 / 英語 から選択可能</li>
+              <li>ロゴ推奨形式：PNG（透過）またはSVG</li>
+              <li>ニックネーム表記も可（公序良俗の範囲内）</li>
+            </ul>
           </div>
         </section>
 
-        <section className="kuku-section" style={{ textAlign: "center" }}>
-          <h2 className="kuku-title">枠数に限りがあります。まずはお問い合わせを。</h2>
-          <div className="kuku-cta-row" style={{ justifyContent: "center" }}>
-            <button className="kuku-cta primary" onClick={() => openMail("KUKU 次号スポンサー申し込み")}>スポンサー申込 / 問い合わせ</button>
-            <button className="kuku-cta secondary" onClick={onBack}>作品ページへ戻る</button>
+        {/* Notice */}
+        <section className="kuku-section-new">
+          <div className="kuku-box gray">
+            <h3 style={{ margin: "0 0 10px", color: "#fff", fontFamily: "'Noto Sans JP', sans-serif" }}>【 注意事項 】</h3>
+            <p className="kuku-text" style={{ margin: 0 }}>
+              ・反社会勢力、宗教団体、政治結社、マルチ商法、ネットワークビジネス等に関与されている場合は、当サービスの利用をお断りいたします。<br />
+              ・運営からのメールが迷惑フォルダやプロモーションフォルダに入る場合があります。必ずご確認ください。<br />
+              ・docomo / softbank / ezweb / iCloud などのキャリアメールは自動送信メールが届かないケースが多いため、上記以外のメールアドレスでの登録を推奨しています。
+            </p>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="kuku-section-new">
+          <h2 className="kuku-heading">FAQ</h2>
+          <div className="kuku-faq">
+            <div className="kuku-faq-item">
+              <div className="kuku-faq-q">Q. 個人でもスポンサーになれますか？</div>
+              <p className="kuku-faq-a">A. はい、可能です。</p>
+            </div>
+            <div className="kuku-faq-item">
+              <div className="kuku-faq-q">Q. ロゴと文字表記のどちらでも掲載できますか？</div>
+              <p className="kuku-faq-a">A. ロゴ・日本語・英語、いずれも対応しています。</p>
+            </div>
           </div>
         </section>
 
         <div className="kuku-footer">© MangaX / <img src="/assets/fomus-logo-new.png" alt="FOMUS" className="story-logo-img" />FOMUS</div>
       </div>
       <div className="kuku-sticky-cta">
-        <button className="kuku-cta primary" onClick={() => openMail("KUKU 次号スポンサー申し込み")}>スポンサー申込</button>
-        <button className="kuku-cta secondary" onClick={() => openMail("KUKU スポンサー資料請求")}>資料請求</button>
+        <button className="kuku-cta primary" onClick={() => openMail("KUKU 1話スポンサー USD200")}>1話スポンサー</button>
+        <button className="kuku-cta secondary" onClick={() => openMail("KUKU 全巻スポンサー USD7000")}>全巻スポンサー</button>
       </div>
     </div>
   );
