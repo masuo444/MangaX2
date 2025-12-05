@@ -586,6 +586,7 @@ body {
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 14px;
 }
+.story-logo-img { height: 26px; vertical-align: middle; margin-right: 6px; }
 
 /* =========================
    KUKU Sponsor Page
@@ -1553,7 +1554,7 @@ const StoryLanding = ({ onBack }) => {
         <div className="story-container">
           <div className="story-footer-links">
             <span>MangaX</span>
-            <span>FOMUS Creative Studio</span>
+            <span><img src="/assets/fomus-logo.png" alt="FOMUS" className="story-logo-img" />FOMUS Creative Studio</span>
             <span>利用規約</span>
             <span>プライバシーポリシー</span>
             <span>お問い合わせ</span>
@@ -1694,7 +1695,7 @@ const KukuSponsorPage = ({ onBack }) => {
           </div>
         </section>
 
-        <div className="kuku-footer">© MangaX / FOMUS</div>
+        <div className="kuku-footer">© MangaX / <img src="/assets/fomus-logo.png" alt="FOMUS" className="story-logo-img" />FOMUS</div>
       </div>
       <div className="kuku-sticky-cta">
         <button className="kuku-cta primary" onClick={() => openMail("KUKU 次号スポンサー申し込み")}>スポンサー申込</button>
