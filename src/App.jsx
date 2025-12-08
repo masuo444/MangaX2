@@ -464,32 +464,107 @@ body {
 
 .story-use-grid {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  position: relative;
+}
+.story-use-grid::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  background: radial-gradient(circle at 20% 20%, rgba(120,210,255,0.07), transparent 30%), radial-gradient(circle at 80% 40%, rgba(255,190,120,0.06), transparent 30%);
+  filter: blur(8px);
+  z-index: 0;
 }
 .story-card {
-  background: #151515;
-  border-radius: 8px;
-  padding: 48px;
-  border: 1px solid #1f1f1f;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(150deg, rgba(20,20,20,0.95), rgba(28,28,28,0.92));
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+.story-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 18% 18%, rgba(255,255,255,0.05), transparent 55%);
+  opacity: 0.7;
+}
+.story-card[data-tone="amber"] { border-color: rgba(255,200,120,0.28); box-shadow: 0 14px 32px rgba(255,200,120,0.12); }
+.story-card[data-tone="pink"] { border-color: rgba(255,170,210,0.3); box-shadow: 0 14px 32px rgba(255,170,210,0.12); }
+.story-card[data-tone="cyan"] { border-color: rgba(120,210,255,0.3); box-shadow: 0 14px 32px rgba(120,210,255,0.12); }
+.story-card[data-tone="violet"] { border-color: rgba(190,170,255,0.28); box-shadow: 0 14px 32px rgba(190,170,255,0.12); }
+
+.story-card-top {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
 }
 .story-card h3 {
   font-family: 'Noto Serif JP', serif;
   font-size: 22px;
-  margin: 0 0 12px;
+  margin: 0 0 4px;
 }
+.story-card-sub {
+  margin: 0 0 12px;
+  color: #bfc2c7;
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.story-card-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c6c6c6;
+  margin-bottom: 6px;
+  font-family: 'Inter', sans-serif;
+}
+.story-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+}
+.story-card-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.22), transparent 50%);
+}
+.story-card-icon[data-tone="amber"] { background: linear-gradient(135deg, #2b1d0d, #c28b29); color: #ffe7b4; }
+.story-card-icon[data-tone="pink"] { background: linear-gradient(135deg, #2b1628, #b44b87); color: #ffd5f1; }
+.story-card-icon[data-tone="cyan"] { background: linear-gradient(135deg, #0f2736, #1e8fb8); color: #c8f1ff; }
+.story-card-icon[data-tone="violet"] { background: linear-gradient(135deg, #1d1633, #5c4bc4); color: #e5deff; }
+
 .story-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
+  margin-top: 10px;
+  position: relative;
+  z-index: 1;
 }
 .story-tag {
   background: rgba(255,255,255,0.08);
   border-radius: 999px;
   padding: 8px 14px;
   font-family: 'Noto Sans JP', 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   color: #FFFFFF;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
 .story-comparison-grid {
@@ -1483,10 +1558,10 @@ const StoryLanding = ({ onBack }) => {
   ];
 
   const useCases = [
-    { title: "個人向け", tags: ["自己紹介", "転職ストーリー", "SNSプロフィール"] },
-    { title: "ギフト", tags: ["結婚", "誕生日", "家族の記録", "友人への贈り物"] },
-    { title: "ビジネス", tags: ["代表ストーリー", "採用漫画", "サービス説明"] },
-    { title: "海外向け", tags: ["英語プロモ", "展示会PR", "国際イベント用資料"] },
+    { title: "個人向け", blurb: "人生の節目をドラマチックに。", tags: ["自己紹介", "転職ストーリー", "SNSプロフィール"], icon: <Smile size={26} />, tone: "amber" },
+    { title: "ギフト", blurb: "感謝や想い出を1冊の物語に。", tags: ["結婚", "誕生日", "家族の記録", "友人への贈り物"], icon: <Gift size={26} />, tone: "pink" },
+    { title: "ビジネス", blurb: "ブランドの世界観を漫画で伝達。", tags: ["代表ストーリー", "採用漫画", "サービス説明"], icon: <Briefcase size={26} />, tone: "cyan" },
+    { title: "海外向け", blurb: "多言語で広がるグローバルPR。", tags: ["英語プロモ", "展示会PR", "国際イベント用資料"], icon: <Globe size={26} />, tone: "violet" },
   ];
 
   const comparisonRows = [
@@ -1573,8 +1648,15 @@ const StoryLanding = ({ onBack }) => {
           <h2 className="story-section-title">こんな物語が、漫画になります。</h2>
           <div className="story-use-grid">
             {useCases.map((block) => (
-              <div key={block.title} className="story-card">
-                <h3>{block.title}</h3>
+              <div key={block.title} className="story-card" data-tone={block.tone}>
+                <div className="story-card-top">
+                  <div className="story-card-icon" data-tone={block.tone}>{block.icon}</div>
+                  <div>
+                    <div className="story-card-eyebrow">Use Case</div>
+                    <h3>{block.title}</h3>
+                    {block.blurb && <p className="story-card-sub">{block.blurb}</p>}
+                  </div>
+                </div>
                 <div className="story-tags">
                   {block.tags.map((tag) => (
                     <span key={tag} className="story-tag">{tag}</span>
