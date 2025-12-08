@@ -938,6 +938,7 @@ const DEFAULT_DB = {
     { 
       id: "kuku",
       title: "KUKU ―黎明の木神―",
+      heroTitle: ["KUKU ―", "黎明の木神 ―"],
       author: "Author Name",
       coverUrl: "/assets/kuku-cover.jpg",
       heroUrl: "/assets/kuku-hero.jpg",
@@ -1204,13 +1205,23 @@ const BottomNav = ({ activeTab, setActiveTab, t }) => (
 
 const HeroSection = ({ series, onRead, onMyList, t }) => {
   if (!series) return null;
+  const heroTitleContent = series.heroTitle || series.title;
   return (
     <div className="hero">
       <div className="hero-bg"><img src={series.heroUrl || series.coverUrl} alt="Hero" /></div>
       <div className="hero-overlay"></div>
       <div className="hero-content">
         <div className="hero-text-area">
-          <h1 className="hero-title">{series.title.toUpperCase()}</h1>
+          <h1 className="hero-title">
+            {Array.isArray(heroTitleContent)
+              ? heroTitleContent.map((line, idx) => (
+                  <React.Fragment key={idx}>
+                    {line.toUpperCase()}
+                    {idx < heroTitleContent.length - 1 && <br />}
+                  </React.Fragment>
+                ))
+              : heroTitleContent.toUpperCase()}
+          </h1>
           <p className="hero-desc">{series.description}</p>
           <div className="hero-meta">
             <span style={{ color: "#46d369" }}>{series.match}% Match</span>
