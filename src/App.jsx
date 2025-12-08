@@ -329,13 +329,6 @@ body {
   line-height: 1.3;
   margin: 0 0 24px;
 }
-.story-section-sub {
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
-  font-size: 18px;
-  color: #B8B8B8;
-  line-height: 1.7;
-  margin: 0 0 28px;
-}
 .story-section-desc {
   font-family: 'Noto Sans JP', 'Inter', sans-serif;
   color: #B8B8B8;
@@ -378,53 +371,95 @@ body {
 }
 
 .story-steps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
 }
 .story-step {
   position: relative;
-  flex: 1 1 140px;
-  min-width: 140px;
-  padding: 12px 0 0;
+  padding: 18px 16px 16px;
+  border-radius: 16px;
+  background: linear-gradient(140deg, rgba(255,215,141,0.08), rgba(120,140,255,0.05));
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  box-shadow: 0 16px 28px rgba(0,0,0,0.25);
 }
-.story-step::after {
+.story-step::before {
   content: "";
   position: absolute;
-  right: -9px;
-  top: 22px;
-  width: 18px;
-  height: 1px;
-  background: #7F7F7F;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.03), transparent 35%),
+              radial-gradient(circle at 80% 60%, rgba(120,210,255,0.06), transparent 35%);
+  z-index: 0;
 }
-.story-step:last-child::after { display: none; }
-.story-step-head {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+.story-step-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
 }
-.story-step-icon {
-  width: 34px;
-  height: 34px;
+.story-step-figure {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  padding: 6px;
+  position: relative;
+}
+.story-step-figure::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 12px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.16), transparent 55%);
+  filter: blur(1px);
+}
+.story-step-illustration {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+.story-step-illustration[data-tone="amber"] { background: linear-gradient(135deg, #261c0b, #b8860b); color: #ffe4a3; }
+.story-step-illustration[data-tone="cyan"] { background: linear-gradient(135deg, #0f2a3a, #0b6d8c); color: #a5e9ff; }
+.story-step-illustration[data-tone="pink"] { background: linear-gradient(135deg, #2c0f28, #9a3b74); color: #ffd3f0; }
+.story-step-illustration[data-tone="violet"] { background: linear-gradient(135deg, #1b1238, #4a3b94); color: #d9d6ff; }
+.story-step-illustration[data-tone="green"] { background: linear-gradient(135deg, #0f2b20, #2f7f53); color: #c4ffd9; }
+.story-step-illustration[data-tone="orange"] { background: linear-gradient(135deg, #2c1a0f, #b45d1a); color: #ffd9b0; }
+.story-step-illustration .story-step-spark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: #151515;
-  border: 1px solid #2b2b2b;
-  color: #C6A667;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  background: rgba(255,255,255,0.35);
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.1), 0 0 18px rgba(255,255,255,0.5);
+}
+.story-step-label {
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #cfcfcf;
+  margin-bottom: 4px;
 }
 .story-step-title {
   font-family: 'Noto Serif JP', serif;
   font-size: 18px;
-  margin: 0;
+  margin: 0 0 6px;
 }
 .story-step-caption {
   font-family: 'Noto Sans JP', 'Inter', sans-serif;
   font-size: 14px;
   color: #B8B8B8;
-  margin: 6px 0 0;
+  line-height: 1.6;
+  margin: 0;
 }
 
 .story-use-grid {
@@ -437,24 +472,6 @@ body {
   border-radius: 8px;
   padding: 48px;
   border: 1px solid #1f1f1f;
-}
-.story-thumb-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  margin-top: 18px;
-}
-.story-thumb {
-  aspect-ratio: 3 / 2;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #1b1b1b, #222);
-  border: 1px solid #1f1f1f;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  font-family: 'Inter', 'Noto Sans JP', sans-serif;
-  font-size: 13px;
 }
 .story-card h3 {
   font-family: 'Noto Serif JP', serif;
@@ -1416,12 +1433,42 @@ const StoryLanding = ({ onBack }) => {
   ];
 
   const steps = [
-    { title: "申し込み（フォーム / DM）", caption: "", icon: <Mail size={18} /> },
-    { title: "ヒアリング（60分）", caption: "", icon: <Clock size={18} /> },
-    { title: "構成案（10ページ）作成", caption: "", icon: <FileText size={18} /> },
-    { title: "AI作画 × 編集", caption: "", icon: <Wand2 size={18} /> },
-    { title: "仕上げ・レタッチ", caption: "", icon: <Sparkles size={18} /> },
-    { title: "納品 ＋ MangaX掲載（任意）", caption: "", icon: <Upload size={18} /> },
+    {
+      title: "申し込み（フォーム / DM）",
+      caption: "希望や用途を簡単に入力するだけ。",
+      icon: <Mail size={24} />,
+      tone: "amber",
+    },
+    {
+      title: "ヒアリング（60分）",
+      caption: "プロの編集者がストーリーの核を引き出します。",
+      icon: <Clock size={24} />,
+      tone: "cyan",
+    },
+    {
+      title: "構成案（10ページ）作成",
+      caption: "テーマ・導入・山場までを設計し、ご提案。",
+      icon: <FileText size={24} />,
+      tone: "pink",
+    },
+    {
+      title: "AI作画 × 編集",
+      caption: "アートディレクターが絵柄を整え、AIで量産。",
+      icon: <Wand2 size={24} />,
+      tone: "violet",
+    },
+    {
+      title: "仕上げ・レタッチ",
+      caption: "表情・光・文字まわりを手作業でブラッシュアップ。",
+      icon: <Sparkles size={24} />,
+      tone: "green",
+    },
+    {
+      title: "納品 ＋ MangaX掲載（任意）",
+      caption: "データ納品に加え、希望者はMangaXで配信も可能。",
+      icon: <Upload size={24} />,
+      tone: "orange",
+    },
   ];
 
   const useCases = [
@@ -1513,7 +1560,7 @@ const StoryLanding = ({ onBack }) => {
           </div>
         </section>
 
-        <section className="story-section">
+        <section id="story-portfolio" className="story-section">
           <h2 className="story-section-title">こんな物語が、漫画になります。</h2>
           <div className="story-use-grid">
             {useCases.map((block) => (
@@ -1527,17 +1574,6 @@ const StoryLanding = ({ onBack }) => {
               </div>
             ))}
           </div>
-          <div className="story-section-sub">制作例</div>
-          <div id="story-portfolio" className="story-thumb-row">
-            {["Sample 1", "Sample 2", "Sample 3", "Sample 4"].map((s) => (
-              <div key={s} className="story-thumb">{s}</div>
-            ))}
-          </div>
-          <div style={{ marginTop: 16 }}>
-            <StoryCTAButton variant="secondary" onClick={() => window.scrollTo({ top: document.body.clientHeight / 2, behavior: "smooth" })}>
-              詳しく見る
-            </StoryCTAButton>
-          </div>
         </section>
 
         <section className="story-section">
@@ -1545,11 +1581,19 @@ const StoryLanding = ({ onBack }) => {
           <div className="story-steps">
             {steps.map((step, idx) => (
               <div key={idx} className="story-step">
-                <div className="story-step-head">
-                  <div className="story-step-icon">{step.icon}</div>
-                  <div className="story-step-title">{step.title}</div>
+                <div className="story-step-body">
+                  <div className="story-step-figure">
+                    <div className="story-step-illustration" data-tone={step.tone}>
+                      {step.icon}
+                      <span className="story-step-spark" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="story-step-label">STEP {idx + 1}</div>
+                    <div className="story-step-title">{step.title}</div>
+                    {step.caption && <p className="story-step-caption">{step.caption}</p>}
+                  </div>
                 </div>
-                {step.caption && <div className="story-step-caption">{step.caption}</div>}
               </div>
             ))}
           </div>
