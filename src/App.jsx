@@ -339,35 +339,78 @@ body {
 .story-value-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
+  gap: 18px;
 }
 .story-value-item {
+  position: relative;
   display: flex;
   gap: 14px;
   align-items: flex-start;
   font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  padding: 18px 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(20,20,20,0.92), rgba(28,28,28,0.9));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.3);
+  overflow: hidden;
 }
+.story-value-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 16% 18%, rgba(255,255,255,0.06), transparent 45%);
+  opacity: 0.8;
+}
+.story-value-item[data-tone="amber"] { border-color: rgba(255,200,120,0.25); box-shadow: 0 12px 26px rgba(255,200,120,0.12); }
+.story-value-item[data-tone="cyan"] { border-color: rgba(120,210,255,0.25); box-shadow: 0 12px 26px rgba(120,210,255,0.12); }
+.story-value-item[data-tone="violet"] { border-color: rgba(190,170,255,0.25); box-shadow: 0 12px 26px rgba(190,170,255,0.12); }
+.story-value-body { position: relative; z-index: 1; }
 .story-value-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: #151515;
-  border: 1px solid #2b2b2b;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #C6A667;
+  position: relative;
+  z-index: 1;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+}
+.story-value-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 32% 30%, rgba(255,255,255,0.2), transparent 50%);
+}
+.story-value-icon[data-tone="amber"] { background: linear-gradient(135deg, #2b1d0d, #c28b29); color: #ffe7b4; }
+.story-value-icon[data-tone="cyan"] { background: linear-gradient(135deg, #0f2736, #1e8fb8); color: #c8f1ff; }
+.story-value-icon[data-tone="violet"] { background: linear-gradient(135deg, #1d1633, #5c4bc4); color: #e5deff; }
+.story-value-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c6c6c6;
+  margin-bottom: 4px;
+  font-family: 'Inter', sans-serif;
 }
 .story-value-title {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 800;
   margin: 0 0 6px;
+  color: #fff;
 }
 .story-value-text {
   margin: 0;
   color: #B8B8B8;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.6;
+}
+@media (max-width: 720px) {
+  .story-value-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .story-value-item { padding: 16px 14px; gap: 12px; }
+  .story-value-title { font-size: 18px; }
+  .story-value-text { font-size: 14px; }
 }
 
 .story-steps {
@@ -1513,9 +1556,9 @@ const StoryLanding = ({ onBack }) => {
   const [openFaq, setOpenFaq] = useState(null);
 
   const valueItems = [
-    { icon: <Rocket size={20} />, title: "プロ品質 × 最短2週間", text: "AI × アジャイル制作で、最短2週間の納品が可能。" },
-    { icon: <MessageCircle size={20} />, title: "60分ヒアリングで構成まで丸投げOK", text: "想い・背景・目的を引き出し、構成をゼロから設計。" },
-    { icon: <Globe size={20} />, title: "40言語対応。世界で読まれる漫画へ。", text: "SNS・展示会・海外PRに最適。" },
+    { icon: <Rocket size={26} />, title: "プロ品質 × 最短2週間", text: "AI × アジャイル制作で、最短2週間の納品が可能。", tone: "amber", label: "SPEED" },
+    { icon: <MessageCircle size={26} />, title: "60分ヒアリングで構成まで丸投げOK", text: "想い・背景・目的を引き出し、構成をゼロから設計。", tone: "cyan", label: "CARE" },
+    { icon: <Globe size={26} />, title: "40言語対応。世界で読まれる漫画へ。", text: "SNS・展示会・海外PRに最適。", tone: "violet", label: "GLOBAL" },
   ];
 
   const steps = [
@@ -1633,9 +1676,10 @@ const StoryLanding = ({ onBack }) => {
           <h2 className="story-section-title">FOMUS品質の漫画制作を、誰でも。</h2>
           <div className="story-value-grid">
             {valueItems.map((item, idx) => (
-              <div key={idx} className="story-value-item">
-                <div className="story-value-icon">{item.icon}</div>
-                <div>
+              <div key={idx} className="story-value-item" data-tone={item.tone}>
+                <div className="story-value-icon" data-tone={item.tone}>{item.icon}</div>
+                <div className="story-value-body">
+                  <div className="story-value-label">{item.label}</div>
                   <div className="story-value-title">{item.title}</div>
                   <p className="story-value-text">{item.text}</p>
                 </div>
