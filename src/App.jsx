@@ -1505,9 +1505,7 @@ const StoryLanding = ({ onBack }) => {
         <div className="story-header-inner">
           <div className="story-nav" style={{ gap: 14 }}>
             <a className="logo" style={{ color: "#C62828", fontSize: 20, textShadow: "none" }} onClick={onBack}>MangaX</a>
-            <a>新着</a>
             <a>スポンサー</a>
-            <a>マイページ</a>
           </div>
           <div className="story-nav" style={{ gap: 14 }}>
             <div className="story-lang">EN / JP</div>
