@@ -236,8 +236,9 @@ body {
 }
 .story-h1 {
   font-family: 'Noto Serif JP', serif;
-  font-size: 56px;
-  line-height: 1.2;
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.05;
+  white-space: nowrap;
   margin: 0 0 20px;
 }
 .story-subcopy {
@@ -987,7 +988,7 @@ body {
 
 @media (max-width: 900px) {
   .story-hero { padding: 200px 0 180px; }
-  .story-h1 { font-size: 46px; }
+  .story-h1 { font-size: 46px; white-space: normal; line-height: 1.15; }
   .story-section { margin-bottom: 140px; }
 }
 @media (max-width: 640px) {
