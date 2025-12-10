@@ -1047,6 +1047,31 @@ body {
   color: #e5e7eb;
   min-height: 100vh;
 }
+.kx-header {
+  position: sticky;
+  top: 0;
+  z-index: 120;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(180deg, rgba(5,7,18,0.78), rgba(5,7,18,0.4));
+  border-bottom: 1px solid rgba(212,175,55,0.18);
+}
+.kx-header-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.kx-header-logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: #d4af37;
+  cursor: pointer;
+}
+.kx-header-nav { display: flex; gap: 14px; color: #cbd5e1; font-weight: 600; }
+.kx-header-nav a { color: inherit; text-decoration: none; }
+.kx-header-nav a:hover { color: #fff; }
 .kx-container {
   max-width: 1040px;
   margin: 0 auto;
@@ -2105,9 +2130,15 @@ const KukuSponsorPage = ({ onBack }) => {
 
   return (
     <div className="kx-page">
-      <div className="kx-container" style={{ paddingTop: 16 }}>
-        <button className="story-back" onClick={onBack}><ChevronLeft size={16} /> トップへ戻る</button>
-      </div>
+      <header className="kx-header">
+        <div className="kx-header-inner">
+          <div className="kx-header-logo" onClick={onBack}>MangaX</div>
+          <nav className="kx-header-nav">
+            <a onClick={onBack}>ホーム</a>
+            <a>スポンサー</a>
+          </nav>
+        </div>
+      </header>
       <main className="kx-main">
         <section id="hero" className="kx-hero">
           <div className="kx-container kx-hero-inner">
