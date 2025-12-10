@@ -610,11 +610,11 @@ body {
   box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
-.story-comparison-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
-}
+  .story-comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+  }
 .story-compare-col {
   border-radius: 12px;
   overflow: hidden;
@@ -1038,6 +1038,223 @@ body {
 
 .admin-container { padding: 2rem; background: #f3f4f6; min-height: 100vh; color: #333; padding-bottom: 6rem;}
 .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1rem; }
+
+/* ==========================================
+   KUKU Sponsor Page (kx-)
+   ========================================== */
+.kx-page {
+  background: radial-gradient(circle at top, rgba(63,191,138,0.12), transparent 60%), #050712;
+  color: #e5e7eb;
+  min-height: 100vh;
+}
+.kx-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.kx-section {
+  padding: 72px 0;
+}
+.kx-section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.kx-section-lead {
+  font-size: 1.05rem;
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+.kx-section-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #cbd5e1;
+  margin: 0;
+}
+.kx-hero {
+  padding: 96px 0 80px;
+  background: radial-gradient(circle at top, rgba(212,175,55,0.22), transparent 60%);
+}
+.kx-hero-inner {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.kx-hero-text { flex: 1; }
+.kx-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(212,175,55,0.6);
+  color: #d4af37;
+}
+.kx-hero-title {
+  font-size: 2.4rem;
+  line-height: 1.3;
+  margin: 12px 0 16px;
+}
+.kx-hero-subtitle {
+  font-size: 1.05rem;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+.kx-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.kx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.18s ease-out;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.kx-btn-primary {
+  background: #d4af37;
+  color: #020617;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+.kx-btn-primary:hover {
+  background: #e1c357;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.45);
+}
+.kx-btn-secondary {
+  background: transparent;
+  color: #d4af37;
+  border-color: rgba(212,175,55,0.7);
+}
+.kx-btn-secondary:hover {
+  background: rgba(212,175,55,0.08);
+}
+.kx-btn-full { width: 100%; justify-content: center; }
+.kx-plan-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 32px;
+}
+@media (min-width: 768px) {
+  .kx-plan-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.kx-plan-card {
+  position: relative;
+  background: rgba(15,23,42,0.9);
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid rgba(148,163,184,0.35);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.45);
+}
+.kx-plan-card-featured {
+  border-color: rgba(212,175,55,0.8);
+  box-shadow: 0 24px 55px rgba(0,0,0,0.6);
+}
+.kx-plan-badge {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(212,175,55,0.16);
+  color: #f9fafb;
+}
+.kx-plan-title { font-size: 1.3rem; margin-bottom: 4px; }
+.kx-plan-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #d4af37;
+  margin-bottom: 4px;
+}
+.kx-plan-tagline { font-size: 0.9rem; opacity: 0.85; margin-bottom: 12px; }
+.kx-plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  font-size: 0.9rem;
+}
+.kx-plan-features li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 4px;
+}
+.kx-plan-features li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  top: 0;
+  color: #3fbf8a;
+}
+.kx-table-wrapper { overflow-x: auto; }
+.kx-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.kx-table th, .kx-table td {
+  border: 1px solid rgba(55,65,81,0.9);
+  padding: 10px 12px;
+}
+.kx-table th { background: rgba(15,23,42,0.9); }
+.kx-flow-steps {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .kx-flow-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.kx-flow-steps li {
+  background: rgba(15,23,42,0.9);
+  border-radius: 14px;
+  padding: 16px 14px;
+  border: 1px solid rgba(75,85,99,0.7);
+}
+.kx-spec-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+}
+@media (min-width: 768px) {
+  .kx-spec-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.kx-spec-grid h3 { margin-top: 0; }
+.kx-spec-grid ul { margin: 8px 0 0; padding-left: 18px; line-height: 1.6; color: #cbd5e1; }
+.kx-faq-list { display: grid; gap: 12px; margin-top: 16px; }
+.kx-faq-item {
+  background: rgba(15,23,42,0.9);
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(75,85,99,0.6);
+}
+.kx-cta-final {
+  background: radial-gradient(circle at center, rgba(63,191,138,0.18), transparent 60%);
+  border-top: 1px solid rgba(148,163,184,0.35);
+}
+.kx-cta-final-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+@media (min-width: 768px) {
+  .kx-cta-final-inner { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+@media (max-width: 767px) {
+  .kx-section { padding: 56px 0; }
+  .kx-hero { padding: 72px 0 56px; text-align: center; }
+  .kx-hero-inner { flex-direction: column; gap: 24px; align-items: center; }
+  .kx-hero-actions { justify-content: center; }
+  .kx-hero-title { font-size: 2rem; }
+  .kx-section-title { font-size: 1.5rem; }
+  .kx-plan-card { padding: 20px; }
+}
 `;
 
 const TRANSLATE_LANGS = [
@@ -1854,140 +2071,208 @@ const StoryLanding = ({ onBack }) => {
 };
 
 const KukuSponsorPage = ({ onBack }) => {
-  const openMail = (subject) => window.open(`mailto:contact@example.com?subject=${encodeURIComponent(subject)}`, "_self");
+  const EPISODE_LINK = "STRIPE_LINK_EPISODE";
+  const FULL_LINK = "STRIPE_LINK_FULL";
 
   return (
-    <div className="kuku-sponsor">
-      <div className="kuku-container">
-        <div style={{ paddingTop: 16 }}>
-          <button className="story-back" onClick={onBack}><ChevronLeft size={16} /> トップへ戻る</button>
-        </div>
-
-        {/* Hero */}
-        <section className="kuku-hero-new">
-          <div className="kuku-hero-bg" />
-          <div className="kuku-hero-inner">
-            <div className="kuku-hero-brand">
-              <img src="/assets/fomus-logo-new.png" alt="FOMUS" className="story-logo-img-lg" />
-              <div className="kuku-hero-accent">MangaX × FOMUS</div>
-            </div>
-            <h1 className="kuku-hero-title">KUKU ― 一黎明の木神 ― 公式スポンサー募集</h1>
-            <p className="kuku-hero-copy">世界規模の長編ファンタジー作品を、あなたの力で支えてください。</p>
-            <div className="kuku-hero-cta">
-              <button className="kuku-cta primary" onClick={() => openMail("KUKU 1話スポンサー USD200")}>1話スポンサー（USD200）</button>
-              <button className="kuku-cta secondary" onClick={() => openMail("KUKU 全巻スポンサー USD7000")}>全巻スポンサー（USD7,000）</button>
-            </div>
-          </div>
-        </section>
-
-        {/* Intro */}
-        <section className="kuku-section-new">
-          <h2 className="kuku-heading">壮大なファンタジー作品を世界へ。</h2>
-          <p className="kuku-text">
-            『KUKU｜一黎明の木神』は、FOMUSが世界に向けて展開する長編ファンタジーシリーズです。神々、人間、森、文明が交錯する壮麗な物語は、アニメーション制作と国際展開を視野に制作されています。物語創造を共に支えていただくため、公式スポンサーを募集しています。
-          </p>
-          <div className="kuku-gallery">
-            <img src="https://placehold.co/480x320/222/fff?text=KUKU+Scene+1" alt="Scene 1" />
-            <img src="https://placehold.co/480x320/1c1c1c/fff?text=KUKU+Scene+2" alt="Scene 2" />
-          </div>
-        </section>
-
-        {/* Plans */}
-        <section className="kuku-section-new">
-          <h2 className="kuku-heading">スポンサープラン</h2>
-          <div className="kuku-plan-grid">
-            <div className="kuku-plan-card">
-              <div className="kuku-plan-name">1話スポンサー（USD 200）</div>
-              <div className="kuku-plan-price">1話単位で支援</div>
-              <img className="kuku-plan-img" src="https://placehold.co/640x420/232323/fff?text=Episode+Card" alt="Episode" />
-              <p className="kuku-text" style={{ margin: "0 0 8px" }}>
-                物語の任意のエピソードを1話単位で支援できるプランです。複数話の同時申し込みも可能です。
+    <div className="kx-page">
+      <div className="kx-container" style={{ paddingTop: 16 }}>
+        <button className="story-back" onClick={onBack}><ChevronLeft size={16} /> トップへ戻る</button>
+      </div>
+      <main className="kx-main">
+        <section id="hero" className="kx-hero">
+          <div className="kx-container kx-hero-inner">
+            <div className="kx-hero-text">
+              <p className="kx-badge">Official Sponsor Program</p>
+              <h1 className="kx-hero-title">
+                KUKU ― 一黎明の木神 ―<br />
+                公式スポンサー募集
+              </h1>
+              <p className="kx-hero-subtitle">
+                世界規模で展開する長編ファンタジー作品を、<br />
+                あなたの力で未来へつなげてください。
               </p>
-              <ul className="kuku-list-tight">
-                <li>該当話の巻頭＋巻末にスポンサー名（ロゴ／日本語／英語）掲載</li>
-                <li>MangaX公式「スポンサー一覧」に掲載</li>
-                <li>話数選択はお申し込み後にご案内します</li>
-              </ul>
-              <div className="kuku-cta-row">
-                <button className="kuku-cta primary" onClick={() => openMail("KUKU 1話スポンサー USD200")}>Stripeリンク（挿入）</button>
-              </div>
-            </div>
-            <div className="kuku-plan-card">
-              <div className="kuku-plan-name">全巻スポンサー（USD 7,000）</div>
-              <div className="kuku-plan-price">全話を一括支援</div>
-              <img className="kuku-plan-img" src="https://placehold.co/640x420/1e1e1e/fff?text=Full+Series+Image" alt="Full series" />
-              <p className="kuku-text" style={{ margin: "0 0 8px" }}>
-                全40〜45話すべてを一括で支援いただく最上位プラン。作品と長期的に関わる公式パートナーとして扱われます。
-              </p>
-              <ul className="kuku-list-tight">
-                <li>全話の巻頭＋巻末にロゴ or 表記を掲載</li>
-                <li>「スポンサー一覧」に特別枠で掲載</li>
-                <li>シリーズ全体ページ（作品トップ）にもロゴ掲載</li>
-                <li>国際プロモーション資料にも掲載（任意）</li>
-              </ul>
-              <div className="kuku-cta-row">
-                <button className="kuku-cta primary" onClick={() => openMail("KUKU 全巻スポンサー USD7000")}>Stripeリンク（挿入）</button>
+              <div className="kx-hero-actions">
+                <a href="#plans" className="kx-btn kx-btn-primary">1話スポンサーになる（USD 200）</a>
+                <a href="#plans" className="kx-btn kx-btn-secondary">全巻スポンサーについて詳しく見る</a>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Visual examples */}
-        <section className="kuku-section-new">
-          <h2 className="kuku-heading">スポンサー名掲載イメージ</h2>
-          <p className="kuku-text">ロゴ・日本語表記・英語表記のいずれも対応可能です。掲載位置やサイズは作品のデザインガイドラインに沿って調整いたします。</p>
-          <div className="kuku-carousel">
-            <img src="https://placehold.co/640x360/222/fff?text=巻頭掲載例" alt="巻頭掲載例" />
-            <img src="https://placehold.co/640x360/1b1b1b/fff?text=巻末掲載例" alt="巻末掲載例" />
-            <img src="https://placehold.co/640x360/292929/fff?text=全巻特別枠" alt="全巻特別枠" />
-          </div>
-        </section>
-
-        {/* Specs */}
-        <section className="kuku-section-new">
-          <h2 className="kuku-heading">掲載仕様</h2>
-          <div className="kuku-box">
-            <ul className="kuku-list-tight">
-              <li>表記は ロゴ / 日本語 / 英語 から選択可能</li>
-              <li>ロゴ推奨形式：PNG（透過）またはSVG</li>
-              <li>ニックネーム表記も可（公序良俗の範囲内）</li>
-            </ul>
-          </div>
-        </section>
-
-        {/* Notice */}
-        <section className="kuku-section-new">
-          <div className="kuku-box gray">
-            <h3 style={{ margin: "0 0 10px", color: "#fff", fontFamily: "'Noto Sans JP', sans-serif" }}>【 注意事項 】</h3>
-            <p className="kuku-text" style={{ margin: 0 }}>
-              ・反社会勢力、宗教団体、政治結社、マルチ商法、ネットワークビジネス等に関与されている場合は、当サービスの利用をお断りいたします。<br />
-              ・運営からのメールが迷惑フォルダやプロモーションフォルダに入る場合があります。必ずご確認ください。<br />
-              ・docomo / softbank / ezweb / iCloud などのキャリアメールは自動送信メールが届かないケースが多いため、上記以外のメールアドレスでの登録を推奨しています。
+        <section id="about" className="kx-section kx-about">
+          <div className="kx-container">
+            <h2 className="kx-section-title">KUKU｜一黎明の木神 とは</h2>
+            <p className="kx-section-lead">
+              『KUKU｜一黎明の木神』は、FOMUSが世界に向けて制作する長編ファンタジーシリーズです。
+            </p>
+            <p className="kx-section-body">
+              神々、人間、森、文明が交錯する壮麗な物語は、国際アニメーション展開を視野に制作されています。
+              40〜45話規模の物語を支える公式スポンサーを募集しています。
             </p>
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="kuku-section-new">
-          <h2 className="kuku-heading">FAQ</h2>
-          <div className="kuku-faq">
-            <div className="kuku-faq-item">
-              <div className="kuku-faq-q">Q. 個人でもスポンサーになれますか？</div>
-              <p className="kuku-faq-a">A. はい、可能です。</p>
-            </div>
-            <div className="kuku-faq-item">
-              <div className="kuku-faq-q">Q. ロゴと文字表記のどちらでも掲載できますか？</div>
-              <p className="kuku-faq-a">A. ロゴ・日本語・英語、いずれも対応しています。</p>
+        <section id="plans" className="kx-section kx-plans">
+          <div className="kx-container">
+            <h2 className="kx-section-title">スポンサープラン</h2>
+            <p className="kx-section-lead">
+              1話ごとに参加するプランから、全巻を通して伴走いただくプランまでご用意しています。
+            </p>
+            <div className="kx-plan-grid">
+              <article className="kx-plan-card">
+                <h3 className="kx-plan-title">1話スポンサー</h3>
+                <p className="kx-plan-price">USD 200 / 話</p>
+                <p className="kx-plan-tagline">任意のエピソードを1話単位で支援</p>
+                <ul className="kx-plan-features">
+                  <li>該当話の巻頭＋巻末にスポンサー名掲載（ロゴ / 日本語 / 英語）</li>
+                  <li>MangaX公式「スポンサー一覧」に掲載</li>
+                  <li>複数話の同時申し込みも可能</li>
+                  <li>話数選択は決済後にご案内します</li>
+                </ul>
+                <a href={EPISODE_LINK} className="kx-btn kx-btn-primary kx-btn-full">
+                  1話スポンサーになる（USD 200）
+                </a>
+              </article>
+
+              <article className="kx-plan-card kx-plan-card-featured">
+                <div className="kx-plan-badge">おすすめ</div>
+                <h3 className="kx-plan-title">全巻スポンサー</h3>
+                <p className="kx-plan-price">USD 7,000</p>
+                <p className="kx-plan-tagline">全40〜45話を一括支援する最上位プラン</p>
+                <ul className="kx-plan-features">
+                  <li>全話の巻頭＋巻末にロゴ or 表記を掲載</li>
+                  <li>「スポンサー一覧」に特別枠で掲載</li>
+                  <li>シリーズ全体ページ（作品トップ）にもロゴ掲載</li>
+                  <li>国際プロモーション資料にも掲載（任意）</li>
+                </ul>
+                <a href={FULL_LINK} className="kx-btn kx-btn-primary kx-btn-full">
+                  全巻スポンサーとして参加する（USD 7,000）
+                </a>
+              </article>
             </div>
           </div>
         </section>
 
-        <div className="kuku-footer">© MangaX / <img src="/assets/fomus-logo-new.png" alt="FOMUS" className="story-logo-img" />FOMUS</div>
-      </div>
-      <div className="kuku-sticky-cta">
-        <button className="kuku-cta primary" onClick={() => openMail("KUKU 1話スポンサー USD200")}>1話スポンサー</button>
-        <button className="kuku-cta secondary" onClick={() => openMail("KUKU 全巻スポンサー USD7000")}>全巻スポンサー</button>
-      </div>
+        <section id="compare" className="kx-section kx-compare">
+          <div className="kx-container">
+            <h2 className="kx-section-title">プラン比較</h2>
+            <div className="kx-table-wrapper">
+              <table className="kx-table">
+                <thead>
+                  <tr>
+                    <th>項目</th>
+                    <th>1話スポンサー</th>
+                    <th>全巻スポンサー</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>対象話数</td>
+                    <td>任意の1話〜複数話</td>
+                    <td>全40〜45話</td>
+                  </tr>
+                  <tr>
+                    <td>巻頭・巻末クレジット</td>
+                    <td>該当話のみ</td>
+                    <td>全話に掲載</td>
+                  </tr>
+                  <tr>
+                    <td>スポンサー一覧掲載</td>
+                    <td>通常枠</td>
+                    <td>特別枠（上位表示）</td>
+                  </tr>
+                  <tr>
+                    <td>シリーズTOPページ掲載</td>
+                    <td>なし</td>
+                    <td>ロゴ掲載あり</td>
+                  </tr>
+                  <tr>
+                    <td>国際プロモーション資料</td>
+                    <td>任意（応相談）</td>
+                    <td>掲載（任意）</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="flow" className="kx-section kx-flow">
+          <div className="kx-container">
+            <h2 className="kx-section-title">お申し込みの流れ</h2>
+            <ol className="kx-flow-steps">
+              <li><h3>1. プランを選択</h3><p>ご希望のプランをお選びください。</p></li>
+              <li><h3>2. Stripeで決済</h3><p>決済完了後、自動返信メールを送付します。</p></li>
+              <li><h3>3. ロゴ/表記の提出</h3><p>掲載に必要な情報をご提出いただきます。</p></li>
+              <li><h3>4. 掲載・公開</h3><p>制作スケジュールに沿って掲載します。</p></li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="spec" className="kx-section kx-spec">
+          <div className="kx-container">
+            <h2 className="kx-section-title">掲載仕様・注意事項</h2>
+            <div className="kx-spec-grid">
+              <div>
+                <h3>掲載仕様</h3>
+                <ul>
+                  <li>ロゴ / 日本語名 / 英語名から選択可能</li>
+                  <li>ロゴ：PNG（透過）またはSVG推奨</li>
+                  <li>ニックネーム表記可（公序良俗の範囲内）</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3>注意事項</h3>
+                <ul>
+                  <li>反社会勢力・宗教団体・政治結社・ネットワークビジネス等は不可</li>
+                  <li>迷惑メールフォルダに入る場合があります</li>
+                  <li>キャリアメール（docomo/softbank等）は届かない場合があります</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="kx-section kx-faq">
+          <div className="kx-container">
+            <h2 className="kx-section-title">FAQ</h2>
+
+            <div className="kx-faq-list">
+              <div className="kx-faq-item">
+                <h3>Q. 個人でもスポンサーになれますか？</h3>
+                <p>A. はい、個人・法人いずれも可能です。</p>
+              </div>
+              <div className="kx-faq-item">
+                <h3>Q. ロゴと文字表記のどちらでも掲載できますか？</h3>
+                <p>A. ロゴ・日本語・英語のいずれも対応しています。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="cta-final" className="kx-section kx-cta-final">
+          <div className="kx-container kx-cta-final-inner">
+            <div>
+              <h2 className="kx-section-title">物語の一部として、世界に名を刻む。</h2>
+              <p className="kx-section-lead">
+                KUKU ― 一黎明の木神 ― のスポンサーとして、<br />
+                あなたの名前・ブランドを物語の中に刻みませんか。
+              </p>
+            </div>
+
+            <div className="kx-cta-final-actions kx-hero-actions">
+              <a href={EPISODE_LINK} className="kx-btn kx-btn-primary">
+                1話スポンサーになる（USD 200）
+              </a>
+              <a href={FULL_LINK} className="kx-btn kx-btn-secondary">
+                全巻スポンサー（USD 7,000）
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };
