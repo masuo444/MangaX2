@@ -1428,6 +1428,21 @@ const DEFAULT_DB = {
       tags: ["Dark Fantasy", "Action"],
       match: 98,
     },
+    {
+      id: "fomus",
+      title: "FOMUS",
+      author: "FOMUS Studio",
+      coverUrl: "/fomus-manga-cover.jpg",
+      heroUrl: "/fomus-manga-cover.jpg",
+      description: "伝統×テクノロジーで拓く未来。",
+      totalLikes: 8200,
+      isNew: true,
+      status: "published",
+      direction: "ltr",
+      language: "ja",
+      tags: ["Technology", "Fantasy"],
+      match: 95,
+    },
   ],
   chapters: [
     { id: "c1", seriesId: "kuku", number: 1, title: "1話", publishDate: "2025/11/01", likes: 1200, status: "published", thumbUrl: "/assets/kuku-ep1.jpg", pageCount: 21 },
@@ -1436,6 +1451,7 @@ const DEFAULT_DB = {
     { id: "c4", seriesId: "kuku", number: 4, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
     { id: "c5", seriesId: "kuku", number: 5, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
     { id: "c6", seriesId: "kuku", number: 6, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
+    { id: "f1", seriesId: "fomus", number: 1, title: "1話", publishDate: "2025/12/10", likes: 640, status: "published", thumbUrl: "/fomus-manga-cover.jpg", pageCount: 13 },
   ],
 };
 
@@ -1443,7 +1459,7 @@ const RESOURCES = {
   ja: {
     nav_home: "ホーム", nav_new: "新着", nav_mypage: "マイページ", nav_partners: "スポンサー",
     read_now: "読む", my_list: "マイリスト",
-    section_continue: "視聴中コンテンツ", section_trending: "人気急上昇", section_new: "新着エピソード",
+    section_continue: "視聴中コンテンツ", section_trending: "新着", section_new: "新着エピソード",
     match: "マッチ", new_badge: "新着",
     episodes: "エピソード", details: "作品詳細", more_like_this: "似たような作品",
     read_first: "最初から読む", favorite: "お気に入り", comments: "コメント", share: "シェア",
