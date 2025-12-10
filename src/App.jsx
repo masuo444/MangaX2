@@ -1275,7 +1275,7 @@ const Header = ({ scrolled, activeTab, setActiveTab, t, toggleLang, lang }) => (
     <div className="header-left">
       <div className="logo" onClick={() => setActiveTab("home")}>MangaX</div>
       <div className="pc-nav">
-        {["home", "new", "partners", "mypage"].map((k) => (
+        {["home", "partners"].map((k) => (
           <div
             key={k}
             className={`pc-nav-link ${activeTab === k ? "active" : ""}`}
@@ -1295,14 +1295,13 @@ const Header = ({ scrolled, activeTab, setActiveTab, t, toggleLang, lang }) => (
     <div className="header-right">
       <button className="icon-btn"><Search size={24} /></button>
       <button className="text-xs text-gray-300 hover:text-white transition-colors" onClick={toggleLang}>{lang === "ja" ? "EN" : "JP"}</button>
-      <div onClick={() => setActiveTab("mypage")} className="w-8 h-8 rounded bg-blue-600 flex items-center justify-center font-bold cursor-pointer hover:ring-2 ring-white transition-all">:D</div>
     </div>
   </div>
 );
 
 const BottomNav = ({ activeTab, setActiveTab, t }) => (
   <div className="bottom-nav">
-    {["home", "new", "partners", "mypage"].map((k) => (
+    {["home", "partners"].map((k) => (
       <button
         key={k}
         onClick={() => {
@@ -1314,7 +1313,7 @@ const BottomNav = ({ activeTab, setActiveTab, t }) => (
         }}
         className={`nav-item ${activeTab === k ? "active" : ""}`}
       >
-        {k === "home" ? <Home size={24} /> : k === "new" ? <MonitorPlay size={24} /> : k === "partners" ? <Handshake size={24} /> : <User size={24} />}
+        {k === "home" ? <Home size={24} /> : <Handshake size={24} />}
         <span>{t[`nav_${k}`]}</span>
       </button>
     ))}
