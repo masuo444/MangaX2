@@ -139,7 +139,7 @@ body {
 }
 
 .feature-section { background: none; border: none; border-radius: 0; padding: 0 0 1.5rem; box-shadow: none; }
-.feature-grid { display: grid; gap: 0.75rem 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.feature-grid { display: grid; gap: 0.75rem 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .feature-card { background: none; border: none; border-radius: 0; padding: 0.3rem 0; box-shadow: none; }
 .feature-card strong { font-size: 1.05rem; display: inline-block; margin-bottom: 0.25rem; }
 .tag-chip { display: inline-flex; padding: 0.25rem 0.65rem; border-radius: 999px; background: rgba(255,255,255,0.1); color: #e8e8e8; font-size: 0.9rem; letter-spacing: 0.01em; }
@@ -338,7 +338,7 @@ body {
 }
 .story-value-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 18px;
 }
 .story-value-item {
@@ -414,7 +414,7 @@ body {
 }
 .story-strength-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
   position: relative;
 }
@@ -490,6 +490,8 @@ body {
   .story-strength-card { padding: 16px 14px; }
   .story-strength-title { font-size: 16px; }
   .story-strength-text { font-size: 13px; }
+  .story-use-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .story-card-row { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 }
 
 .story-steps {
@@ -587,13 +589,13 @@ body {
 .story-use-grid {
   display: grid;
   gap: 18px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   position: relative;
 }
 .story-use-grid::before {
   content: "";
   position: absolute;
-  inset: -10%;
+  inset: -10% 0;
   background: radial-gradient(circle at 20% 20%, rgba(120,210,255,0.07), transparent 30%), radial-gradient(circle at 80% 40%, rgba(255,190,120,0.06), transparent 30%);
   filter: blur(8px);
   z-index: 0;
@@ -619,6 +621,13 @@ body {
 .story-card[data-tone="pink"] { border-color: rgba(255,170,210,0.3); box-shadow: 0 14px 32px rgba(255,170,210,0.12); }
 .story-card[data-tone="cyan"] { border-color: rgba(120,210,255,0.3); box-shadow: 0 14px 32px rgba(120,210,255,0.12); }
 .story-card[data-tone="violet"] { border-color: rgba(190,170,255,0.28); box-shadow: 0 14px 32px rgba(190,170,255,0.12); }
+.story-card-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
 
 .story-card-top {
   display: flex;
@@ -836,7 +845,7 @@ body {
 .kuku-section { margin: 0 0 120px; }
 .kuku-title { font-family: 'Noto Serif JP', serif; font-size: 30px; margin: 0 0 14px; }
 .kuku-desc { color: #cfcfcf; font-size: 16px; line-height: 1.7; margin: 0 0 20px; font-family: 'Noto Sans JP', sans-serif; }
-.kuku-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.kuku-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
 .kuku-card {
   background: #101010;
   border: 1px solid rgba(255,255,255,0.06);
@@ -2039,7 +2048,7 @@ const StoryLanding = ({ onBack }) => {
         <section id="story-portfolio" className="story-section">
           <h2 className="story-section-title">こんな物語が、漫画になります。</h2>
           <div className="story-use-grid">
-            {useCases.map((block) => (
+            {useCases.slice(0, 3).map((block) => (
               <div key={block.title} className="story-card" data-tone={block.tone}>
                 <div className="story-card-top">
                   <div className="story-card-icon" data-tone={block.tone}>{block.icon}</div>
@@ -2056,6 +2065,25 @@ const StoryLanding = ({ onBack }) => {
                 </div>
               </div>
             ))}
+            <div className="story-card-row">
+              {useCases.slice(3).map((block) => (
+                <div key={block.title} className="story-card" data-tone={block.tone}>
+                  <div className="story-card-top">
+                    <div className="story-card-icon" data-tone={block.tone}>{block.icon}</div>
+                    <div>
+                      <div className="story-card-eyebrow">Use Case</div>
+                      <h3>{block.title}</h3>
+                      {block.blurb && <p className="story-card-sub">{block.blurb}</p>}
+                    </div>
+                  </div>
+                  <div className="story-tags">
+                    {block.tags.map((tag) => (
+                      <span key={tag} className="story-tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
