@@ -1567,7 +1567,7 @@ const BottomNav = ({ activeTab, setActiveTab, t }) => (
 
 const HeroSection = ({ series, onRead, onMyList, t }) => {
   if (!series) return null;
-  const heroTitleContent = series.heroTitle || series.title;
+  const heroTitleContent = series.heroTitle || (series.id === "kuku" ? ["KUKU ―", "黎明の木神 ―"] : series.title);
   return (
     <div className="hero">
       <div className="hero-bg"><img src={series.heroUrl || series.coverUrl} alt="Hero" /></div>
