@@ -412,6 +412,85 @@ body {
   .story-value-title { font-size: 18px; }
   .story-value-text { font-size: 14px; }
 }
+.story-strength-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  position: relative;
+}
+.story-strength-grid::before {
+  content: "";
+  position: absolute;
+  inset: -8% 6%;
+  background: radial-gradient(circle at 25% 20%, rgba(255,220,170,0.08), transparent 35%), radial-gradient(circle at 70% 70%, rgba(120,200,255,0.08), transparent 35%);
+  filter: blur(10px);
+  z-index: 0;
+}
+.story-strength-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 18px 16px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(18,18,18,0.9), rgba(26,26,26,0.92));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+.story-strength-card[data-tone="amber"] { border-color: rgba(255,200,120,0.22); box-shadow: 0 14px 28px rgba(255,200,120,0.1); }
+.story-strength-card[data-tone="cyan"] { border-color: rgba(120,210,255,0.22); box-shadow: 0 14px 28px rgba(120,210,255,0.1); }
+.story-strength-card[data-tone="violet"] { border-color: rgba(190,170,255,0.22); box-shadow: 0 14px 28px rgba(190,170,255,0.1); }
+.story-strength-card[data-tone="pink"] { border-color: rgba(255,170,210,0.22); box-shadow: 0 14px 28px rgba(255,170,210,0.1); }
+.story-strength-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 12% 22%, rgba(255,255,255,0.06), transparent 45%);
+  opacity: 0.8;
+}
+.story-strength-icon {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  box-shadow: 0 12px 22px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+}
+.story-strength-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 32% 30%, rgba(255,255,255,0.18), transparent 55%);
+}
+.story-strength-icon[data-tone="amber"] { background: linear-gradient(135deg, #2b1d0d, #c28b29); color: #ffe7b4; }
+.story-strength-icon[data-tone="cyan"] { background: linear-gradient(135deg, #0f2736, #1e8fb8); color: #c8f1ff; }
+.story-strength-icon[data-tone="violet"] { background: linear-gradient(135deg, #1d1633, #5c4bc4); color: #e5deff; }
+.story-strength-icon[data-tone="pink"] { background: linear-gradient(135deg, #2b1628, #b44b87); color: #ffd5f1; }
+.story-strength-body { position: relative; z-index: 1; }
+.story-strength-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: #fff;
+}
+.story-strength-text {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-size: 14px;
+  color: #cfd3d9;
+  margin: 0;
+  line-height: 1.6;
+}
+@media (max-width: 720px) {
+  .story-strength-card { padding: 16px 14px; }
+  .story-strength-title { font-size: 16px; }
+  .story-strength-text { font-size: 13px; }
+}
 
 .story-steps {
   display: grid;
@@ -2056,18 +2135,18 @@ const StoryLanding = ({ onBack }) => {
 
         <section className="story-section">
           <h2 className="story-section-title">FOMUSならではの強み</h2>
-          <div className="story-value-grid">
+          <div className="story-strength-grid">
             {[
-              { icon: <MessageCircle size={20} />, title: "まっすーの“引き出すヒアリング”", text: "話を聞くだけで構成ができる。" },
-              { icon: <Wand2 size={20} />, title: "AI×人のハイブリッド制作", text: "速い・高品質・安定。" },
-              { icon: <Globe size={20} />, title: "世界展開できる多言語漫画（40言語）", text: "翻訳・SNS・展示会にも対応。" },
-              { icon: <Sparkles size={20} />, title: "MangaXに掲載できる（無料）", text: "個人・ギフト・企業PRとして利用可能。" },
+              { icon: <MessageCircle size={22} />, title: "まっすーの“引き出すヒアリング”", text: "話を聞くだけで構成ができる。", tone: "amber" },
+              { icon: <Wand2 size={22} />, title: "AI×人のハイブリッド制作", text: "速い・高品質・安定。", tone: "cyan" },
+              { icon: <Globe size={22} />, title: "世界展開できる多言語漫画（40言語）", text: "翻訳・SNS・展示会にも対応。", tone: "violet" },
+              { icon: <Sparkles size={22} />, title: "MangaXに掲載できる（無料）", text: "個人・ギフト・企業PRとして利用可能。", tone: "pink" },
             ].map((item, idx) => (
-              <div key={idx} className="story-value-item">
-                <div className="story-value-icon">{item.icon}</div>
-                <div>
-                  <div className="story-value-title">{item.title}</div>
-                  <p className="story-value-text">{item.text}</p>
+              <div key={idx} className="story-strength-card" data-tone={item.tone}>
+                <div className="story-strength-icon" data-tone={item.tone}>{item.icon}</div>
+                <div className="story-strength-body">
+                  <div className="story-strength-title">{item.title}</div>
+                  <div className="story-strength-text">{item.text}</div>
                 </div>
               </div>
             ))}
