@@ -1076,11 +1076,39 @@ body {
   background: radial-gradient(circle at top, rgba(212,175,55,0.22), transparent 60%);
 }
 .kx-hero-inner {
-  display: flex;
-  gap: 40px;
+  display: grid;
+  gap: 32px;
+  grid-template-columns: minmax(0, 1fr) 340px;
   align-items: center;
 }
 .kx-hero-text { flex: 1; }
+.kx-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+.kx-hero-frame {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(212,175,55,0.35);
+  box-shadow: 0 24px 45px rgba(0,0,0,0.55);
+  background: linear-gradient(180deg, rgba(5,7,18,0.6), rgba(5,7,18,0.9));
+  position: relative;
+}
+.kx-hero-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.kx-hero-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.35));
+}
 .kx-badge {
   display: inline-block;
   font-size: 0.8rem;
@@ -1249,7 +1277,7 @@ body {
 @media (max-width: 767px) {
   .kx-section { padding: 56px 0; }
   .kx-hero { padding: 72px 0 56px; text-align: center; }
-  .kx-hero-inner { flex-direction: column; gap: 24px; align-items: center; }
+  .kx-hero-inner { grid-template-columns: 1fr; gap: 24px; }
   .kx-hero-actions { justify-content: center; }
   .kx-hero-title { font-size: 2rem; }
   .kx-section-title { font-size: 1.5rem; }
@@ -2073,6 +2101,7 @@ const StoryLanding = ({ onBack }) => {
 const KukuSponsorPage = ({ onBack }) => {
   const EPISODE_LINK = "STRIPE_LINK_EPISODE";
   const FULL_LINK = "STRIPE_LINK_FULL";
+  const heroVisual = "/assets/kuku-hero.jpg";
 
   return (
     <div className="kx-page">
@@ -2095,6 +2124,11 @@ const KukuSponsorPage = ({ onBack }) => {
               <div className="kx-hero-actions">
                 <a href="#plans" className="kx-btn kx-btn-primary">1話スポンサーになる（USD 200）</a>
                 <a href="#plans" className="kx-btn kx-btn-secondary">全巻スポンサーについて詳しく見る</a>
+              </div>
+            </div>
+            <div className="kx-hero-visual">
+              <div className="kx-hero-frame">
+                <img src={heroVisual} alt="KUKU キービジュアル" />
               </div>
             </div>
           </div>
