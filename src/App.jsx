@@ -1443,12 +1443,14 @@ body {
 .install-title { margin: 0; font-size: clamp(26px, 4vw, 42px); line-height: 1.2; letter-spacing: -0.01em; }
 .install-lead { margin: 0; color: #e8e8e8; line-height: 1.7; }
 .install-hero-body { position: relative; z-index: 2; display: grid; gap: 12px; }
+.install-hero-body > .install-download-btn { width: fit-content; }
 .install-hero-visual { display: none; }
 .install-hero-card {
   width: 100%;
-  max-width: 420px;
+  max-width: 1080px;
+  margin: 0 auto;
   border-radius: 18px;
-  padding: 20px;
+  padding: 26px;
   background: linear-gradient(160deg, rgba(229,9,20,0.18), rgba(20,30,60,0.85));
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 18px 46px rgba(0,0,0,0.5);
