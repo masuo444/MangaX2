@@ -1921,7 +1921,7 @@ const InstallPage = () => {
     {
       title: "ZIPファイルをダウンロード",
       body: "ダウンロードページから最新版のZIPファイルを取得します。",
-      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+1+%7C+ZIP%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89",
+      image: "/install/step1-download.png",
     },
     {
       title: "ZIPファイルを展開",
