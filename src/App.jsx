@@ -1416,9 +1416,9 @@ body {
   box-shadow: 0 26px 60px rgba(0,0,0,0.45);
   background: #0a0a0a;
   padding: 0;
+  margin-bottom: 18px;
 }
 .install-hero-bg {
-  position: relative;
   width: 100%;
   height: clamp(260px, 48vw, 560px);
   overflow: hidden;
@@ -1428,17 +1428,6 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-}
-.install-hero-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.85) 70%, #0a0a0a 100%);
-}
-.install-hero-inner {
-  position: absolute;
-  inset: auto 0 0 0;
-  padding: 28px;
-  background: linear-gradient(180deg, rgba(10,10,10,0.65) 0%, rgba(10,10,10,0.9) 100%);
 }
 .install-badge {
   display: inline-flex;
@@ -2019,19 +2008,19 @@ const InstallPage = () => {
         <div className="install-hero">
           <div className="install-hero-bg">
             <img src="/install/download-hero.jpg" alt="FOMUS MANGA CREATOR ヒーロー" />
-            <div className="install-hero-gradient"></div>
-            <div className="install-hero-inner">
-              <div className="install-hero-body">
-                <span className="install-badge">FOMUS MANGA CREATOR</span>
-                <h1 className="install-title">ダウンロード & インストール</h1>
-                <p className="install-lead">最新版ZIPの入手からChromeへの導入、API設定、基本操作、高度な使い方までまとめました。</p>
-                <a className="install-download-btn" href="/MANGA_creator.zip" download>
-                  <Download size={18} /> ZIPをダウンロード
-                </a>
-                <div className="install-footer">
-                  <strong>バージョン</strong> 最新版ZIPをお使いください / <strong>対応</strong> Google Chrome
-                </div>
-              </div>
+          </div>
+        </div>
+
+        <div className="install-hero-card">
+          <div className="install-hero-body">
+            <span className="install-badge">FOMUS MANGA CREATOR</span>
+            <h1 className="install-title">ダウンロード & インストール</h1>
+            <p className="install-lead">最新版ZIPの入手からChromeへの導入、API設定、基本操作、高度な使い方までまとめました。</p>
+            <a className="install-download-btn" href="/MANGA_creator.zip" download>
+              <Download size={18} /> ZIPをダウンロード
+            </a>
+            <div className="install-footer">
+              <strong>バージョン</strong> 最新版ZIPをお使いください / <strong>対応</strong> Google Chrome
             </div>
           </div>
         </div>
