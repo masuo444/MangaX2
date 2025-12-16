@@ -1397,6 +1397,118 @@ body {
   .kx-section-title { font-size: 1.5rem; }
   .kx-plan-card { padding: 20px; }
 }
+
+/* ==========================================
+   Install Page
+   ========================================== */
+.install-page {
+  background: radial-gradient(circle at 10% 15%, rgba(229,9,20,0.08), transparent 32%), #0b0b0b;
+  color: #fff;
+  min-height: 100vh;
+  padding: 100px 0 80px;
+}
+.install-container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.install-hero {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 28px;
+  background: linear-gradient(135deg, rgba(229,9,20,0.16), rgba(20,20,20,0.9));
+  box-shadow: 0 18px 44px rgba(0,0,0,0.45);
+  display: grid;
+  gap: 16px;
+}
+.install-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(229,9,20,0.16);
+  border: 1px solid rgba(229,9,20,0.35);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+.install-title { margin: 0; font-size: clamp(26px, 4vw, 40px); line-height: 1.2; }
+.install-lead { margin: 0; color: #e8e8e8; line-height: 1.7; }
+.install-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.install-section {
+  margin-top: 32px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 22px;
+  background: rgba(15,15,15,0.85);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+.install-section h2 { margin: 0 0 12px; font-size: 22px; letter-spacing: 0.01em; }
+.install-section p { margin: 0 0 12px; color: #d4d4d4; line-height: 1.7; }
+.install-steps { display: grid; gap: 12px; }
+.install-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
+}
+.install-num {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  background: linear-gradient(135deg, #e50914, #ff6b6b);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(229,9,20,0.3);
+}
+.install-step strong { display: block; margin-bottom: 4px; }
+.install-note {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  color: #f7f7f7;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.install-alert {
+  border: 1px solid rgba(229,9,20,0.4);
+  background: rgba(229,9,20,0.1);
+  color: #ffecec;
+}
+.install-columns { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.install-list { margin: 0; padding-left: 18px; color: #d4d4d4; line-height: 1.7; }
+.install-subtitle { margin: 12px 0 8px; font-size: 18px; }
+.install-link-box {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(255,255,255,0.04);
+}
+.install-chip {
+  display: inline-block;
+  padding: 6px 10px;
+  margin: 4px 6px 0 0;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  font-size: 13px;
+  color: #e5e5e5;
+}
+.install-footer {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #cfcfcf;
+  font-size: 14px;
+}
+.install-footer strong { color: #fff; }
+@media (max-width: 640px) {
+  .install-page { padding: 90px 0 70px; }
+  .install-section { padding: 18px; }
+  .install-hero { padding: 22px; }
+}
 `;
 
 const TRANSLATE_LANGS = [
@@ -1457,7 +1569,7 @@ const DEFAULT_DB = {
 
 const RESOURCES = {
   ja: {
-    nav_home: "ホーム", nav_new: "新着", nav_mypage: "マイページ", nav_partners: "スポンサー",
+    nav_home: "ホーム", nav_new: "新着", nav_mypage: "マイページ", nav_partners: "スポンサー", nav_install: "インストール",
     read_now: "読む", my_list: "マイリスト",
     section_continue: "視聴中コンテンツ", section_trending: "新着", section_new: "新着エピソード",
     match: "マッチ", new_badge: "新着",
@@ -1512,7 +1624,7 @@ const RESOURCES = {
     studio_book_option: "製本サービス (+1,000円/冊〜)",
   },
   en: {
-    nav_home: "Home", nav_new: "New", nav_mypage: "My Page", nav_partners: "Partners",
+    nav_home: "Home", nav_new: "New", nav_mypage: "My Page", nav_partners: "Partners", nav_install: "Install",
     read_now: "Read", my_list: "My List",
     section_continue: "Continue Reading", section_trending: "Trending", section_new: "New Releases",
     match: "Match", new_badge: "NEW",
@@ -1645,55 +1757,258 @@ const saveHistory = (seriesId, chapterId, progress) => {
 };
 
 // --- Components ---
-const Header = ({ scrolled, activeTab, setActiveTab, t, toggleLang, lang }) => (
-  <div className={`app-header ${scrolled ? "scrolled" : ""}`}>
-    <div className="header-left">
-      <div className="logo" onClick={() => setActiveTab("home")}>MangaX</div>
-      <div className="pc-nav">
-        {["home", "partners"].map((k) => (
-          <div
-            key={k}
-            className={`pc-nav-link ${activeTab === k ? "active" : ""}`}
-            onClick={() => {
-              if (k === "partners") {
-                setActiveTab("kukuSponsor");
-              } else {
-                setActiveTab(k);
-              }
-            }}
-          >
-            {t[`nav_${k}`]}
-          </div>
-        ))}
+const Header = ({ scrolled, activeTab, setActiveTab, t, toggleLang, lang }) => {
+  const navItems = [
+    { key: "home", label: t.nav_home, target: "home" },
+    { key: "install", label: t.nav_install, target: "install" },
+    { key: "partners", label: t.nav_partners, target: "kukuSponsor" },
+  ];
+
+  return (
+    <div className={`app-header ${scrolled ? "scrolled" : ""}`}>
+      <div className="header-left">
+        <div className="logo" onClick={() => setActiveTab("home")}>MangaX</div>
+        <div className="pc-nav">
+          {navItems.map((item) => (
+            <div
+              key={item.key}
+              className={`pc-nav-link ${activeTab === item.target ? "active" : ""}`}
+              onClick={() => setActiveTab(item.target)}
+            >
+              {item.label}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="header-right">
+        <button className="icon-btn"><Search size={24} /></button>
+        <button className="text-xs text-gray-300 hover:text-white transition-colors" onClick={toggleLang}>{lang === "ja" ? "EN" : "JP"}</button>
       </div>
     </div>
-    <div className="header-right">
-      <button className="icon-btn"><Search size={24} /></button>
-      <button className="text-xs text-gray-300 hover:text-white transition-colors" onClick={toggleLang}>{lang === "ja" ? "EN" : "JP"}</button>
-    </div>
-  </div>
-);
+  );
+};
 
-const BottomNav = ({ activeTab, setActiveTab, t }) => (
-  <div className="bottom-nav">
-    {["home", "partners"].map((k) => (
-      <button
-        key={k}
-        onClick={() => {
-          if (k === "partners") {
-            setActiveTab("kukuSponsor");
-          } else {
-            setActiveTab(k);
-          }
-        }}
-        className={`nav-item ${activeTab === k ? "active" : ""}`}
-      >
-        {k === "home" ? <Home size={24} /> : <Handshake size={24} />}
-        <span>{t[`nav_${k}`]}</span>
-      </button>
-    ))}
-  </div>
-);
+const BottomNav = ({ activeTab, setActiveTab, t }) => {
+  const navItems = [
+    { key: "home", label: t.nav_home, target: "home", icon: <Home size={24} /> },
+    { key: "install", label: t.nav_install, target: "install", icon: <Download size={24} /> },
+    { key: "partners", label: t.nav_partners, target: "kukuSponsor", icon: <Handshake size={24} /> },
+  ];
+
+  return (
+    <div className="bottom-nav">
+      {navItems.map((item) => (
+        <button
+          key={item.key}
+          onClick={() => setActiveTab(item.target)}
+          className={`nav-item ${activeTab === item.target ? "active" : ""}`}
+        >
+          {item.icon}
+          <span>{item.label}</span>
+        </button>
+      ))}
+    </div>
+  );
+};
+
+const InstallPage = () => {
+  const installSteps = [
+    { title: "ZIPファイルをダウンロード", body: "ダウンロードページから最新版のZIPファイルを取得します。" },
+    { title: "ZIPファイルを展開", body: "ダウンロードしたZIPを右クリックし、「すべて展開 / 解凍」を選んで任意の場所に展開します。" },
+    { title: "Chrome拡張機能ページを開く", body: "Chrome右上メニュー → 「拡張機能」 → 「拡張機能を管理」をクリック。" },
+    { title: "デベロッパーモードをON", body: "拡張機能ページ右上の「デベロッパーモード」トグルをオンにします。" },
+    { title: "拡張機能を読み込む", body: "「パッケージ化されていない拡張機能を読み込む」をクリックし、展開したフォルダを選択します。" },
+    { title: "ツールバーに固定", body: "拡張機能アイコン一覧からピン留めし、常に表示されるようにします。" },
+    { title: "インストール完了", body: "ツールバーのFOMUS MANGA CREATORアイコンをクリックして起動できます。" },
+  ];
+
+  const apiSteps = [
+    { title: "FAL AIアカウントを作成", body: "FAL AI公式サイトにアクセスし、アカウントを作成します。" },
+    { title: "APIキーを取得", body: "ダッシュボードの「API Keys」で「Add key」をクリックし、キーを生成します。" },
+    { title: "クレジットをチャージ", body: "クレジットページで必要額をチャージ。初回は10ドル程度で十分です。" },
+    { title: "APIキーを設定", body: "FOMUS MANGA CREATORを起動し、右上の「⚙️ API設定」から取得したキーを保存します。" },
+  ];
+
+  const usageSteps = [
+    { title: "サムネイルを作りたいページを開く", body: "ブログやBrainの記事など対象ページを開きます。" },
+    { title: "右クリックメニューを開く", body: "ページ上で右クリックし「ページ全体からデザインを作成」を選択。" },
+    { title: "アスペクト比を選択", body: "16:9（YouTube等） / 4:5（Instagramフィード） / 1:1（正方形） / 9:16（ストーリー系）。" },
+    { title: "テーマカラーを選択", body: "好みの配色を選択。「おまかせ」でAIが自動選定。" },
+    { title: "デザインスタイルを選択", body: "モダン / ビビッド / プロフェッショナル / ミニマルから選択。" },
+    { title: "生成ボタンをクリック", body: "30秒〜1分ほどで生成。画像は自動ダウンロードされます。" },
+  ];
+
+  const advancedGroups = [
+    {
+      title: "カスタムデザイングループを作成",
+      steps: [
+        "「新規グループを追加」からグループ名を作成。",
+        "「+ デザインを追加」でID・名前・プロンプト（英語推奨）・サンプル画像URLを登録。",
+        "保存するとタブとしてすぐ利用できます。",
+      ],
+    },
+    {
+      title: "デザイングループのエクスポート / インポート",
+      steps: [
+        "エクスポートしたいグループで「エクスポート」を押し、JSONを保存。",
+        "別環境で「インポート」を押し、そのJSONを読み込むと即追加されます。",
+      ],
+    },
+  ];
+
+  const troubleshooting = [
+    {
+      title: "生成に失敗する場合",
+      bullets: [
+        "FAL APIキーが正しく設定されているか確認",
+        "クレジット残高があるか（残高確認）",
+        "ネットワーク接続が安定しているか",
+        "ページ内容が入力されているか",
+      ],
+    },
+    {
+      title: "APIキーのエラー",
+      bullets: [
+        "コピペ時に余分なスペースが入っていないか",
+        "FAL AIダッシュボードでキーが有効か確認",
+        "必要に応じて新しいキーを生成して再設定",
+      ],
+    },
+    {
+      title: "タイムアウトエラー",
+      bullets: [
+        "ページ内容を短くシンプルにする",
+        "ネットワーク接続を確認",
+        "時間を置いて再試行（サーバー混雑の可能性）",
+      ],
+    },
+    {
+      title: "拡張機能が起動しない",
+      bullets: [
+        "Chromeを再起動",
+        "chrome://extensions/ で有効化されているか確認",
+        "削除して再インストール",
+        "Chromeが最新バージョンか確認",
+      ],
+    },
+  ];
+
+  return (
+    <div className="install-page">
+      <div className="install-container">
+        <div className="install-hero">
+          <span className="install-badge">FOMUS MANGA CREATOR</span>
+          <h1 className="install-title">インストールガイド</h1>
+          <p className="install-lead">Chrome拡張の導入からAPI設定、基本操作、高度な使い方までまとめました。</p>
+          <div className="install-footer">
+            <strong>バージョン</strong> 最新版ZIPをお使いください / <strong>対応</strong> Google Chrome
+          </div>
+        </div>
+
+        <div className="install-section">
+          <h2>インストール方法</h2>
+          <div className="install-steps">
+            {installSteps.map((step, idx) => (
+              <div key={step.title} className="install-step">
+                <div className="install-num">{idx + 1}</div>
+                <div>
+                  <strong>{step.title}</strong>
+                  <div>{step.body}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="install-section">
+          <h2>初期設定（FAL APIキーの取得）</h2>
+          <div className="install-steps">
+            {apiSteps.map((step, idx) => (
+              <div key={step.title} className="install-step">
+                <div className="install-num">{idx + 1}</div>
+                <div>
+                  <strong>{step.title}</strong>
+                  <div>{step.body}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="install-note install-alert">
+            ⚠️ セキュリティ: APIキーはブラウザのローカルストレージに平文保存されます。共有PCや公共のPCでは使用しないでください。キーが漏洩すると第三者に不正利用される可能性があります。
+          </div>
+        </div>
+
+        <div className="install-section">
+          <h2>基本的な使い方</h2>
+          <div className="install-steps">
+            {usageSteps.map((step, idx) => (
+              <div key={step.title} className="install-step">
+                <div className="install-num">{idx + 1}</div>
+                <div>
+                  <strong>{step.title}</strong>
+                  <div>{step.body}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="install-grid">
+          {advancedGroups.map((group) => (
+            <div key={group.title} className="install-section">
+              <h2>{group.title}</h2>
+              <ol className="install-list">
+                {group.steps.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ol>
+            </div>
+          ))}
+        </div>
+
+        <div className="install-section">
+          <h2>トラブルシューティング</h2>
+          <div className="install-columns">
+            {troubleshooting.map((item) => (
+              <div key={item.title} className="install-link-box">
+                <h3 className="install-subtitle">{item.title}</h3>
+                <ul className="install-list">
+                  {item.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="install-note">それでも解決しない場合：開発者のXアカウント（@kei31）にDMでお問い合わせください。</div>
+        </div>
+
+        <div className="install-section">
+          <h2>クイックリンク</h2>
+          <div className="install-columns">
+            <div>
+              <h3 className="install-subtitle">ドキュメント</h3>
+              <div className="install-chip">使い方・チュートリアル</div>
+              <div className="install-chip">過去のバージョン</div>
+              <div className="install-chip">FAQ</div>
+            </div>
+            <div>
+              <h3 className="install-subtitle">その他</h3>
+              <div className="install-chip">利用規約</div>
+              <div className="install-chip">プライバシーポリシー</div>
+            </div>
+            <div>
+              <h3 className="install-subtitle">サービス</h3>
+              <div className="install-chip">特徴</div>
+              <div className="install-chip">使い方</div>
+              <div className="install-chip">ダウンロード</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const HeroSection = ({ series, onRead, onMyList, t }) => {
   if (!series) return null;
@@ -2928,6 +3243,7 @@ export default function App() {
         </div>
       )}
 
+      {view === "install" && <InstallPage />}
       {view === "flow" && <StoryLanding onBack={() => navigate("home")} />}
       {view === "kukuSponsor" && <KukuSponsorPage onBack={() => navigate("home")} />}
 
