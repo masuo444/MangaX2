@@ -1443,6 +1443,14 @@ body {
 .install-lead { margin: 0; color: #e8e8e8; line-height: 1.7; }
 .install-hero-body { position: relative; z-index: 2; display: grid; gap: 12px; }
 .install-hero-visual { position: relative; z-index: 2; display: grid; place-items: center; }
+.install-hero-img {
+  width: 100%;
+  max-width: 540px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.45);
+  object-fit: cover;
+}
 .install-hero-card {
   width: 100%;
   max-width: 420px;
@@ -2016,6 +2024,9 @@ const InstallPage = () => {
             <div className="install-footer">
               <strong>バージョン</strong> 最新版ZIPをお使いください / <strong>対応</strong> Google Chrome
             </div>
+          </div>
+          <div className="install-hero-visual">
+            <img className="install-hero-img" src="/install/download-hero.jpg" alt="FOMUS MANGA CREATOR ダウンロードビジュアル" />
           </div>
         </div>
 
