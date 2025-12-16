@@ -1786,25 +1786,34 @@ const RESOURCES = {
   },
 };
 
+const viewToPath = (view) => {
+  if (view === "install") return "/download";
+  if (view === "kukuSponsor") return "/partners";
+  return "/";
+};
+
+const pathToView = (path) => {
+  if (!path) return "home";
+  if (path.startsWith("/download")) return "install";
+  if (path.startsWith("/partners")) return "kukuSponsor";
+  return "home";
+};
+
 // --- Hooks & helpers ---
 const useAppNavigation = (initialView = "flow") => {
-  const [view, setView] = useState(initialView);
-  const [historyStack, setHistoryStack] = useState([initialView]);
+  const resolvedInitialView = pathToView(typeof window !== "undefined" ? window.location.pathname : "") || initialView;
+  const [view, setView] = useState(resolvedInitialView);
+  const [historyStack, setHistoryStack] = useState([resolvedInitialView]);
   const [selectedSeries, setSelectedSeries] = useState(null);
   const [readingChapter, setReadingChapter] = useState(null);
 
   useEffect(() => {
     const handlePopState = () => {
-      if (readingChapter) {
-        setReadingChapter(null);
-      } else if (selectedSeries) {
-        setSelectedSeries(null);
-      } else if (historyStack.length > 1) {
-        const newStack = [...historyStack];
-        newStack.pop();
-        setHistoryStack(newStack);
-        setView(newStack[newStack.length - 1]);
-      }
+      setReadingChapter(null);
+      setSelectedSeries(null);
+      const nextView = pathToView(window.location.pathname);
+      setView(nextView);
+      setHistoryStack((stack) => [...stack, nextView]);
     };
     window.addEventListener("popstate", handlePopState);
     const handleNavigateEvent = (e) => {
@@ -1815,11 +1824,17 @@ const useAppNavigation = (initialView = "flow") => {
       window.removeEventListener("popstate", handlePopState);
       window.removeEventListener("mx_navigate", handleNavigateEvent);
     };
-  }, [readingChapter, selectedSeries, historyStack]);
+  }, []);
 
   const navigate = (newView) => {
     if (newView === view) return;
-    window.history.pushState({ view: newView }, "");
+    const newPath = viewToPath(newView);
+    const currentPath = window.location.pathname;
+    if (newPath !== currentPath) {
+      window.history.pushState({ view: newView }, "", newPath);
+    } else {
+      window.history.pushState({ view: newView }, "");
+    }
     setHistoryStack([...historyStack, newView]);
     setView(newView);
     window.scrollTo(0, 0);
