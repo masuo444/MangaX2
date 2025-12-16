@@ -1411,11 +1411,22 @@ body {
 .install-hero {
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 16px;
-  padding: 28px;
-  background: linear-gradient(135deg, rgba(229,9,20,0.16), rgba(20,20,20,0.9));
-  box-shadow: 0 18px 44px rgba(0,0,0,0.45);
+  padding: 32px;
+  background: radial-gradient(circle at 12% 20%, rgba(229,9,20,0.25), transparent 35%), radial-gradient(circle at 90% 18%, rgba(255,255,255,0.08), transparent 30%), linear-gradient(135deg, rgba(18,18,18,0.95), rgba(30,30,30,0.95));
+  box-shadow: 0 22px 54px rgba(0,0,0,0.5);
   display: grid;
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  position: relative;
+  overflow: hidden;
+}
+.install-hero::after {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.04);
+  pointer-events: none;
 }
 .install-badge {
   display: inline-flex;
@@ -1428,8 +1439,75 @@ body {
   font-weight: 800;
   letter-spacing: 0.06em;
 }
-.install-title { margin: 0; font-size: clamp(26px, 4vw, 40px); line-height: 1.2; }
+.install-title { margin: 0; font-size: clamp(26px, 4vw, 42px); line-height: 1.2; letter-spacing: -0.01em; }
 .install-lead { margin: 0; color: #e8e8e8; line-height: 1.7; }
+.install-hero-body { position: relative; z-index: 2; display: grid; gap: 12px; }
+.install-hero-visual { position: relative; z-index: 2; display: grid; place-items: center; }
+.install-hero-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  padding: 20px;
+  background: linear-gradient(160deg, rgba(229,9,20,0.18), rgba(20,30,60,0.85));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 18px 46px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+}
+.install-hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  opacity: 0.6;
+}
+.install-hero-card::after {
+  content: "";
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 55%);
+  transform: rotate(18deg);
+}
+.install-hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 1;
+}
+.install-hero-card h3 {
+  margin: 12px 0 6px;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 1;
+}
+.install-hero-card p {
+  margin: 0 0 14px;
+  color: #f1f1f1;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+.install-hero-meta { display: flex; flex-wrap: wrap; gap: 8px; position: relative; z-index: 1; }
+.install-meta-pill {
+  padding: 7px 10px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: #f7f7f7;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
 .install-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .install-section {
   margin-top: 32px;
@@ -1520,7 +1598,7 @@ body {
 @media (max-width: 640px) {
   .install-page { padding: 90px 0 70px; }
   .install-section { padding: 18px; }
-  .install-hero { padding: 22px; }
+  .install-hero { padding: 24px; }
 }
 `;
 
@@ -1938,11 +2016,26 @@ const InstallPage = () => {
     <div className="install-page">
       <div className="install-container">
         <div className="install-hero">
-          <span className="install-badge">FOMUS MANGA CREATOR</span>
-          <h1 className="install-title">インストールガイド</h1>
-          <p className="install-lead">Chrome拡張の導入からAPI設定、基本操作、高度な使い方までまとめました。</p>
-          <div className="install-footer">
-            <strong>バージョン</strong> 最新版ZIPをお使いください / <strong>対応</strong> Google Chrome
+          <div className="install-hero-body">
+            <span className="install-badge">FOMUS MANGA CREATOR</span>
+            <h1 className="install-title">インストールガイド</h1>
+            <p className="install-lead">Chrome拡張の導入からAPI設定、基本操作、高度な使い方までまとめました。</p>
+            <div className="install-footer">
+              <strong>バージョン</strong> 最新版ZIPをお使いください / <strong>対応</strong> Google Chrome
+            </div>
+          </div>
+          <div className="install-hero-visual">
+            <div className="install-hero-card">
+              <div className="install-hero-chip">Chrome Extension</div>
+              <h3>FOMUS MANGA CREATOR</h3>
+              <p>ZIP → 展開 → Load unpacked で即セットアップ。AIがコンテンツに合ったサムネをデザイン。</p>
+              <div className="install-hero-meta">
+                <div className="install-meta-pill">AI Thumbnail</div>
+                <div className="install-meta-pill">Right-click Menu</div>
+                <div className="install-meta-pill">Color Themes</div>
+                <div className="install-meta-pill">Design Presets</div>
+              </div>
+            </div>
           </div>
         </div>
 
