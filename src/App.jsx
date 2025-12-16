@@ -1931,7 +1931,7 @@ const InstallPage = () => {
     {
       title: "Chrome拡張機能ページを開く",
       body: "Chrome右上メニュー → 「拡張機能」 → 「拡張機能を管理」をクリック。",
-      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+3+%7C+chrome%3A%2F%2Fextensions",
+      image: "/install/step3-chrome-extension.png",
     },
     {
       title: "デベロッパーモードをON",
@@ -1941,17 +1941,17 @@ const InstallPage = () => {
     {
       title: "拡張機能を読み込む",
       body: "「パッケージ化されていない拡張機能を読み込む」をクリックし、展開したフォルダを選択します。",
-      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+5+%7C+Load+Unpacked",
+      image: "/install/step5-load-unpacked.png",
     },
     {
       title: "ツールバーに固定",
       body: "拡張機能アイコン一覧からピン留めし、常に表示されるようにします。",
-      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+6+%7C+Pin+the+Icon",
+      image: "/install/step6-pin-toolbar.png",
     },
     {
       title: "インストール完了",
       body: "ツールバーのFOMUS MANGA CREATORアイコンをクリックして起動できます。",
-      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+7+%7C+Ready+to+Launch",
+      image: "/install/step7-installed.png",
     },
   ];
 
