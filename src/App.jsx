@@ -2106,28 +2106,6 @@ const InstallPage = () => {
           <div className="install-note">それでも解決しない場合：開発者のXアカウント（@masukei444）にDMでお問い合わせください。</div>
         </div>
 
-        <div className="install-section">
-          <h2>クイックリンク</h2>
-          <div className="install-columns">
-            <div>
-              <h3 className="install-subtitle">ドキュメント</h3>
-              <div className="install-chip">使い方・チュートリアル</div>
-              <div className="install-chip">過去のバージョン</div>
-              <div className="install-chip">FAQ</div>
-            </div>
-            <div>
-              <h3 className="install-subtitle">その他</h3>
-              <div className="install-chip">利用規約</div>
-              <div className="install-chip">プライバシーポリシー</div>
-            </div>
-            <div>
-              <h3 className="install-subtitle">サービス</h3>
-              <div className="install-chip">特徴</div>
-              <div className="install-chip">使い方</div>
-              <div className="install-chip">ダウンロード</div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
