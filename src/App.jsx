@@ -1971,24 +1971,6 @@ const InstallPage = () => {
     { title: "生成ボタンをクリック", body: "30秒〜1分ほどで生成。画像は自動ダウンロードされます。" },
   ];
 
-  const advancedGroups = [
-    {
-      title: "カスタムデザイングループを作成",
-      steps: [
-        "「新規グループを追加」からグループ名を作成。",
-        "「+ デザインを追加」でID・名前・プロンプト（英語推奨）・サンプル画像URLを登録。",
-        "保存するとタブとしてすぐ利用できます。",
-      ],
-    },
-    {
-      title: "デザイングループのエクスポート / インポート",
-      steps: [
-        "エクスポートしたいグループで「エクスポート」を押し、JSONを保存。",
-        "別環境で「インポート」を押し、そのJSONを読み込むと即追加されます。",
-      ],
-    },
-  ];
-
   const troubleshooting = [
     {
       title: "生成に失敗する場合",
@@ -2039,19 +2021,6 @@ const InstallPage = () => {
             </a>
             <div className="install-footer">
               <strong>バージョン</strong> 最新版ZIPをお使いください / <strong>対応</strong> Google Chrome
-            </div>
-          </div>
-          <div className="install-hero-visual">
-            <div className="install-hero-card">
-              <div className="install-hero-chip">Chrome Extension</div>
-              <h3>FOMUS MANGA CREATOR</h3>
-              <p>ZIP → 展開 → Load unpacked で即セットアップ。AIがコンテンツに合ったサムネをデザイン。</p>
-              <div className="install-hero-meta">
-                <div className="install-meta-pill">AI Thumbnail</div>
-                <div className="install-meta-pill">Right-click Menu</div>
-                <div className="install-meta-pill">Color Themes</div>
-                <div className="install-meta-pill">Design Presets</div>
-              </div>
             </div>
           </div>
         </div>
@@ -2107,19 +2076,6 @@ const InstallPage = () => {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="install-grid">
-          {advancedGroups.map((group) => (
-            <div key={group.title} className="install-section">
-              <h2>{group.title}</h2>
-              <ol className="install-list">
-                {group.steps.map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ol>
-            </div>
-          ))}
         </div>
 
         <div className="install-section">
