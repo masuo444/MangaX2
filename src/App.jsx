@@ -1951,7 +1951,6 @@ const InstallPage = () => {
     {
       title: "インストール完了",
       body: "ツールバーのFOMUS MANGA CREATORアイコンをクリックして起動できます。",
-      image: "/install/step7-installed.png",
     },
   ];
 
