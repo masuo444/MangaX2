@@ -1409,24 +1409,36 @@ body {
 }
 .install-container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .install-hero {
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 32px;
-  background: radial-gradient(circle at 12% 20%, rgba(229,9,20,0.25), transparent 35%), radial-gradient(circle at 90% 18%, rgba(255,255,255,0.08), transparent 30%), linear-gradient(135deg, rgba(18,18,18,0.95), rgba(30,30,30,0.95));
-  box-shadow: 0 22px 54px rgba(0,0,0,0.5);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 22px;
   position: relative;
   overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 26px 60px rgba(0,0,0,0.45);
+  background: #0a0a0a;
+  padding: 0;
 }
-.install-hero::after {
-  content: "";
+.install-hero-bg {
+  position: relative;
+  width: 100%;
+  height: clamp(260px, 48vw, 560px);
+  overflow: hidden;
+}
+.install-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.install-hero-gradient {
   position: absolute;
-  inset: 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.04);
-  pointer-events: none;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.85) 70%, #0a0a0a 100%);
+}
+.install-hero-inner {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(10,10,10,0.65) 0%, rgba(10,10,10,0.9) 100%);
 }
 .install-badge {
   display: inline-flex;
@@ -1442,15 +1454,7 @@ body {
 .install-title { margin: 0; font-size: clamp(26px, 4vw, 42px); line-height: 1.2; letter-spacing: -0.01em; }
 .install-lead { margin: 0; color: #e8e8e8; line-height: 1.7; }
 .install-hero-body { position: relative; z-index: 2; display: grid; gap: 12px; }
-.install-hero-visual { position: relative; z-index: 2; display: grid; place-items: center; }
-.install-hero-img {
-  width: 100%;
-  max-width: 540px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 18px 44px rgba(0,0,0,0.45);
-  object-fit: cover;
-}
+.install-hero-visual { display: none; }
 .install-hero-card {
   width: 100%;
   max-width: 420px;
@@ -2013,19 +2017,22 @@ const InstallPage = () => {
     <div className="install-page">
       <div className="install-container">
         <div className="install-hero">
-          <div className="install-hero-body">
-            <span className="install-badge">FOMUS MANGA CREATOR</span>
-            <h1 className="install-title">ダウンロード & インストール</h1>
-            <p className="install-lead">最新版ZIPの入手からChromeへの導入、API設定、基本操作、高度な使い方までまとめました。</p>
-            <a className="install-download-btn" href="/MANGA_creator.zip" download>
-              <Download size={18} /> ZIPをダウンロード
-            </a>
-            <div className="install-footer">
-              <strong>バージョン</strong> 最新版ZIPをお使いください / <strong>対応</strong> Google Chrome
+          <div className="install-hero-bg">
+            <img src="/install/download-hero.jpg" alt="FOMUS MANGA CREATOR ヒーロー" />
+            <div className="install-hero-gradient"></div>
+            <div className="install-hero-inner">
+              <div className="install-hero-body">
+                <span className="install-badge">FOMUS MANGA CREATOR</span>
+                <h1 className="install-title">ダウンロード & インストール</h1>
+                <p className="install-lead">最新版ZIPの入手からChromeへの導入、API設定、基本操作、高度な使い方までまとめました。</p>
+                <a className="install-download-btn" href="/MANGA_creator.zip" download>
+                  <Download size={18} /> ZIPをダウンロード
+                </a>
+                <div className="install-footer">
+                  <strong>バージョン</strong> 最新版ZIPをお使いください / <strong>対応</strong> Google Chrome
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="install-hero-visual">
-            <img className="install-hero-img" src="/install/download-hero.jpg" alt="FOMUS MANGA CREATOR ダウンロードビジュアル" />
           </div>
         </div>
 
