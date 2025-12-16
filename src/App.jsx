@@ -1934,13 +1934,8 @@ const InstallPage = () => {
       image: "/install/step3-chrome-extension.png",
     },
     {
-      title: "デベロッパーモードをON",
-      body: "拡張機能ページ右上の「デベロッパーモード」トグルをオンにします。",
-      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+4+%7C+Dev+Mode+ON",
-    },
-    {
-      title: "拡張機能を読み込む",
-      body: "「パッケージ化されていない拡張機能を読み込む」をクリックし、展開したフォルダを選択します。",
+      title: "デベロッパーモードをON → 拡張機能を読み込む",
+      body: "拡張機能ページ右上の「デベロッパーモード」をオンにし、「パッケージ化されていない拡張機能を読み込む」から展開フォルダを選択します。",
       image: "/install/step5-load-unpacked.png",
     },
     {
