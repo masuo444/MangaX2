@@ -1452,6 +1452,19 @@ body {
   border: 1px solid rgba(255,255,255,0.06);
   background: rgba(255,255,255,0.03);
 }
+.install-shot {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: #0f0f0f;
+}
+.install-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .install-num {
   width: 34px; height: 34px;
   border-radius: 10px;
@@ -1813,13 +1826,41 @@ const BottomNav = ({ activeTab, setActiveTab, t }) => {
 
 const InstallPage = () => {
   const installSteps = [
-    { title: "ZIPファイルをダウンロード", body: "ダウンロードページから最新版のZIPファイルを取得します。" },
-    { title: "ZIPファイルを展開", body: "ダウンロードしたZIPを右クリックし、「すべて展開 / 解凍」を選んで任意の場所に展開します。" },
-    { title: "Chrome拡張機能ページを開く", body: "Chrome右上メニュー → 「拡張機能」 → 「拡張機能を管理」をクリック。" },
-    { title: "デベロッパーモードをON", body: "拡張機能ページ右上の「デベロッパーモード」トグルをオンにします。" },
-    { title: "拡張機能を読み込む", body: "「パッケージ化されていない拡張機能を読み込む」をクリックし、展開したフォルダを選択します。" },
-    { title: "ツールバーに固定", body: "拡張機能アイコン一覧からピン留めし、常に表示されるようにします。" },
-    { title: "インストール完了", body: "ツールバーのFOMUS MANGA CREATORアイコンをクリックして起動できます。" },
+    {
+      title: "ZIPファイルをダウンロード",
+      body: "ダウンロードページから最新版のZIPファイルを取得します。",
+      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+1+%7C+ZIP%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89",
+    },
+    {
+      title: "ZIPファイルを展開",
+      body: "ダウンロードしたZIPを右クリックし、「すべて展開 / 解凍」を選んで任意の場所に展開します。",
+      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+2+%7C+ZIP%E3%82%92%E5%B1%95%E9%96%8B",
+    },
+    {
+      title: "Chrome拡張機能ページを開く",
+      body: "Chrome右上メニュー → 「拡張機能」 → 「拡張機能を管理」をクリック。",
+      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+3+%7C+chrome%3A%2F%2Fextensions",
+    },
+    {
+      title: "デベロッパーモードをON",
+      body: "拡張機能ページ右上の「デベロッパーモード」トグルをオンにします。",
+      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+4+%7C+Dev+Mode+ON",
+    },
+    {
+      title: "拡張機能を読み込む",
+      body: "「パッケージ化されていない拡張機能を読み込む」をクリックし、展開したフォルダを選択します。",
+      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+5+%7C+Load+Unpacked",
+    },
+    {
+      title: "ツールバーに固定",
+      body: "拡張機能アイコン一覧からピン留めし、常に表示されるようにします。",
+      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+6+%7C+Pin+the+Icon",
+    },
+    {
+      title: "インストール完了",
+      body: "ツールバーのFOMUS MANGA CREATORアイコンをクリックして起動できます。",
+      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+7+%7C+Ready+to+Launch",
+    },
   ];
 
   const apiSteps = [
@@ -1915,6 +1956,11 @@ const InstallPage = () => {
                   <strong>{step.title}</strong>
                   <div>{step.body}</div>
                 </div>
+                {step.image && (
+                  <div className="install-shot">
+                    <img src={step.image} alt={`${step.title} のスクリーンショット`} loading="lazy" />
+                  </div>
+                )}
               </div>
             ))}
           </div>
