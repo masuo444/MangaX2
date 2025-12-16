@@ -1934,7 +1934,6 @@ const InstallPage = () => {
     {
       title: "ZIPファイルを展開",
       body: "ダウンロードしたZIPを右クリックし、「すべて展開 / 解凍」を選んで任意の場所に展開します。",
-      image: "https://placehold.co/960x540/141414/FFFFFF?text=Step+2+%7C+ZIP%E3%82%92%E5%B1%95%E9%96%8B",
     },
     {
       title: "Chrome拡張機能ページを開く",
