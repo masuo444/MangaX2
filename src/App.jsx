@@ -2026,7 +2026,7 @@ const InstallPage = () => {
               </div>
             ))}
           </div>
-          <div className="install-note">それでも解決しない場合：開発者のXアカウント（@kei31）にDMでお問い合わせください。</div>
+          <div className="install-note">それでも解決しない場合：開発者のXアカウント（@masukei444）にDMでお問い合わせください。</div>
         </div>
 
         <div className="install-section">
