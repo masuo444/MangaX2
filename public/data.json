@@ -28,7 +28,8 @@
       "direction": "ltr",
       "language": "ja",
       "tags": ["Technology", "Fantasy"],
-      "match": 95
+      "match": 95,
+      "oneShot": true
     }
   ],
   "chapters": [

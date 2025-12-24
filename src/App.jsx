@@ -1662,6 +1662,7 @@ const DEFAULT_DB = {
       language: "ja",
       tags: ["Technology", "Fantasy"],
       match: 95,
+      oneShot: true,
     },
   ],
   chapters: [
@@ -3257,6 +3258,16 @@ export default function App() {
   const { view, navigate, selectedSeries, openDetail, closeDetail, readingChapter, openReader, closeReader } = useAppNavigation("home");
   const db = useData();
   const t = RESOURCES[lang];
+  const openSeries = (series, opts = {}) => {
+    if (series?.oneShot && !opts.forceDetail) {
+      const ch = db.chapters.find((c) => c.seriesId === series.id && c.number === 1);
+      if (ch) {
+        openReader(ch, series);
+        return;
+      }
+    }
+    openDetail(series);
+  };
 
   const toggleLang = () => setLang((l) => (l === "ja" ? "en" : "ja"));
 
@@ -3344,7 +3355,7 @@ export default function App() {
                 />
               )}
             />
-            <SectionRow title={t.section_trending} items={[...db.series].reverse()} renderItem={(s) => <PosterCard series={s} onClick={openDetail} t={t} />} />
+            <SectionRow title={t.section_trending} items={[...db.series].reverse()} renderItem={(s) => <PosterCard series={s} onClick={openSeries} t={t} />} />
             <ServicePitch onShowFlow={() => navigate("flow")} />
           </div>
         </div>
