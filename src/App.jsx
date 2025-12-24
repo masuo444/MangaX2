@@ -1652,8 +1652,8 @@ const DEFAULT_DB = {
       id: "fomus",
       title: "FOMUS",
       author: "FOMUS Studio",
-      coverUrl: "/fomus-manga-cover.jpg",
-      heroUrl: "/fomus-manga-cover.jpg",
+      coverUrl: "/fomus-manga-cover-202501.jpg",
+      heroUrl: "/fomus-manga-cover-202501.jpg",
       description: "伝統×テクノロジーで拓く未来。",
       totalLikes: 8200,
       isNew: true,
@@ -1671,7 +1671,7 @@ const DEFAULT_DB = {
     { id: "c4", seriesId: "kuku", number: 4, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
     { id: "c5", seriesId: "kuku", number: 5, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
     { id: "c6", seriesId: "kuku", number: 6, title: "", status: "in_production", sponsorGoal: 1, sponsors: 0, thumbUrl: "/assets/kuku-ep3.jpg", pageCount: 22 },
-    { id: "f1", seriesId: "fomus", number: 1, title: "1話", publishDate: "2025/12/10", likes: 640, status: "published", thumbUrl: "/fomus-manga-cover.jpg", pageCount: 13 },
+    { id: "f1", seriesId: "fomus", number: 1, title: "1話", publishDate: "2025/12/10", likes: 640, status: "published", thumbUrl: "/fomus-manga-cover-202501.jpg", pageCount: 13 },
   ],
 };
 
